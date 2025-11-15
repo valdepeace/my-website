@@ -1,6 +1,17 @@
 # 🚀 Mi Sitio Web Personal con Docusaurus
 
+[![Deploy to GitHub Pages](https://github.com/valdepeace/my-website/actions/workflows/deploy.yml/badge.svg)](https://github.com/valdepeace/my-website/actions/workflows/deploy.yml)
+
+**🌐 Sitio en vivo:** [https://valdepeace.github.io/my-website/](https://valdepeace.github.io/my-website/)
+
 Esta es mi web personal construida con [Docusaurus](https://docusaurus.io/), un generador de sitios estáticos moderno.
+
+## 👨‍💻 Autor
+
+**Andrés Carmona Gil**
+- 🐙 GitHub: [@valdepeace](https://github.com/valdepeace)
+- 💼 LinkedIn: [valdepeace](https://www.linkedin.com/in/valdepeace)
+- 📍 Sevilla, España
 
 ## ✨ Características
 

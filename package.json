@@ -2,6 +2,12 @@
   "name": "my-website",
   "version": "0.0.0",
   "private": true,
+  "description": "Sitio web personal de Andrés Carmona Gil - Desarrollador Full Stack",
+  "homepage": "https://valdepeace.github.io/my-website/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/valdepeace/my-website.git"
+  },
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
