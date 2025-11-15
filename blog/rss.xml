@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="rss.xsl"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Andrés Carmona Gil Blog</title>
+        <link>https://valdepeace.github.io/my-website/blog</link>
+        <description>Andrés Carmona Gil Blog</description>
+        <lastBuildDate>Sat, 15 Nov 2025 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>es</language>
+        <item>
+            <title><![CDATA[¡Bienvenido a mi blog!]]></title>
+            <link>https://valdepeace.github.io/my-website/blog/bienvenida</link>
+            <guid>https://valdepeace.github.io/my-website/blog/bienvenida</guid>
+            <pubDate>Sat, 15 Nov 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[¡Hola y bienvenido a mi blog personal! 👋]]></description>
+            <content:encoded><![CDATA[<p>¡Hola y bienvenido a mi blog personal! 👋</p>
+<p>Este es el primer post de muchos que vienen. Aquí compartiré mis experiencias, aprendizajes y reflexiones sobre tecnología, desarrollo de software y todo lo que me apasiona.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-encontrarás-aquí">¿Qué encontrarás aquí?<a href="https://valdepeace.github.io/my-website/blog/bienvenida#qu%C3%A9-encontrar%C3%A1s-aqu%C3%AD" class="hash-link" aria-label="Enlace directo al ¿Qué encontrarás aquí?" title="Enlace directo al ¿Qué encontrarás aquí?" translate="no">​</a></h2>
+<p>En este espacio publicaré contenido sobre:</p>
+<ul>
+<li class=""><strong>💻 Desarrollo web:</strong> Tutoriales, tips y mejores prácticas</li>
+<li class=""><strong>🚀 Tecnologías modernas:</strong> React, TypeScript, Node.js, y más</li>
+<li class=""><strong>📚 Aprendizajes:</strong> Experiencias y lecciones aprendidas</li>
+<li class=""><strong>🔧 Herramientas:</strong> Reviews y guías de herramientas útiles</li>
+<li class=""><strong>💡 Ideas:</strong> Reflexiones sobre la industria tech</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mi-visión">Mi visión<a href="https://valdepeace.github.io/my-website/blog/bienvenida#mi-visi%C3%B3n" class="hash-link" aria-label="Enlace directo al Mi visión" title="Enlace directo al Mi visión" translate="no">​</a></h2>
+<p>Creo firmemente en compartir conocimiento. La comunidad de desarrolladores ha sido increíblemente generosa conmigo, y esta es mi forma de devolver un poco de lo que he recibido.</p>
+<p>No esperes posts perfectos, sino contenido honesto, práctico y útil basado en experiencias reales.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-viene">¿Qué viene?<a href="https://valdepeace.github.io/my-website/blog/bienvenida#qu%C3%A9-viene" class="hash-link" aria-label="Enlace directo al ¿Qué viene?" title="Enlace directo al ¿Qué viene?" translate="no">​</a></h2>
+<p>En los próximos posts hablaré sobre:</p>
+<ul>
+<li class="">Cómo configuré este sitio con Docusaurus</li>
+<li class="">Mejores prácticas en React y TypeScript</li>
+<li class="">Herramientas que uso diariamente</li>
+<li class="">Proyectos en los que estoy trabajando</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mantente-conectado">Mantente conectado<a href="https://valdepeace.github.io/my-website/blog/bienvenida#mantente-conectado" class="hash-link" aria-label="Enlace directo al Mantente conectado" title="Enlace directo al Mantente conectado" translate="no">​</a></h2>
+<p>Si te interesa el contenido, puedes:</p>
+<ul>
+<li class="">Suscribirte al <a class="" href="https://valdepeace.github.io/my-website/blog/rss.xml">RSS feed</a></li>
+<li class="">Seguirme en <a href="https://twitter.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">Twitter</a></li>
+<li class="">Conectar en <a href="https://www.linkedin.com/in/valdepeace" target="_blank" rel="noopener noreferrer" class="">LinkedIn</a></li>
+<li class="">Ver mi trabajo en <a href="https://github.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">GitHub</a></li>
+</ul>
+<p>¡Gracias por estar aquí! 🚀</p>
+<hr>
+<p><em>¿Tienes algún tema que te gustaría que cubriera? ¡Déjame un comentario o contactáctame!</em></p>]]></content:encoded>
+            <category>bienvenida</category>
+            <category>personal</category>
+        </item>
+        <item>
+            <title><![CDATA[Primeros pasos con Docusaurus]]></title>
+            <link>https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus</link>
+            <guid>https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus</guid>
+            <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Docusaurus es una increíble herramienta para crear sitios web estáticos, especialmente orientados a documentación y blogs técnicos. En este post te cuento por qué lo elegí y cómo empezar.]]></description>
+            <content:encoded><![CDATA[<p>Docusaurus es una increíble herramienta para crear sitios web estáticos, especialmente orientados a documentación y blogs técnicos. En este post te cuento por qué lo elegí y cómo empezar.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="por-qué-docusaurus">¿Por qué Docusaurus?<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#por-qu%C3%A9-docusaurus" class="hash-link" aria-label="Enlace directo al ¿Por qué Docusaurus?" title="Enlace directo al ¿Por qué Docusaurus?" translate="no">​</a></h2>
+<p>Después de evaluar varias opciones (Gatsby, Next.js, Hugo), elegí Docusaurus por varias razones:</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-ventajas">✅ Ventajas<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#-ventajas" class="hash-link" aria-label="Enlace directo al ✅ Ventajas" title="Enlace directo al ✅ Ventajas" translate="no">​</a></h3>
+<ol>
+<li class=""><strong>🚀 Rápido de configurar</strong> - En minutos tienes un sitio funcionando</li>
+<li class=""><strong>⚛️ Basado en React</strong> - Puedo usar componentes React si los necesito</li>
+<li class=""><strong>📝 Markdown nativo</strong> - Escribir contenido es súper simple</li>
+<li class=""><strong>🎨 Temas personalizables</strong> - Fácil de adaptar a tu estilo</li>
+<li class=""><strong>📱 Responsive por defecto</strong> - Se ve bien en todos los dispositivos</li>
+<li class=""><strong>🔍 SEO optimizado</strong> - Configuración automática de meta tags</li>
+<li class=""><strong>🌙 Dark mode incluido</strong> - Sin configuración adicional</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="instalación-rápida">Instalación rápida<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#instalaci%C3%B3n-r%C3%A1pida" class="hash-link" aria-label="Enlace directo al Instalación rápida" title="Enlace directo al Instalación rápida" translate="no">​</a></h2>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npx create-docusaurus@latest my-website classic --typescript</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">cd my-website</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm start</span><br></span></code></pre></div></div>
+<p>¡Y listo! Tu sitio está corriendo en <code>http://localhost:3000</code></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="estructura-del-proyecto">Estructura del proyecto<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#estructura-del-proyecto" class="hash-link" aria-label="Enlace directo al Estructura del proyecto" title="Enlace directo al Estructura del proyecto" translate="no">​</a></h2>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">my-website/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── blog/                 # Posts del blog</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── 2025-11-15-post.md</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── docs/                 # Documentación</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── intro.md</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── src/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── components/       # Componentes React</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── css/             # Estilos personalizados</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── pages/           # Páginas custom</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── static/              # Archivos estáticos</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└── docusaurus.config.ts # Configuración principal</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="configuración-básica">Configuración básica<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#configuraci%C3%B3n-b%C3%A1sica" class="hash-link" aria-label="Enlace directo al Configuración básica" title="Enlace directo al Configuración básica" translate="no">​</a></h2>
+<p>El archivo <code>docusaurus.config.ts</code> es el corazón de tu sitio:</p>
+<div class="language-typescript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-typescript codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> config</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> Config </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  title</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">'Tu Nombre'</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  tagline</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">'Tu tagline aquí'</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  url</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">'https://tu-sitio.com'</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  baseUrl</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">'/'</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  themeConfig</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    navbar</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      title</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">'Mi Sitio'</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      items</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">to</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">'/blog'</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> label</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">'Blog'</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> position</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">'left'</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">to</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">'/about'</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> label</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">'Sobre Mí'</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> position</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">'left'</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tips-útiles">Tips útiles<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#tips-%C3%BAtiles" class="hash-link" aria-label="Enlace directo al Tips útiles" title="Enlace directo al Tips útiles" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-usar-front-matter-en-posts">1. Usar Front Matter en posts<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#1-usar-front-matter-en-posts" class="hash-link" aria-label="Enlace directo al 1. Usar Front Matter en posts" title="Enlace directo al 1. Usar Front Matter en posts" translate="no">​</a></h3>
+<div class="language-markdown codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-markdown codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token front-matter-block punctuation" style="color:#393A34">---</span><span class="token front-matter-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token front-matter-block"></span><span class="token front-matter-block front-matter yaml language-yaml key atrule" style="color:#00a4db">title</span><span class="token front-matter-block front-matter yaml language-yaml punctuation" style="color:#393A34">:</span><span class="token front-matter-block front-matter yaml language-yaml"> Mi Post</span><br></span><span class="token-line" style="color:#393A34"><span class="token front-matter-block front-matter yaml language-yaml"></span><span class="token front-matter-block front-matter yaml language-yaml key atrule" style="color:#00a4db">authors</span><span class="token front-matter-block front-matter yaml language-yaml punctuation" style="color:#393A34">:</span><span class="token front-matter-block front-matter yaml language-yaml"> </span><span class="token front-matter-block front-matter yaml language-yaml punctuation" style="color:#393A34">[</span><span class="token front-matter-block front-matter yaml language-yaml">nombre</span><span class="token front-matter-block front-matter yaml language-yaml punctuation" style="color:#393A34">]</span><span class="token front-matter-block front-matter yaml language-yaml"></span><br></span><span class="token-line" style="color:#393A34"><span class="token front-matter-block front-matter yaml language-yaml"></span><span class="token front-matter-block front-matter yaml language-yaml key atrule" style="color:#00a4db">tags</span><span class="token front-matter-block front-matter yaml language-yaml punctuation" style="color:#393A34">:</span><span class="token front-matter-block front-matter yaml language-yaml"> </span><span class="token front-matter-block front-matter yaml language-yaml punctuation" style="color:#393A34">[</span><span class="token front-matter-block front-matter yaml language-yaml">react</span><span class="token front-matter-block front-matter yaml language-yaml punctuation" style="color:#393A34">,</span><span class="token front-matter-block front-matter yaml language-yaml"> tutorial</span><span class="token front-matter-block front-matter yaml language-yaml punctuation" style="color:#393A34">]</span><span class="token front-matter-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token front-matter-block"></span><span class="token front-matter-block punctuation" style="color:#393A34">---</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-truncar-contenido-en-la-lista-del-blog">2. Truncar contenido en la lista del blog<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#2-truncar-contenido-en-la-lista-del-blog" class="hash-link" aria-label="Enlace directo al 2. Truncar contenido en la lista del blog" title="Enlace directo al 2. Truncar contenido en la lista del blog" translate="no">​</a></h3>
+<p>Usa <code>&lt;!--truncate--&gt;</code> para marcar dónde cortar:</p>
+<div class="language-markdown codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-markdown codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Resumen del post...</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">&lt;!--truncate--&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Contenido completo...</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-agregar-páginas-custom">3. Agregar páginas custom<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#3-agregar-p%C3%A1ginas-custom" class="hash-link" aria-label="Enlace directo al 3. Agregar páginas custom" title="Enlace directo al 3. Agregar páginas custom" translate="no">​</a></h3>
+<p>Simplemente crea archivos <code>.md</code> o <code>.tsx</code> en <code>src/pages/</code>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">src/pages/about.md → /about</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">src/pages/projects.md → /projects</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="deployment">Deployment<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#deployment" class="hash-link" aria-label="Enlace directo al Deployment" title="Enlace directo al Deployment" translate="no">​</a></h2>
+<p>Docusaurus se puede desplegar fácilmente en:</p>
+<ul>
+<li class=""><strong>GitHub Pages</strong> - Gratis para repos públicos</li>
+<li class=""><strong>Vercel</strong> - Deploy automático con cada push</li>
+<li class=""><strong>Netlify</strong> - Excelente para sitios estáticos</li>
+<li class=""><strong>AWS S3 + CloudFront</strong> - Más control y escalabilidad</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="deployment-en-github-pages">Deployment en GitHub Pages<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#deployment-en-github-pages" class="hash-link" aria-label="Enlace directo al Deployment en GitHub Pages" title="Enlace directo al Deployment en GitHub Pages" translate="no">​</a></h3>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm run build</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm run deploy</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="próximos-pasos">Próximos pasos<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#pr%C3%B3ximos-pasos" class="hash-link" aria-label="Enlace directo al Próximos pasos" title="Enlace directo al Próximos pasos" translate="no">​</a></h2>
+<p>En futuros posts cubriré:</p>
+<ul>
+<li class="">Personalización avanzada de temas</li>
+<li class="">Agregar componentes React custom</li>
+<li class="">Integración con servicios externos</li>
+<li class="">Optimización de rendimiento</li>
+<li class="">Analytics y SEO avanzado</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="recursos">Recursos<a href="https://valdepeace.github.io/my-website/blog/primeros-pasos-docusaurus#recursos" class="hash-link" aria-label="Enlace directo al Recursos" title="Enlace directo al Recursos" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer" class="">Documentación oficial</a></li>
+<li class=""><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="">GitHub repo</a></li>
+<li class=""><a href="https://docusaurus.io/showcase" target="_blank" rel="noopener noreferrer" class="">Showcase de sitios</a></li>
+</ul>
+<hr>
+<p>¿Ya usas Docusaurus? ¿Qué otras herramientas prefieres para sitios personales? ¡Me encantaría conocer tu experiencia!</p>]]></content:encoded>
+            <category>Docusaurus</category>
+            <category>tutorial</category>
+            <category>web</category>
+        </item>
+        <item>
+            <title><![CDATA[Welcome]]></title>
+            <link>https://valdepeace.github.io/my-website/blog/welcome</link>
+            <guid>https://valdepeace.github.io/my-website/blog/welcome</guid>
+            <pubDate>Thu, 26 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></description>
+            <content:encoded><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer" class="">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer" class="">blog plugin</a>.</p>
+<p>Here are a few tips you might find useful.</p>
+<p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p>
+<p>Regular blog authors can be added to <code>authors.yml</code>.</p>
+<p>The blog post date can be extracted from filenames, such as:</p>
+<ul>
+<li class=""><code>2019-05-30-welcome.md</code></li>
+<li class=""><code>2019-05-30-welcome/index.md</code></li>
+</ul>
+<p>A blog post folder can be convenient to co-locate blog post images:</p>
+<p><img decoding="async" loading="lazy" alt="Docusaurus Plushie" src="https://valdepeace.github.io/my-website/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_ev3q"></p>
+<p>The blog supports tags as well!</p>
+<p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content:encoded>
+            <category>Facebook</category>
+            <category>Hello</category>
+            <category>Docusaurus</category>
+        </item>
+        <item>
+            <title><![CDATA[MDX Blog Post]]></title>
+            <link>https://valdepeace.github.io/my-website/blog/mdx-blog-post</link>
+            <guid>https://valdepeace.github.io/my-website/blog/mdx-blog-post</guid>
+            <pubDate>Sun, 01 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></description>
+            <content:encoded><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features" target="_blank" rel="noopener noreferrer" class="">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/" target="_blank" rel="noopener noreferrer" class="">MDX</a>.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>Use the power of React to create interactive blog posts.</p></div></div>
+<!-- -->
+<p>For example, use JSX to create an interactive button:</p>
+<div class="language-js codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-js codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">button onClick</span><span class="token operator" style="color:#393A34">=</span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">alert</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">'button clicked!'</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">}</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token maybe-class-name">Click</span><span class="token plain"> me</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">button</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
+<button>Click me!</button>]]></content:encoded>
+            <category>Docusaurus</category>
+        </item>
+        <item>
+            <title><![CDATA[Long Blog Post]]></title>
+            <link>https://valdepeace.github.io/my-website/blog/long-blog-post</link>
+            <guid>https://valdepeace.github.io/my-website/blog/long-blog-post</guid>
+            <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[This is the summary of a very long blog post,]]></description>
+            <content:encoded><![CDATA[<p>This is the summary of a very long blog post,</p>
+<p>Use a <code>&lt;!--</code> <code>truncate</code> <code>--&gt;</code> comment to limit blog post size in the list view.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content:encoded>
+            <category>Hello</category>
+            <category>Docusaurus</category>
+        </item>
+        <item>
+            <title><![CDATA[First Blog Post]]></title>
+            <link>https://valdepeace.github.io/my-website/blog/first-blog-post</link>
+            <guid>https://valdepeace.github.io/my-website/blog/first-blog-post</guid>
+            <pubDate>Tue, 28 May 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Lorem ipsum dolor sit amet...]]></description>
+            <content:encoded><![CDATA[<p>Lorem ipsum dolor sit amet...</p>
+<p>...consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content:encoded>
+            <category>Hola</category>
+            <category>Docusaurus</category>
+        </item>
+    </channel>
+</rss>

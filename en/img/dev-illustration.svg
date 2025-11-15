@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="500" height="400">
+  <defs>
+    <linearGradient id="devGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="devGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Monitor/Pantalla -->
+  <rect x="80" y="80" width="340" height="220" rx="8" fill="url(#devGrad1)"/>
+  <rect x="95" y="95" width="310" height="170" rx="4" fill="#1a1a1a"/>
+  
+  <!-- Código en pantalla -->
+  <rect x="110" y="110" width="80" height="8" rx="4" fill="#25c2a0" opacity="0.8"/>
+  <rect x="110" y="130" width="120" height="8" rx="4" fill="#2e8555" opacity="0.6"/>
+  <rect x="110" y="150" width="100" height="8" rx="4" fill="#25c2a0" opacity="0.8"/>
+  <rect x="110" y="170" width="140" height="8" rx="4" fill="#2e8555" opacity="0.6"/>
+  <rect x="130" y="190" width="100" height="8" rx="4" fill="#25c2a0" opacity="0.5"/>
+  <rect x="130" y="210" width="80" height="8" rx="4" fill="#2e8555" opacity="0.7"/>
+  <rect x="110" y="230" width="120" height="8" rx="4" fill="#25c2a0" opacity="0.6"/>
+  
+  <!-- Cursor parpadeante -->
+  <rect x="235" y="230" width="3" height="8" fill="#fff">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Base del monitor -->
+  <rect x="210" y="300" width="80" height="10" rx="5" fill="url(#devGrad2)"/>
+  <polygon points="230,310 270,310 260,340 240,340" fill="url(#devGrad2)"/>
+  <rect x="200" y="340" width="100" height="8" rx="4" fill="url(#devGrad2)"/>
+  
+  <!-- Elementos decorativos - Iconos flotantes -->
+  <g opacity="0.7">
+    <!-- Icono React -->
+    <circle cx="420" cy="100" r="20" fill="none" stroke="#61dafb" stroke-width="2"/>
+    <circle cx="420" cy="100" r="3" fill="#61dafb"/>
+    <ellipse cx="420" cy="100" rx="30" ry="12" fill="none" stroke="#61dafb" stroke-width="2" transform="rotate(60 420 100)"/>
+    <ellipse cx="420" cy="100" rx="30" ry="12" fill="none" stroke="#61dafb" stroke-width="2" transform="rotate(-60 420 100)"/>
+  </g>
+  
+  <g opacity="0.7">
+    <!-- Icono código -->
+    <path d="M 60 150 L 40 170 L 60 190" fill="none" stroke="#2e8555" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 60 210 L 40 230 L 60 250" fill="none" stroke="#25c2a0" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Partículas flotantes -->
+  <circle cx="450" cy="250" r="4" fill="#2e8555" opacity="0.5">
+    <animate attributeName="cy" values="250;230;250" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="430" cy="280" r="3" fill="#25c2a0" opacity="0.5">
+    <animate attributeName="cy" values="280;260;280" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="70" cy="280" r="3" fill="#2e8555" opacity="0.5">
+    <animate attributeName="cy" values="280;300;280" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+</svg>

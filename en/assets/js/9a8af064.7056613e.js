@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkmy_website=globalThis.webpackChunkmy_website||[]).push([[1136],{4:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/my-website/en/blog","page":1,"postsPerPage":6,"totalPages":1,"totalCount":6,"blogDescription":"Mis pensamientos, ideas y aprendizajes","blogTitle":"Blog Personal"}}')}}]);

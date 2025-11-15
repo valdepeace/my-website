@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="500" height="400">
+  <defs>
+    <linearGradient id="projectGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2e8555;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#25c2a0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="projectGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#25c2a0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1fa588;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Cohete -->
+  <g transform="translate(220, 100)">
+    <!-- Cuerpo del cohete -->
+    <ellipse cx="30" cy="80" rx="25" ry="80" fill="url(#projectGrad1)"/>
+    
+    <!-- Ventana -->
+    <circle cx="30" cy="50" r="15" fill="#fff" opacity="0.9"/>
+    <circle cx="30" cy="50" r="12" fill="url(#projectGrad2)"/>
+    
+    <!-- Punta -->
+    <polygon points="30,0 10,30 50,30" fill="url(#projectGrad2)"/>
+    
+    <!-- Aletas -->
+    <polygon points="5,130 5,160 -10,160" fill="#1fa588"/>
+    <polygon points="55,130 55,160 70,160" fill="#1fa588"/>
+    
+    <!-- Ventanillas laterales -->
+    <circle cx="15" cy="100" r="6" fill="#fff" opacity="0.7"/>
+    <circle cx="45" cy="100" r="6" fill="#fff" opacity="0.7"/>
+    
+    <!-- Fuego -->
+    <g opacity="0.8">
+      <ellipse cx="30" cy="165" rx="12" ry="15" fill="#ff6b6b">
+        <animate attributeName="ry" values="15;20;15" dur="0.5s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="30" cy="175" rx="10" ry="12" fill="#ffa500">
+        <animate attributeName="ry" values="12;18;12" dur="0.4s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="30" cy="185" rx="8" ry="10" fill="#ffd700">
+        <animate attributeName="ry" values="10;15;10" dur="0.3s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+  </g>
+  
+  <!-- Estrellas en el fondo -->
+  <g opacity="0.7">
+    <circle cx="100" cy="80" r="2" fill="#2e8555">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="380" cy="120" r="3" fill="#25c2a0">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="420" cy="200" r="2" fill="#2e8555">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="90" cy="180" r="3" fill="#25c2a0">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="150" cy="300" r="2" fill="#2e8555">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="400" cy="320" r="3" fill="#25c2a0">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Planetas pequeños -->
+  <circle cx="120" cy="250" r="20" fill="url(#projectGrad1)" opacity="0.6">
+    <animate attributeName="cy" values="250;245;250" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="380" cy="280" r="15" fill="url(#projectGrad2)" opacity="0.6">
+    <animate attributeName="cy" values="280;275;280" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Anillos alrededor del planeta -->
+  <ellipse cx="380" cy="280" rx="30" ry="8" fill="none" stroke="#25c2a0" stroke-width="2" opacity="0.4"/>
+  
+  <!-- Humo del cohete -->
+  <g opacity="0.3">
+    <circle cx="250" cy="270" r="8" fill="#ccc">
+      <animate attributeName="cy" values="270;290" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="260" r="10" fill="#ccc">
+      <animate attributeName="cy" values="260;280" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
