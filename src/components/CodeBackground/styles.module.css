@@ -1,0 +1,121 @@
+.codeBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+.codeBlock {
+  position: absolute;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  white-space: nowrap;
+  animation: floatCode 20s ease-in-out infinite;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  line-height: 1.6;
+}
+
+@keyframes floatCode {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-10px) translateX(5px);
+  }
+}
+
+.codeBlock:nth-child(odd) {
+  animation-duration: 25s;
+  animation-direction: reverse;
+}
+
+.codeBlock:nth-child(3n) {
+  animation-duration: 18s;
+}
+
+/* Colores de sintaxis tipo VSCode */
+.keyword {
+  color: rgba(197, 134, 192, 0.9); /* Púrpura - keywords */
+  font-weight: 600;
+}
+
+.function {
+  color: rgba(220, 220, 170, 0.9); /* Amarillo - funciones */
+  font-weight: 500;
+}
+
+.variable {
+  color: rgba(156, 220, 254, 0.9); /* Azul claro - variables */
+}
+
+.string {
+  color: rgba(206, 145, 120, 0.9); /* Naranja suave - strings */
+}
+
+.number {
+  color: rgba(181, 206, 168, 0.9); /* Verde claro - números */
+}
+
+.type {
+  color: rgba(78, 201, 176, 0.9); /* Verde agua - tipos */
+  font-weight: 500;
+}
+
+.property {
+  color: rgba(156, 220, 254, 0.9); /* Azul - propiedades */
+}
+
+.tag {
+  color: rgba(78, 201, 176, 0.9); /* Verde agua - tags HTML */
+}
+
+.attribute {
+  color: rgba(156, 220, 254, 0.9); /* Azul - atributos */
+}
+
+.parameter {
+  color: rgba(156, 220, 254, 0.9); /* Azul - parámetros */
+  font-style: italic;
+}
+
+.comment {
+  color: rgba(106, 153, 85, 0.9); /* Verde oscuro - comentarios */
+  font-style: italic;
+}
+
+/* Tema oscuro */
+[data-theme='dark'] .codeBackground {
+  opacity: 0.25;
+}
+
+[data-theme='dark'] .keyword {
+  color: rgba(197, 134, 192, 1);
+}
+
+[data-theme='dark'] .function {
+  color: rgba(220, 220, 170, 1);
+}
+
+[data-theme='dark'] .variable {
+  color: rgba(156, 220, 254, 1);
+}
+
+[data-theme='dark'] .string {
+  color: rgba(206, 145, 120, 1);
+}
+
+[data-theme='dark'] .number {
+  color: rgba(181, 206, 168, 1);
+}
+
+[data-theme='dark'] .type {
+  color: rgba(78, 201, 176, 1);
+}
+
+[data-theme='dark'] .comment {
+  color: rgba(106, 153, 85, 1);
+}
