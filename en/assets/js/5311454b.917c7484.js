@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkmy_website=globalThis.webpackChunkmy_website||[]).push([[430],{2185:e=>{e.exports=JSON.parse('{"tags":[{"label":"bienvenida","permalink":"/en/blog/tags/bienvenida","count":1},{"label":"personal","permalink":"/en/blog/tags/personal","count":1}]}')}}]);

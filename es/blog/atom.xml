@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://valdepeace.com/es/blog</id>
+    <title>Andrés Carmona Gil Blog</title>
+    <updated>2025-11-16T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://valdepeace.com/es/blog"/>
+    <subtitle>Andrés Carmona Gil Blog</subtitle>
+    <icon>https://valdepeace.com/es/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Ni todo es una PoC, ni hay que hacer un Netflix para un CRUD]]></title>
+        <id>https://valdepeace.com/es/blog/over-engineering-vs-poc</id>
+        <link href="https://valdepeace.com/es/blog/over-engineering-vs-poc"/>
+        <updated>2025-11-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[En los últimos años he visto dos extremos igual de dañinos en muchos equipos de desarrollo: el de la sobre-ingeniería y el de la PoC eterna. Este post va de por qué ambos extremos son una mala práctica de ingeniería y de cómo encontrar un punto medio razonable.]]></summary>
+        <content type="html"><![CDATA[<p>En los últimos años he visto dos extremos igual de dañinos en muchos equipos de desarrollo: el de la <strong>sobre-ingeniería</strong> y el de la <strong>PoC eterna</strong>. Este post va de por qué ambos extremos son una mala práctica de ingeniería y de cómo encontrar un punto medio razonable.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-llamo-sobre-ingeniería">Qué llamo "sobre-ingeniería"<a href="https://valdepeace.com/es/blog/over-engineering-vs-poc#qu%C3%A9-llamo-sobre-ingenier%C3%ADa" class="hash-link" aria-label="Enlace directo al Qué llamo &quot;sobre-ingeniería&quot;" title="Enlace directo al Qué llamo &quot;sobre-ingeniería&quot;" translate="no">​</a></h2>
+<p>Por sobre-ingeniería me refiero a soluciones que:</p>
+<ul>
+<li class="">Añaden <strong>complejidad accidental</strong> sin aportar valor claro.</li>
+<li class="">Rompen principios básicos como <strong>KISS</strong> ("Keep It Simple, Stupid"), <strong>YAGNI</strong> ("You Aren't Gonna Need It") y <strong>DRY</strong> ("Don't Repeat Yourself").</li>
+</ul>
+<p>Algunos olores típicos:</p>
+<ul>
+<li class="">Microservicios para un producto que no tiene ni PM dedicado.</li>
+<li class="">Arquitectura hexagonal + DDD + CQRS + Event Sourcing… para una intranet de 50 usuarios.</li>
+<li class="">Framework interno propio que solo entiende la persona que lo creó.</li>
+</ul>
+<p>El problema no es usar patrones avanzados; el problema es hacerlo <strong>sin un caso de negocio</strong> que lo respalde. La complejidad hay que "pagarla" todos los días: onboarding, debugging, observabilidad, despliegues, refactors…</p>
+<blockquote>
+<p>Si el coste cognitivo de entender el sistema es mayor que el problema que resuelve, probablemente estás sobre-ingenierizando.</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-llamo-cultura-poc-y-por-qué-es-igual-de-tóxica">Qué llamo "cultura PoC" (y por qué es igual de tóxica)<a href="https://valdepeace.com/es/blog/over-engineering-vs-poc#qu%C3%A9-llamo-cultura-poc-y-por-qu%C3%A9-es-igual-de-t%C3%B3xica" class="hash-link" aria-label="Enlace directo al Qué llamo &quot;cultura PoC&quot; (y por qué es igual de tóxica)" title="Enlace directo al Qué llamo &quot;cultura PoC&quot; (y por qué es igual de tóxica)" translate="no">​</a></h2>
+<p>En el otro extremo está la cultura de:</p>
+<blockquote>
+<p>"Haz una PoC rápida, la ponemos en producción para probar y ya luego la refactorizamos".</p>
+</blockquote>
+<p>Spoiler: <strong>"luego" nunca llega</strong>.</p>
+<p>Una PoC (Proof of Concept) está pensada para <strong>validar una idea con el mínimo esfuerzo</strong>, no para durar años: no suele tener test, ni buenas prácticas de seguridad, ni observabilidad decente. Pasar esa PoC tal cual a producción es una fábrica de deuda técnica.</p>
+<p>Y aquí está la trampa:</p>
+<ul>
+<li class="">La PoC <strong>funciona</strong>, el negocio se acostumbra.</li>
+<li class="">Se conectan más cosas alrededor.</li>
+<li class="">Ya "da miedo" tocarla porque "lo rompe todo".</li>
+<li class="">Refactorizar se vuelve cada vez más caro.</li>
+</ul>
+<p>Como resumió Jason Lengstorf: casi todas las empresas tienen código en producción que nació como PoC y nunca se reescribió.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="deuda-técnica-herramienta-no-excusa">Deuda técnica: herramienta, no excusa<a href="https://valdepeace.com/es/blog/over-engineering-vs-poc#deuda-t%C3%A9cnica-herramienta-no-excusa" class="hash-link" aria-label="Enlace directo al Deuda técnica: herramienta, no excusa" title="Enlace directo al Deuda técnica: herramienta, no excusa" translate="no">​</a></h2>
+<p>Aquí entra el concepto de <strong>deuda técnica</strong>: tomar un atajo ahora sabiendo que pagarás un coste extra de mantenimiento en el futuro.</p>
+<p>Martin Fowler propone un cuadrante muy útil: <strong>prudente vs temeraria</strong> y <strong>deliberada vs inadvertida</strong>.</p>
+<ul>
+<li class="">
+<p><strong>Deliberada + prudente</strong>:
+Sabes que estás metiendo deuda, la aceptas conscientemente y tienes un plan para pagarla. Ejemplo: hacer algo más "hardcodeado" para llegar a un lanzamiento, con tarea creada para refactorizar después.</p>
+</li>
+<li class="">
+<p><strong>Deliberada + temeraria</strong>:
+"No tenemos tiempo para diseño, ya se verá". Sin plan de limpieza. Esto es gasolina para incendios futuros.</p>
+</li>
+<li class="">
+<p><strong>Inadvertida + prudente</strong>:
+Hiciste lo mejor que sabías, pero más tarde aprendes una forma mejor. Normal.</p>
+</li>
+<li class="">
+<p><strong>Inadvertida + temeraria</strong>:
+Código chapucero por desconocimiento y sin intención de mejorar.</p>
+</li>
+</ul>
+<p>La moraleja: <strong>la deuda técnica buena existe</strong> (es una inversión estratégica); la mala es la que metes sin saberlo o sabiendo que no la vas a pagar.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cómo-se-alimentan-mutuamente-la-sobre-ingeniería-y-la-cultura-poc">Cómo se alimentan mutuamente la sobre-ingeniería y la cultura PoC<a href="https://valdepeace.com/es/blog/over-engineering-vs-poc#c%C3%B3mo-se-alimentan-mutuamente-la-sobre-ingenier%C3%ADa-y-la-cultura-poc" class="hash-link" aria-label="Enlace directo al Cómo se alimentan mutuamente la sobre-ingeniería y la cultura PoC" title="Enlace directo al Cómo se alimentan mutuamente la sobre-ingeniería y la cultura PoC" translate="no">​</a></h2>
+<p>Lo gracioso (o triste) es que estas dos patologías <strong>se refuerzan entre sí</strong>:</p>
+<ol>
+<li class="">
+<p>Un equipo sufre sobre-ingeniería:</p>
+<ul>
+<li class="">Cambiar algo en el sistema es carísimo.</li>
+<li class="">Todo lleva semanas.</li>
+<li class="">El negocio se frustra.</li>
+</ul>
+</li>
+<li class="">
+<p>El negocio responde con "modo PoC":</p>
+<ul>
+<li class="">"Haced algo rápido al margen, aunque sea feo, pero que funcione ya".</li>
+<li class="">Nace una PoC paralela, sin disciplina de ingeniería.</li>
+</ul>
+</li>
+<li class="">
+<p>Esa PoC termina en producción.</p>
+<ul>
+<li class="">Ahora tienes un monstruo: arquitectura excesiva en un lado, spaghetti experimental en otro.</li>
+</ul>
+</li>
+</ol>
+<p>Y vuelta a empezar.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="marco-práctico-para-devsarquitectos-poc-rápida-o-ingeniería-en-serio">Marco práctico para devs/arquitectos: ¿PoC rápida o ingeniería "en serio"?<a href="https://valdepeace.com/es/blog/over-engineering-vs-poc#marco-pr%C3%A1ctico-para-devsarquitectos-poc-r%C3%A1pida-o-ingenier%C3%ADa-en-serio" class="hash-link" aria-label="Enlace directo al Marco práctico para devs/arquitectos: ¿PoC rápida o ingeniería &quot;en serio&quot;?" title="Enlace directo al Marco práctico para devs/arquitectos: ¿PoC rápida o ingeniería &quot;en serio&quot;?" translate="no">​</a></h2>
+<p>Como arquitecto o referente técnico, tu trabajo no es aplicar patrones de libro, sino <strong>tomar decisiones conscientes de coste/beneficio</strong>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-check-rápido-para-evitar-la-sobre-ingeniería">1. Check rápido para evitar la sobre-ingeniería<a href="https://valdepeace.com/es/blog/over-engineering-vs-poc#1-check-r%C3%A1pido-para-evitar-la-sobre-ingenier%C3%ADa" class="hash-link" aria-label="Enlace directo al 1. Check rápido para evitar la sobre-ingeniería" title="Enlace directo al 1. Check rápido para evitar la sobre-ingeniería" translate="no">​</a></h3>
+<p>Antes de añadir otra capa, otro microservicio o un patrón nuevo, pregúntate:</p>
+<ol>
+<li class="">
+<p><strong>¿Qué problema concreto resuelve hoy esto?</strong>
+Si la respuesta es "por si mañana…", suena a YAGNI.</p>
+</li>
+<li class="">
+<p><strong>¿Tengo señales reales de que lo futuro va a llegar?</strong>
+Métricas, roadmap, clientes, no solo "intuición arquitectónica".</p>
+</li>
+<li class="">
+<p><strong>¿Puedo empezar con algo más simple y extraerlo luego?</strong>
+Por ejemplo:</p>
+<ul>
+<li class="">Empezar con un módulo en un monolito → extraer a microservicio cuando haya necesidad clara.</li>
+<li class="">Empezar con una única base de datos → separar más tarde por bounded contexts cuando duela de verdad.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>¿Mi equipo está preparado para la complejidad que introduzco?</strong>
+Una arquitectura es tan buena como la gente que la tiene que mantener.</p>
+</li>
+</ol>
+<p>Si no puedes justificar la complejidad en términos de <strong>riesgo reducido o coste ahorrado</strong>, probablemente estás diseñando para tu ego más que para el producto.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-check-rápido-para-evitar-la-poc-eterna">2. Check rápido para evitar la PoC eterna<a href="https://valdepeace.com/es/blog/over-engineering-vs-poc#2-check-r%C3%A1pido-para-evitar-la-poc-eterna" class="hash-link" aria-label="Enlace directo al 2. Check rápido para evitar la PoC eterna" title="Enlace directo al 2. Check rápido para evitar la PoC eterna" translate="no">​</a></h3>
+<p>Cuando alguien diga "es solo una prueba", piensa:</p>
+<ol>
+<li class="">
+<p><strong>¿Este código puede estar en producción dentro de 6–12 meses?</strong>
+Si la respuesta honesta es "sí, es probable", entonces no es "solo una PoC":</p>
+<ul>
+<li class="">exige mínimo de calidad,</li>
+<li class="">al menos unos tests básicos,</li>
+<li class="">logging decente y algo de observabilidad.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>¿Qué parte del sistema depende de esto?</strong></p>
+<ul>
+<li class="">¿Va a mover dinero?</li>
+<li class="">¿Afecta a datos críticos?</li>
+<li class="">¿A la experiencia principal del usuario?</li>
+</ul>
+</li>
+<li class="">
+<p><strong>¿Está registrada la deuda que estoy metiendo?</strong>
+No vale con "ya lo refactorizamos":</p>
+<ul>
+<li class="">escribe tickets concretos,</li>
+<li class="">asigna prioridades,</li>
+<li class="">comenta el contexto en el código cuando tomes atajos.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>¿Hay una "fecha de caducidad" para esta PoC?</strong>
+Por ejemplo:</p>
+<blockquote>
+<p>"Este servicio PoC vivirá máximo 3 meses. Si a los 3 meses sigue aportando valor, se planifica su reescritura/industrialización".</p>
+</blockquote>
+</li>
+</ol>
+<p>Sin timebox, la PoC muta en sistema legacy.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="patrón-de-trabajo-recomendado-poc--prototipo--producto">Patrón de trabajo recomendado: PoC → prototipo → producto<a href="https://valdepeace.com/es/blog/over-engineering-vs-poc#patr%C3%B3n-de-trabajo-recomendado-poc--prototipo--producto" class="hash-link" aria-label="Enlace directo al Patrón de trabajo recomendado: PoC → prototipo → producto" title="Enlace directo al Patrón de trabajo recomendado: PoC → prototipo → producto" translate="no">​</a></h2>
+<p>Una forma sana de trabajar (sobre todo en entornos cloud / SaaS) es pensar en tres niveles:</p>
+<ol>
+<li class="">
+<p><strong>PoC</strong></p>
+<ul>
+<li class="">Objetivo: validar una idea (técnica o de negocio).</li>
+<li class="">Criterios mínimos:<!-- -->
+<ul>
+<li class="">Puede romperse; es para entorno controlado.</li>
+<li class="">Documentas conscientemente: <em>"no está pensado para producción"</em>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Prototipo "production-like"</strong></p>
+<ul>
+<li class="">Objetivo: acercarse a lo que sería la versión real.</li>
+<li class="">Aquí ya aplicas:<!-- -->
+<ul>
+<li class="">arquitectura que tenga sentido,</li>
+<li class="">límites claros,</li>
+<li class="">seguridad básica,</li>
+<li class="">observabilidad mínima.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Producto / servicio estable</strong></p>
+<ul>
+<li class="">Objetivo: operar en producción durante años.</li>
+<li class="">Exige:<!-- -->
+<ul>
+<li class="">SLOs/SLAs claros,</li>
+<li class="">pipelines serios,</li>
+<li class="">métricas de fiabilidad,</li>
+<li class="">estrategia de evolución.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>El salto PoC → producto <strong>sin fase intermedia</strong> es lo que tantas veces acaba en pesadilla de deuda técnica.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-puedes-hacer-tú-como-devarquitecto-aunque-no-seas-cto">Qué puedes hacer tú como dev/arquitecto (aunque no seas "CTO")<a href="https://valdepeace.com/es/blog/over-engineering-vs-poc#qu%C3%A9-puedes-hacer-t%C3%BA-como-devarquitecto-aunque-no-seas-cto" class="hash-link" aria-label="Enlace directo al Qué puedes hacer tú como dev/arquitecto (aunque no seas &quot;CTO&quot;)" title="Enlace directo al Qué puedes hacer tú como dev/arquitecto (aunque no seas &quot;CTO&quot;)" translate="no">​</a></h2>
+<p>Algunas acciones muy concretas que puedes meter en tu práctica diaria:</p>
+<ul>
+<li class="">
+<p><strong>Poner lenguaje a los atajos</strong>
+Cuando alguien pida "hazlo rápido":</p>
+<ul>
+<li class="">"Vale, pero eso implica deuda técnica de tipo X. La aceptamos si luego dedicamos Y horas a limpiarla".</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Visibilizar la complejidad</strong></p>
+<ul>
+<li class="">Diagrams sencillos (C4 nivel 1–2) para mostrar cuándo la arquitectura se está volviendo absurda para el tamaño del producto.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Medir el dolor</strong></p>
+<ul>
+<li class="">"Cada cambio en este módulo nos lleva dos semanas y rompe tres cosas".</li>
+<li class="">Eso abre puertas para proponer refactors, simplificación o re-arquitectura.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Negociar condiciones para una PoC</strong></p>
+<ul>
+<li class="">Timebox claro.</li>
+<li class="">Qué se puede sacrificar (performance, limpieza interna) y qué NO (seguridad básica, privacidad, integridad de datos).</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="conclusión-ingeniería--dogma-es-gestión-de-trade-offs">Conclusión: ingeniería ≠ dogma, es gestión de trade-offs<a href="https://valdepeace.com/es/blog/over-engineering-vs-poc#conclusi%C3%B3n-ingenier%C3%ADa--dogma-es-gesti%C3%B3n-de-trade-offs" class="hash-link" aria-label="Enlace directo al Conclusión: ingeniería ≠ dogma, es gestión de trade-offs" title="Enlace directo al Conclusión: ingeniería ≠ dogma, es gestión de trade-offs" translate="no">​</a></h2>
+<p>Ni todo proyecto merece una arquitectura de libro, ni todo vale con "total, es una prueba". Ambos extremos son, en el fondo, <strong>falta de ingeniería</strong>:</p>
+<ul>
+<li class="">La sobre-ingeniería ignora el coste real de la complejidad.</li>
+<li class="">La cultura de PoC eterna ignora el coste real de la deuda técnica.</li>
+</ul>
+<p>La ingeniería de software de verdad va de esto:</p>
+<blockquote>
+<p><strong>Tomar decisiones explícitas sobre dónde aceptas complejidad y dónde aceptas deuda, con un plan para gestionar ambas en el tiempo.</strong></p>
+</blockquote>
+<p>Si algo te llevas de este post, que sea esta idea:</p>
+<ul>
+<li class="">Cuando vayas a diseñar: pregúntate <em>"¿puedo hacerlo más simple sin perder lo esencial?"</em>.</li>
+<li class="">Cuando vayas a "hacer algo rápido": pregúntate <em>"¿estoy dispuesto a pagar el precio de dejarlo así?"</em>.</li>
+</ul>
+<p>El equilibrio no lo vas a encontrar en ningún libro: lo vas a construir tú, proyecto a proyecto, decisión a decisión.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="referencias">Referencias<a href="https://valdepeace.com/es/blog/over-engineering-vs-poc#referencias" class="hash-link" aria-label="Enlace directo al Referencias" title="Enlace directo al Referencias" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://rrmartins.medium.com/kiss-vs-dry-vs-yagni-understanding-key-software-development-principles-e307b7419636" target="_blank" rel="noopener noreferrer" class="">KISS vs. DRY vs. YAGNI: Understanding Key Software Development Principles</a></li>
+<li class=""><a href="https://martinfowler.com/bliki/TechnicalDebtQuadrant.html" target="_blank" rel="noopener noreferrer" class="">Technical Debt Quadrant - Martin Fowler</a></li>
+<li class=""><a href="https://blog.scaledcode.com/blog/poc-to-production/" target="_blank" rel="noopener noreferrer" class="">When Proof of Concepts Become Production Code</a></li>
+<li class=""><a href="https://martinfowler.com/bliki/Yagni.html" target="_blank" rel="noopener noreferrer" class="">YAGNI - Martin Fowler</a></li>
+</ul>]]></content>
+        <author>
+            <name>Andrés Carmona Gil</name>
+            <uri>https://github.com/valdepeace</uri>
+        </author>
+        <category label="arquitectura" term="arquitectura"/>
+        <category label="buenas-prácticas" term="buenas-prácticas"/>
+        <category label="ingeniería-software" term="ingeniería-software"/>
+        <category label="deuda-técnica" term="deuda-técnica"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[¡Bienvenido a mi blog!]]></title>
+        <id>https://valdepeace.com/es/blog/welcome</id>
+        <link href="https://valdepeace.com/es/blog/welcome"/>
+        <updated>2025-11-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[¡Hola y bienvenido a mi blog personal! 👋]]></summary>
+        <content type="html"><![CDATA[<p>¡Hola y bienvenido a mi blog personal! 👋</p>
+<p>Este es el primer post de muchos que vienen. Aquí compartiré mis experiencias, aprendizajes y reflexiones sobre tecnología, desarrollo de software y todo lo que me apasiona.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-encontrarás-aquí">¿Qué encontrarás aquí?<a href="https://valdepeace.com/es/blog/welcome#qu%C3%A9-encontrar%C3%A1s-aqu%C3%AD" class="hash-link" aria-label="Enlace directo al ¿Qué encontrarás aquí?" title="Enlace directo al ¿Qué encontrarás aquí?" translate="no">​</a></h2>
+<p>En este espacio publicaré contenido sobre:</p>
+<ul>
+<li class=""><strong>💻 Desarrollo web:</strong> Tutoriales, tips y mejores prácticas</li>
+<li class=""><strong>🚀 Tecnologías modernas:</strong> React, TypeScript, Node.js, y más</li>
+<li class=""><strong>📚 Aprendizajes:</strong> Experiencias y lecciones aprendidas</li>
+<li class=""><strong>🔧 Herramientas:</strong> Reviews y guías de herramientas útiles</li>
+<li class=""><strong>💡 Ideas:</strong> Reflexiones sobre la industria tech</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mi-visión">Mi visión<a href="https://valdepeace.com/es/blog/welcome#mi-visi%C3%B3n" class="hash-link" aria-label="Enlace directo al Mi visión" title="Enlace directo al Mi visión" translate="no">​</a></h2>
+<p>Creo firmemente en compartir conocimiento. La comunidad de desarrolladores ha sido increíblemente generosa conmigo, y esta es mi forma de devolver un poco de lo que he recibido.</p>
+<p>No esperes posts perfectos, sino contenido honesto, práctico y útil basado en experiencias reales.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-viene">¿Qué viene?<a href="https://valdepeace.com/es/blog/welcome#qu%C3%A9-viene" class="hash-link" aria-label="Enlace directo al ¿Qué viene?" title="Enlace directo al ¿Qué viene?" translate="no">​</a></h2>
+<p>En los próximos posts hablaré sobre:</p>
+<ul>
+<li class="">Cómo configuré este sitio con Docusaurus</li>
+<li class="">Mejores prácticas en React y TypeScript</li>
+<li class="">Herramientas que uso diariamente</li>
+<li class="">Proyectos en los que estoy trabajando</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mantente-conectado">Mantente conectado<a href="https://valdepeace.com/es/blog/welcome#mantente-conectado" class="hash-link" aria-label="Enlace directo al Mantente conectado" title="Enlace directo al Mantente conectado" translate="no">​</a></h2>
+<p>Si te interesa el contenido, puedes:</p>
+<ul>
+<li class="">Suscribirte al <a class="" href="https://valdepeace.com/es/blog/rss.xml">RSS feed</a></li>
+<li class="">Seguirme en <a href="https://twitter.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">Twitter</a></li>
+<li class="">Conectar en <a href="https://www.linkedin.com/in/valdepeace" target="_blank" rel="noopener noreferrer" class="">LinkedIn</a></li>
+<li class="">Ver mi trabajo en <a href="https://github.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">GitHub</a></li>
+</ul>
+<p>¡Gracias por estar aquí! 🚀</p>
+<hr>
+<p><em>¿Tienes algún tema que te gustaría que cubriera? ¡Déjame un comentario o contactáctame!</em></p>]]></content>
+        <author>
+            <name>Andrés Carmona Gil</name>
+            <uri>https://github.com/valdepeace</uri>
+        </author>
+        <category label="Personal" term="Personal"/>
+    </entry>
+</feed>

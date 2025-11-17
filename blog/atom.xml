@@ -2,55 +2,314 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://valdepeace.com/blog</id>
     <title>Andrés Carmona Gil Blog</title>
-    <updated>2025-11-15T00:00:00.000Z</updated>
+    <updated>2025-11-16T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://valdepeace.com/blog"/>
     <subtitle>Andrés Carmona Gil Blog</subtitle>
     <icon>https://valdepeace.com/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[¡Bienvenido a mi blog!]]></title>
-        <id>https://valdepeace.com/blog/bienvenida</id>
-        <link href="https://valdepeace.com/blog/bienvenida"/>
-        <updated>2025-11-15T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[¡Hola y bienvenido a mi blog personal! 👋]]></summary>
-        <content type="html"><![CDATA[<p>¡Hola y bienvenido a mi blog personal! 👋</p>
-<p>Este es el primer post de muchos que vienen. Aquí compartiré mis experiencias, aprendizajes y reflexiones sobre tecnología, desarrollo de software y todo lo que me apasiona.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-encontrarás-aquí">¿Qué encontrarás aquí?<a href="https://valdepeace.com/blog/bienvenida#qu%C3%A9-encontrar%C3%A1s-aqu%C3%AD" class="hash-link" aria-label="Enlace directo al ¿Qué encontrarás aquí?" title="Enlace directo al ¿Qué encontrarás aquí?" translate="no">​</a></h2>
-<p>En este espacio publicaré contenido sobre:</p>
+        <title type="html"><![CDATA[Not Everything is a PoC, and You Don't Need Netflix for a CRUD]]></title>
+        <id>https://valdepeace.com/blog/over-engineering-vs-poc</id>
+        <link href="https://valdepeace.com/blog/over-engineering-vs-poc"/>
+        <updated>2025-11-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[In recent years, I've seen two equally damaging extremes in many development teams: over-engineering and the eternal PoC culture. This post is about why both extremes are bad engineering practices and how to find a reasonable middle ground.]]></summary>
+        <content type="html"><![CDATA[<p>In recent years, I've seen two equally damaging extremes in many development teams: <strong>over-engineering</strong> and the <strong>eternal PoC culture</strong>. This post is about why both extremes are bad engineering practices and how to find a reasonable middle ground.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-i-call-over-engineering">What I Call "Over-Engineering"<a href="https://valdepeace.com/blog/over-engineering-vs-poc#what-i-call-over-engineering" class="hash-link" aria-label="Direct link to What I Call &quot;Over-Engineering&quot;" title="Direct link to What I Call &quot;Over-Engineering&quot;" translate="no">​</a></h2>
+<p>By over-engineering, I mean solutions that:</p>
 <ul>
-<li class=""><strong>💻 Desarrollo web:</strong> Tutoriales, tips y mejores prácticas</li>
-<li class=""><strong>🚀 Tecnologías modernas:</strong> React, TypeScript, Node.js, y más</li>
-<li class=""><strong>📚 Aprendizajes:</strong> Experiencias y lecciones aprendidas</li>
-<li class=""><strong>🔧 Herramientas:</strong> Reviews y guías de herramientas útiles</li>
-<li class=""><strong>💡 Ideas:</strong> Reflexiones sobre la industria tech</li>
+<li class="">Add <strong>accidental complexity</strong> without providing clear value.</li>
+<li class="">Break basic principles like <strong>KISS</strong> ("Keep It Simple, Stupid"), <strong>YAGNI</strong> ("You Aren't Gonna Need It"), and <strong>DRY</strong> ("Don't Repeat Yourself").</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mi-visión">Mi visión<a href="https://valdepeace.com/blog/bienvenida#mi-visi%C3%B3n" class="hash-link" aria-label="Enlace directo al Mi visión" title="Enlace directo al Mi visión" translate="no">​</a></h2>
-<p>Creo firmemente en compartir conocimiento. La comunidad de desarrolladores ha sido increíblemente generosa conmigo, y esta es mi forma de devolver un poco de lo que he recibido.</p>
-<p>No esperes posts perfectos, sino contenido honesto, práctico y útil basado en experiencias reales.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-viene">¿Qué viene?<a href="https://valdepeace.com/blog/bienvenida#qu%C3%A9-viene" class="hash-link" aria-label="Enlace directo al ¿Qué viene?" title="Enlace directo al ¿Qué viene?" translate="no">​</a></h2>
-<p>En los próximos posts hablaré sobre:</p>
+<p>Some typical smells:</p>
 <ul>
-<li class="">Cómo configuré este sitio con Docusaurus</li>
-<li class="">Mejores prácticas en React y TypeScript</li>
-<li class="">Herramientas que uso diariamente</li>
-<li class="">Proyectos en los que estoy trabajando</li>
+<li class="">Microservices for a product that doesn't even have a dedicated PM.</li>
+<li class="">Hexagonal architecture + DDD + CQRS + Event Sourcing… for an intranet with 50 users.</li>
+<li class="">Internal framework that only the person who created it understands.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mantente-conectado">Mantente conectado<a href="https://valdepeace.com/blog/bienvenida#mantente-conectado" class="hash-link" aria-label="Enlace directo al Mantente conectado" title="Enlace directo al Mantente conectado" translate="no">​</a></h2>
-<p>Si te interesa el contenido, puedes:</p>
+<p>The problem isn't using advanced patterns; the problem is doing it <strong>without a business case</strong> to support it. Complexity has to be "paid for" every day: onboarding, debugging, observability, deployments, refactors…</p>
+<blockquote>
+<p>If the cognitive cost of understanding the system is greater than the problem it solves, you're probably over-engineering.</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-i-call-poc-culture-and-why-its-equally-toxic">What I Call "PoC Culture" (and Why It's Equally Toxic)<a href="https://valdepeace.com/blog/over-engineering-vs-poc#what-i-call-poc-culture-and-why-its-equally-toxic" class="hash-link" aria-label="Direct link to What I Call &quot;PoC Culture&quot; (and Why It's Equally Toxic)" title="Direct link to What I Call &quot;PoC Culture&quot; (and Why It's Equally Toxic)" translate="no">​</a></h2>
+<p>On the other extreme is the culture of:</p>
+<blockquote>
+<p>"Do a quick PoC, we'll put it in production to test it, and we'll refactor it later".</p>
+</blockquote>
+<p>Spoiler: <strong>"later" never comes</strong>.</p>
+<p>A PoC (Proof of Concept) is designed to <strong>validate an idea with minimal effort</strong>, not to last for years: it usually doesn't have tests, security best practices, or decent observability. Taking that PoC as-is to production is a technical debt factory.</p>
+<p>And here's the trap:</p>
 <ul>
-<li class="">Suscribirte al <a class="" href="https://valdepeace.com/blog/rss.xml">RSS feed</a></li>
-<li class="">Seguirme en <a href="https://twitter.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">Twitter</a></li>
-<li class="">Conectar en <a href="https://www.linkedin.com/in/valdepeace" target="_blank" rel="noopener noreferrer" class="">LinkedIn</a></li>
-<li class="">Ver mi trabajo en <a href="https://github.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">GitHub</a></li>
+<li class="">The PoC <strong>works</strong>, the business gets used to it.</li>
+<li class="">More things get connected around it.</li>
+<li class="">It becomes "scary" to touch because "it breaks everything".</li>
+<li class="">Refactoring becomes increasingly expensive.</li>
 </ul>
-<p>¡Gracias por estar aquí! 🚀</p>
+<p>As Jason Lengstorf summarized: almost every company has code in production that was born as a PoC and was never rewritten.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="technical-debt-tool-not-excuse">Technical Debt: Tool, Not Excuse<a href="https://valdepeace.com/blog/over-engineering-vs-poc#technical-debt-tool-not-excuse" class="hash-link" aria-label="Direct link to Technical Debt: Tool, Not Excuse" title="Direct link to Technical Debt: Tool, Not Excuse" translate="no">​</a></h2>
+<p>This is where the concept of <strong>technical debt</strong> comes in: taking a shortcut now knowing that you'll pay an extra maintenance cost in the future.</p>
+<p>Martin Fowler proposes a very useful quadrant: <strong>prudent vs reckless</strong> and <strong>deliberate vs inadvertent</strong>.</p>
+<ul>
+<li class="">
+<p><strong>Deliberate + prudent</strong>:
+You know you're introducing debt, you accept it consciously, and you have a plan to pay it off. Example: doing something more "hardcoded" to reach a launch, with a task created to refactor later.</p>
+</li>
+<li class="">
+<p><strong>Deliberate + reckless</strong>:
+"We don't have time for design, we'll see". No cleanup plan. This is gasoline for future fires.</p>
+</li>
+<li class="">
+<p><strong>Inadvertent + prudent</strong>:
+You did the best you knew how, but later you learn a better way. Normal.</p>
+</li>
+<li class="">
+<p><strong>Inadvertent + reckless</strong>:
+Sloppy code due to lack of knowledge and no intention to improve.</p>
+</li>
+</ul>
+<p>The moral: <strong>good technical debt exists</strong> (it's a strategic investment); the bad kind is what you introduce unknowingly or knowing you won't pay it off.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-over-engineering-and-poc-culture-feed-each-other">How Over-Engineering and PoC Culture Feed Each Other<a href="https://valdepeace.com/blog/over-engineering-vs-poc#how-over-engineering-and-poc-culture-feed-each-other" class="hash-link" aria-label="Direct link to How Over-Engineering and PoC Culture Feed Each Other" title="Direct link to How Over-Engineering and PoC Culture Feed Each Other" translate="no">​</a></h2>
+<p>The funny (or sad) thing is that these two pathologies <strong>reinforce each other</strong>:</p>
+<ol>
+<li class="">
+<p>A team suffers from over-engineering:</p>
+<ul>
+<li class="">Changing anything in the system is extremely expensive.</li>
+<li class="">Everything takes weeks.</li>
+<li class="">The business gets frustrated.</li>
+</ul>
+</li>
+<li class="">
+<p>The business responds with "PoC mode":</p>
+<ul>
+<li class="">"Do something quick on the side, even if it's ugly, but make it work now".</li>
+<li class="">A parallel PoC is born, without engineering discipline.</li>
+</ul>
+</li>
+<li class="">
+<p>That PoC ends up in production.</p>
+<ul>
+<li class="">Now you have a monster: excessive architecture on one side, experimental spaghetti on the other.</li>
+</ul>
+</li>
+</ol>
+<p>And around we go again.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="practical-framework-for-devsarchitects-quick-poc-or-real-engineering">Practical Framework for Devs/Architects: Quick PoC or "Real" Engineering?<a href="https://valdepeace.com/blog/over-engineering-vs-poc#practical-framework-for-devsarchitects-quick-poc-or-real-engineering" class="hash-link" aria-label="Direct link to Practical Framework for Devs/Architects: Quick PoC or &quot;Real&quot; Engineering?" title="Direct link to Practical Framework for Devs/Architects: Quick PoC or &quot;Real&quot; Engineering?" translate="no">​</a></h2>
+<p>As an architect or technical lead, your job isn't to apply textbook patterns, but to <strong>make conscious cost/benefit decisions</strong>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-quick-check-to-avoid-over-engineering">1. Quick Check to Avoid Over-Engineering<a href="https://valdepeace.com/blog/over-engineering-vs-poc#1-quick-check-to-avoid-over-engineering" class="hash-link" aria-label="Direct link to 1. Quick Check to Avoid Over-Engineering" title="Direct link to 1. Quick Check to Avoid Over-Engineering" translate="no">​</a></h3>
+<p>Before adding another layer, another microservice, or a new pattern, ask yourself:</p>
+<ol>
+<li class="">
+<p><strong>What specific problem does this solve today?</strong>
+If the answer is "in case tomorrow…", it sounds like YAGNI.</p>
+</li>
+<li class="">
+<p><strong>Do I have real signals that the future is coming?</strong>
+Metrics, roadmap, customers, not just "architectural intuition".</p>
+</li>
+<li class="">
+<p><strong>Can I start with something simpler and extract it later?</strong>
+For example:</p>
+<ul>
+<li class="">Start with a module in a monolith → extract to microservice when there's clear need.</li>
+<li class="">Start with a single database → separate later by bounded contexts when it really hurts.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Is my team prepared for the complexity I'm introducing?</strong>
+An architecture is only as good as the people who have to maintain it.</p>
+</li>
+</ol>
+<p>If you can't justify the complexity in terms of <strong>reduced risk or saved cost</strong>, you're probably designing for your ego rather than the product.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-quick-check-to-avoid-the-eternal-poc">2. Quick Check to Avoid the Eternal PoC<a href="https://valdepeace.com/blog/over-engineering-vs-poc#2-quick-check-to-avoid-the-eternal-poc" class="hash-link" aria-label="Direct link to 2. Quick Check to Avoid the Eternal PoC" title="Direct link to 2. Quick Check to Avoid the Eternal PoC" translate="no">​</a></h3>
+<p>When someone says "it's just a test", think:</p>
+<ol>
+<li class="">
+<p><strong>Could this code be in production in 6–12 months?</strong>
+If the honest answer is "yes, likely", then it's not "just a PoC":</p>
+<ul>
+<li class="">require minimum quality,</li>
+<li class="">at least some basic tests,</li>
+<li class="">decent logging and some observability.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>What part of the system depends on this?</strong></p>
+<ul>
+<li class="">Will it move money?</li>
+<li class="">Does it affect critical data?</li>
+<li class="">The main user experience?</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Is the debt I'm introducing recorded?</strong>
+"We'll refactor it later" doesn't cut it:</p>
+<ul>
+<li class="">write concrete tickets,</li>
+<li class="">assign priorities,</li>
+<li class="">comment the context in the code when taking shortcuts.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Is there an "expiration date" for this PoC?</strong>
+For example:</p>
+<blockquote>
+<p>"This PoC service will live for a maximum of 3 months. If after 3 months it's still providing value, we plan its rewrite/industrialization".</p>
+</blockquote>
+</li>
+</ol>
+<p>Without a timebox, the PoC mutates into legacy system.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="recommended-work-pattern-poc--prototype--product">Recommended Work Pattern: PoC → Prototype → Product<a href="https://valdepeace.com/blog/over-engineering-vs-poc#recommended-work-pattern-poc--prototype--product" class="hash-link" aria-label="Direct link to Recommended Work Pattern: PoC → Prototype → Product" title="Direct link to Recommended Work Pattern: PoC → Prototype → Product" translate="no">​</a></h2>
+<p>A healthy way to work (especially in cloud/SaaS environments) is to think in three levels:</p>
+<ol>
+<li class="">
+<p><strong>PoC</strong></p>
+<ul>
+<li class="">Objective: validate an idea (technical or business).</li>
+<li class="">Minimum criteria:<!-- -->
+<ul>
+<li class="">It can break; it's for controlled environment.</li>
+<li class="">You document consciously: <em>"not intended for production"</em>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>"Production-like" Prototype</strong></p>
+<ul>
+<li class="">Objective: approach what the real version would be.</li>
+<li class="">Here you already apply:<!-- -->
+<ul>
+<li class="">architecture that makes sense,</li>
+<li class="">clear boundaries,</li>
+<li class="">basic security,</li>
+<li class="">minimum observability.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Stable Product/Service</strong></p>
+<ul>
+<li class="">Objective: operate in production for years.</li>
+<li class="">Requires:<!-- -->
+<ul>
+<li class="">clear SLOs/SLAs,</li>
+<li class="">serious pipelines,</li>
+<li class="">reliability metrics,</li>
+<li class="">evolution strategy.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>The PoC → product jump <strong>without an intermediate phase</strong> is what so often ends in technical debt nightmare.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-you-can-do-as-a-devarchitect-even-if-youre-not-cto">What You Can Do as a Dev/Architect (Even If You're Not "CTO")<a href="https://valdepeace.com/blog/over-engineering-vs-poc#what-you-can-do-as-a-devarchitect-even-if-youre-not-cto" class="hash-link" aria-label="Direct link to What You Can Do as a Dev/Architect (Even If You're Not &quot;CTO&quot;)" title="Direct link to What You Can Do as a Dev/Architect (Even If You're Not &quot;CTO&quot;)" translate="no">​</a></h2>
+<p>Some very concrete actions you can incorporate into your daily practice:</p>
+<ul>
+<li class="">
+<p><strong>Put language to shortcuts</strong>
+When someone asks "do it quickly":</p>
+<ul>
+<li class="">"Okay, but that implies technical debt of type X. We accept it if we then dedicate Y hours to cleaning it up".</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Visualize complexity</strong></p>
+<ul>
+<li class="">Simple diagrams (C4 level 1–2) to show when the architecture is becoming absurd for the product size.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Measure the pain</strong></p>
+<ul>
+<li class="">"Every change in this module takes us two weeks and breaks three things".</li>
+<li class="">That opens doors to propose refactors, simplification, or re-architecture.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Negotiate conditions for a PoC</strong></p>
+<ul>
+<li class="">Clear timebox.</li>
+<li class="">What can be sacrificed (performance, internal cleanliness) and what CANNOT (basic security, privacy, data integrity).</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="conclusion-engineering--dogma-its-managing-trade-offs">Conclusion: Engineering ≠ Dogma, It's Managing Trade-offs<a href="https://valdepeace.com/blog/over-engineering-vs-poc#conclusion-engineering--dogma-its-managing-trade-offs" class="hash-link" aria-label="Direct link to Conclusion: Engineering ≠ Dogma, It's Managing Trade-offs" title="Direct link to Conclusion: Engineering ≠ Dogma, It's Managing Trade-offs" translate="no">​</a></h2>
+<p>Not every project deserves a textbook architecture, nor is anything acceptable with "it's just a test". Both extremes are, fundamentally, <strong>lack of engineering</strong>:</p>
+<ul>
+<li class="">Over-engineering ignores the real cost of complexity.</li>
+<li class="">Eternal PoC culture ignores the real cost of technical debt.</li>
+</ul>
+<p>Real software engineering is about this:</p>
+<blockquote>
+<p><strong>Making explicit decisions about where you accept complexity and where you accept debt, with a plan to manage both over time.</strong></p>
+</blockquote>
+<p>If you take one thing from this post, let it be this idea:</p>
+<ul>
+<li class="">When you're going to design: ask yourself <em>"can I make it simpler without losing the essential?"</em>.</li>
+<li class="">When you're going to "do something quick": ask yourself <em>"am I willing to pay the price of leaving it like this?"</em>.</li>
+</ul>
+<p>You won't find the balance in any book: you'll build it yourself, project by project, decision by decision.</p>
 <hr>
-<p><em>¿Tienes algún tema que te gustaría que cubriera? ¡Déjame un comentario o contactáctame!</em></p>]]></content>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="references">References<a href="https://valdepeace.com/blog/over-engineering-vs-poc#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://rrmartins.medium.com/kiss-vs-dry-vs-yagni-understanding-key-software-development-principles-e307b7419636" target="_blank" rel="noopener noreferrer" class="">KISS vs. DRY vs. YAGNI: Understanding Key Software Development Principles</a></li>
+<li class=""><a href="https://martinfowler.com/bliki/TechnicalDebtQuadrant.html" target="_blank" rel="noopener noreferrer" class="">Technical Debt Quadrant - Martin Fowler</a></li>
+<li class=""><a href="https://blog.scaledcode.com/blog/poc-to-production/" target="_blank" rel="noopener noreferrer" class="">When Proof of Concepts Become Production Code</a></li>
+<li class=""><a href="https://martinfowler.com/bliki/Yagni.html" target="_blank" rel="noopener noreferrer" class="">YAGNI - Martin Fowler</a></li>
+</ul>]]></content>
         <author>
             <name>Andrés Carmona Gil</name>
             <uri>https://github.com/valdepeace</uri>
         </author>
-        <category label="bienvenida" term="bienvenida"/>
-        <category label="personal" term="personal"/>
+        <category label="Architecture" term="Architecture"/>
+        <category label="Best Practices" term="Best Practices"/>
+        <category label="Software Engineering" term="Software Engineering"/>
+        <category label="Technical Debt" term="Technical Debt"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Welcome to my blog!]]></title>
+        <id>https://valdepeace.com/blog/welcome</id>
+        <link href="https://valdepeace.com/blog/welcome"/>
+        <updated>2025-11-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Hello and welcome to my personal blog! 👋]]></summary>
+        <content type="html"><![CDATA[<p>Hello and welcome to my personal blog! 👋</p>
+<p>This is the first post of many to come. Here I'll share my experiences, learnings, and reflections about technology, software development, and everything I'm passionate about.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-will-you-find-here">What will you find here?<a href="https://valdepeace.com/blog/welcome#what-will-you-find-here" class="hash-link" aria-label="Direct link to What will you find here?" title="Direct link to What will you find here?" translate="no">​</a></h2>
+<p>In this space I'll publish content about:</p>
+<ul>
+<li class=""><strong>💻 Web Development:</strong> Tutorials, tips, and best practices</li>
+<li class=""><strong>🚀 Modern Technologies:</strong> React, TypeScript, Node.js, and more</li>
+<li class=""><strong>📚 Learnings:</strong> Experiences and lessons learned</li>
+<li class=""><strong>🔧 Tools:</strong> Reviews and guides for useful tools</li>
+<li class=""><strong>💡 Ideas:</strong> Reflections about the tech industry</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="my-vision">My vision<a href="https://valdepeace.com/blog/welcome#my-vision" class="hash-link" aria-label="Direct link to My vision" title="Direct link to My vision" translate="no">​</a></h2>
+<p>I firmly believe in sharing knowledge. The developer community has been incredibly generous with me, and this is my way of giving back a little of what I've received.</p>
+<p>Don't expect perfect posts, but honest, practical, and useful content based on real experiences.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-coming">What's coming?<a href="https://valdepeace.com/blog/welcome#whats-coming" class="hash-link" aria-label="Direct link to What's coming?" title="Direct link to What's coming?" translate="no">​</a></h2>
+<p>In the upcoming posts I'll talk about:</p>
+<ul>
+<li class="">How I set up this site with Docusaurus</li>
+<li class="">Best practices in React and TypeScript</li>
+<li class="">Tools I use daily</li>
+<li class="">Projects I'm working on</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="stay-connected">Stay connected<a href="https://valdepeace.com/blog/welcome#stay-connected" class="hash-link" aria-label="Direct link to Stay connected" title="Direct link to Stay connected" translate="no">​</a></h2>
+<p>If you're interested in the content, you can:</p>
+<ul>
+<li class="">Subscribe to the <a class="" href="https://valdepeace.com/blog/rss.xml">RSS feed</a></li>
+<li class="">Follow me on <a href="https://twitter.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">Twitter</a></li>
+<li class="">Connect on <a href="https://www.linkedin.com/in/valdepeace" target="_blank" rel="noopener noreferrer" class="">LinkedIn</a></li>
+<li class="">See my work on <a href="https://github.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">GitHub</a></li>
+</ul>
+<p>Thanks for being here! 🚀</p>
+<hr>
+<p><em>Do you have any topic you'd like me to cover? Leave me a comment or contact me!</em></p>]]></content>
+        <author>
+            <name>Andrés Carmona Gil</name>
+            <uri>https://github.com/valdepeace</uri>
+        </author>
+        <category label="Personal" term="Personal"/>
     </entry>
 </feed>

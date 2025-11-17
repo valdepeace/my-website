@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkmy_website=globalThis.webpackChunkmy_website||[]).push([[472],{5513:e=>{e.exports=JSON.parse('{"title":"\xdaltimos posts","items":[{"title":"\xa1Bienvenido a mi blog!","permalink":"/blog/bienvenida","unlisted":false,"date":"2025-11-15T00:00:00.000Z"}]}')}}]);
