@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "Blog Personal",
+    "description": "The title for the blog used in SEO"
+  },
+  "description": {
+    "message": "Mis pensamientos, ideas y aprendizajes",
+    "description": "The description for the blog used in SEO"
+  },
+  "sidebar.title": {
+    "message": "Últimos posts",
+    "description": "The label for the left sidebar"
+  }
+}

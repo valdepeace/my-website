@@ -1,0 +1,34 @@
+{
+  "title": {
+    "message": "Andrés Carmona",
+    "description": "El título en la barra de navegación"
+  },
+  "logo.alt": {
+    "message": "Andrés Carmona",
+    "description": "El texto alternativo del logo de la barra de navegación"
+  },
+  "item.label.About Me": {
+    "message": "Sobre Mí",
+    "description": "Elemento del navbar con etiqueta Sobre Mí"
+  },
+  "item.label.Projects": {
+    "message": "Proyectos",
+    "description": "Elemento del navbar con etiqueta Proyectos"
+  },
+  "item.label.Docs": {
+    "message": "Documentación",
+    "description": "Elemento del navbar con etiqueta Documentación"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Elemento del navbar con etiqueta Blog"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Elemento del navbar con etiqueta GitHub"
+  },
+  "item.label.LinkedIn": {
+    "message": "LinkedIn",
+    "description": "Elemento del navbar con etiqueta LinkedIn"
+  }
+}

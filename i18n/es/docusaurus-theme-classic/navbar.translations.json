@@ -1,0 +1,18 @@
+{
+  "item.label.About Me": {
+    "message": "Sobre Mí",
+    "description": "Navbar item label for About Me"
+  },
+  "item.label.Projects": {
+    "message": "Proyectos",
+    "description": "Navbar item label for Projects"
+  },
+  "item.label.Docs": {
+    "message": "Docs",
+    "description": "Navbar item label for Docs"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item label for Blog"
+  }
+}

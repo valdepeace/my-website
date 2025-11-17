@@ -1,87 +1,92 @@
-# Sobre Mí
+# About Me
 
-¡Hola! 👋 Soy **Andrés Carmona Gil**
+Hello! 👋 I'm **Andrés Carmona Gil**
 
-## 🚀 ¿Quién soy?
+## 🚀 Who am I?
 
-Soy un desarrollador apasionado por la tecnología y la creación de soluciones innovadoras. Me encanta aprender nuevas tecnologías y compartir conocimientos con la comunidad.
+I'm a developer passionate about technology and creating innovative solutions. I love learning new technologies and sharing knowledge with the community.
 
-## 💼 Experiencia
+## 💼 Experience
 
-- **Nttdata** - Consultor/Desarrollador
-  - Desarrollo de soluciones empresariales
-  - Tecnologías: Java, TypeScript, Node.js
+- **Nttdata** - Consultant/Developer
+  - Enterprise solutions development
+  - Technologies: Java, TypeScript, Node.js
   
-- **Capitole Consulting** - Desarrollador
-  - Consultoría tecnológica
-  - Implementación de arquitecturas modernas
+- **Capitole Consulting** - Developer
+  - Technology consulting
+  - Modern architecture implementation
 
-- **Lynxspa** - Desarrollador
-  - Desarrollo full-stack
-  - España
+- **Lynxspa** - Developer
+  - Full-stack development
+  - Spain
 
-- **Thingtrack SL** - Desarrollador
-  - Soluciones IoT y tracking
-  - Desarrollo de conectores y APIs
+- **Thingtrack SL** - Developer
+  - IoT and tracking solutions
+  - Connector and API development
 
-**Ubicación:** Sevilla, España 🇪🇸
+**Location:** Seville, Spain 🇪🇸
 
-**Sitio web:** [valdepeace.com](http://www.valdepeace.com)
+**Website:** [valdepeace.com](http://www.valdepeace.com)
 
-## 🛠️ Tecnologías
+## 🛠️ Technologies
 
 ### Frontend
+
 - React, Angular, Ionic
 - TypeScript, JavaScript
 - HTML5, CSS3, SCSS
 - Progressive Web Apps (PWA)
 
 ### Backend
+
 - Node.js, LoopBack
 - Java
 - RESTful APIs
-- Microservicios
+- Microservices
 
-### Bases de Datos & Storage
+### Databases & Storage
+
 - PostgreSQL, MySQL
 - MongoDB
 - MinIO Object Storage
 - Redis
 
 ### IoT & Hardware
+
 - Node-RED
 - GPS Tracking (Ruptela)
-- Tacógrafos digitales
-- Protocolos IoT
+- Digital tachographs
+- IoT Protocols
 
 ### DevOps & Tools
+
 - Git, GitHub
 - Docker
 - Electron
 - Build tools & automation
 
-## 🎓 Educación
+## 🎓 Education
 
-- **Formación en Desarrollo de Software**
-- Especialización en tecnologías web y backend
-- Constante aprendizaje de nuevas tecnologías
+- **Software Development Training**
+- Specialization in web and backend technologies
+- Constant learning of new technologies
 
-## 🏆 Logros
+## 🏆 Achievements
 
-- **116+ repositorios** en GitHub
-- **Arctic Code Vault Contributor** - Código preservado en el Ártico
-- **Pull Shark x2** - Contribuciones significativas a proyectos
-- **10 estrellas** en proyecto tachograph-structure
-- **Múltiples contribuciones** a proyectos open source
+- **116+ repositories** on GitHub
+- **Arctic Code Vault Contributor** - Code preserved in the Arctic
+- **Pull Shark x2** - Significant contributions to projects
+- **10 stars** on tachograph-structure project
+- **Multiple contributions** to open source projects
 
-## 📫 Contacto
+## 📫 Contact
 
-¿Quieres colaborar en un proyecto o simplemente charlar sobre tecnología?
+Want to collaborate on a project or just chat about technology?
 
--  LinkedIn: [valdepeace](https://www.linkedin.com/in/valdepeace)
+- LinkedIn: [valdepeace](https://www.linkedin.com/in/valdepeace)
 - 🐙 GitHub: [valdepeace](https://github.com/valdepeace)
 - 🐦 Twitter: [@valdepeace](https://twitter.com/valdepeace)
 
 ---
 
-> "La mejor manera de predecir el futuro es inventándolo" - Alan Kay
+> "The best way to predict the future is to invent it" - Alan Kay

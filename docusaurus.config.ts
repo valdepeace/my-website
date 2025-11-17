@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Andrés Carmona Gil',
-  tagline: 'Desarrollador | Creador | Apasionado por la tecnología',
+  tagline: 'Developer | Creator | Passionate about technology',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -15,10 +15,10 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://valdepeace.github.io',
+  url: 'https://valdepeace.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/my-website/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -33,8 +33,8 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'es',
-    locales: ['es', 'en'],
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
   },
 
   presets: [
@@ -53,10 +53,10 @@ const config: Config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          blogTitle: 'Blog Personal',
-          blogDescription: 'Mis pensamientos, ideas y aprendizajes',
+          blogTitle: 'Personal Blog',
+          blogDescription: 'My thoughts, ideas and learnings',
           postsPerPage: 'ALL',
-          blogSidebarTitle: 'Últimos posts',
+          blogSidebarTitle: 'Latest posts',
           blogSidebarCount: 10,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -90,8 +90,8 @@ const config: Config = {
         height: 32,
       },
       items: [
-        {to: '/about', label: 'Sobre Mí', position: 'left'},
-        {to: '/projects', label: 'Proyectos', position: 'left'},
+        {to: '/about', label: 'About Me', position: 'left'},
+        {to: '/projects', label: 'Projects', position: 'left'},
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
@@ -99,6 +99,10 @@ const config: Config = {
           label: 'Docs',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
         {
           href: 'https://github.com/valdepeace',
           label: 'GitHub',
@@ -115,14 +119,14 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Sitio',
+          title: 'Site',
           items: [
             {
-              label: 'Sobre Mí',
+              label: 'About Me',
               to: '/about',
             },
             {
-              label: 'Proyectos',
+              label: 'Projects',
               to: '/projects',
             },
             {
@@ -132,7 +136,7 @@ const config: Config = {
           ],
         },
         {
-          title: 'Redes Sociales',
+          title: 'Social Networks',
           items: [
             {
               label: 'GitHub',
@@ -149,20 +153,16 @@ const config: Config = {
           ],
         },
         {
-          title: 'Más',
+          title: 'More',
           items: [
             {
-              label: 'Documentación',
+              label: 'Documentation',
               to: '/docs/intro',
-            },
-            {
-              label: 'RSS Feed',
-              to: '/blog/rss.xml',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Andrés Carmona Gil. Hecho con ❤️ usando Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Andrés Carmona Gil. Made with ❤️ using Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

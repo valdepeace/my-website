@@ -6,6 +6,7 @@ import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import CodeBackground from '@site/src/components/CodeBackground';
 import Heading from '@theme/Heading';
+import Translate, {translate} from '@docusaurus/Translate';
 
 import styles from './index.module.css';
 
@@ -23,13 +24,13 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/about">
-            Conoce más sobre mí 👋
+            <Translate id="homepage.button.about">Learn more about me 👋</Translate>
           </Link>
           <Link
             className="button button--outline button--secondary button--lg"
             to="/projects"
             style={{marginLeft: '1rem'}}>
-            Ver Proyectos 🚀
+            <Translate id="homepage.button.projects">View Projects 🚀</Translate>
           </Link>
         </div>
       </div>
@@ -41,8 +42,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Inicio`}
-      description="Web personal de Andrés Carmona Gil - Desarrollador, creador de contenido y apasionado por la tecnología">
+      title={translate({id: 'homepage.title', message: 'Home'})}
+      description={translate({id: 'homepage.description', message: 'Personal website of Andrés Carmona Gil - Developer, content creator and technology enthusiast'})}>
       <HomepageHeader />
       <main>
         <HomepageFeatures />

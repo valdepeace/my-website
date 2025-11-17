@@ -1,0 +1,38 @@
+{
+  "link.title.Site": {
+    "message": "Sitio",
+    "description": "Footer column title for Site"
+  },
+  "link.title.Social Networks": {
+    "message": "Redes Sociales",
+    "description": "Footer column title for Social Networks"
+  },
+  "link.title.More": {
+    "message": "Más",
+    "description": "Footer column title for More"
+  },
+  "link.item.label.About Me": {
+    "message": "Sobre Mí",
+    "description": "Footer link label for About Me"
+  },
+  "link.item.label.Projects": {
+    "message": "Proyectos",
+    "description": "Footer link label for Projects"
+  },
+  "link.item.label.Blog": {
+    "message": "Blog",
+    "description": "Footer link label for Blog"
+  },
+  "link.item.label.Documentation": {
+    "message": "Documentación",
+    "description": "Footer link label for Documentation"
+  },
+  "link.item.label.RSS Feed": {
+    "message": "RSS Feed",
+    "description": "Footer link label for RSS Feed"
+  },
+  "copyright": {
+    "message": "Copyright © 2025 Andrés Carmona Gil. Hecho con ❤️ usando Docusaurus.",
+    "description": "Footer copyright"
+  }
+}

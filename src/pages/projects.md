@@ -1,106 +1,106 @@
-# Proyectos
+# Projects
 
-Aquí encontrarás una selección de mis proyectos más destacados. Cada uno representa un desafío único y un aprendizaje valioso.
+Here you'll find a selection of my most notable projects. Each one represents a unique challenge and valuable learning.
 
 ---
 
-## 🚀 Proyectos Destacados
+## 🚀 Featured Projects
 
 ### ⭐ [Tachograph Structure](https://github.com/valdepeace/tachograph-structure)
 
-**Descripción:** Librería Java para trabajar con la estructura de datos de tacógrafos digitales. Proyecto con mayor número de estrellas (10 ⭐).
+**Description:** Java library for working with digital tachograph data structure. Project with the highest number of stars (10 ⭐).
 
-**Tecnologías:** Java
+**Technologies:** Java
 
-**Características:**
-- Parseo de archivos de tacógrafo digital
-- Estructura de datos robusta y tipada
-- Licencia MIT - Open Source
-- 4 forks de la comunidad
+**Features:**
+- Digital tachograph file parsing
+- Robust and typed data structure
+- MIT License - Open Source
+- 4 community forks
 
 **Links:**
-- [Código fuente](https://github.com/valdepeace/tachograph-structure) 💻
-- [⭐ 10 estrellas](https://github.com/valdepeace/tachograph-structure/stargazers)
+- [Source code](https://github.com/valdepeace/tachograph-structure) 💻
+- [⭐ 10 stars](https://github.com/valdepeace/tachograph-structure/stargazers)
 
 ---
 
 ### 📊 [Seismograph AmChart](https://github.com/valdepeace/seismograph-amchart)
 
-**Descripción:** Visualización de datos sísmicos utilizando AmCharts. Herramienta para representación gráfica avanzada.
+**Description:** Seismic data visualization using AmCharts. Advanced graphical representation tool.
 
-**Tecnologías:** JavaScript, AmCharts
+**Technologies:** JavaScript, AmCharts
 
-**Características:**
-- Visualización de datos en tiempo real
-- Gráficos interactivos y responsivos
-- Licencia MIT
+**Features:**
+- Real-time data visualization
+- Interactive and responsive charts
+- MIT License
 
 **Links:**
-- [Código fuente](https://github.com/valdepeace/seismograph-amchart) 💻
+- [Source code](https://github.com/valdepeace/seismograph-amchart) 💻
 
 ---
 
 ### 🎮 [Game Ionic PWA](https://github.com/valdepeace/game-ionic-pwa)
 
-**Descripción:** Colección de juegos desarrollados como Progressive Web App usando Ionic Framework.
+**Description:** Collection of games developed as a Progressive Web App using Ionic Framework.
 
-**Tecnologías:** TypeScript, Ionic, PWA
+**Technologies:** TypeScript, Ionic, PWA
 
-**Características:**
+**Features:**
 - Progressive Web App
-- Compatible con dispositivos móviles
-- Framework Ionic moderno
+- Mobile device compatible
+- Modern Ionic framework
 - Apache License 2.0
 
 **Links:**
-- [Código fuente](https://github.com/valdepeace/game-ionic-pwa) 💻
+- [Source code](https://github.com/valdepeace/game-ionic-pwa) 💻
 - [API Backend](https://github.com/valdepeace/game-ionic-pwa-api) 🔧
 
 ---
 
 ### ⚡ [Electron Stimulsoft](https://github.com/valdepeace/electron-stimulsoft)
 
-**Descripción:** Integración de Stimulsoft Reports con Electron para crear aplicaciones de escritorio con capacidades de generación de informes.
+**Description:** Integration of Stimulsoft Reports with Electron to create desktop applications with report generation capabilities.
 
-**Tecnologías:** TypeScript, Electron, Node.js, Stimulsoft
+**Technologies:** TypeScript, Electron, Node.js, Stimulsoft
 
-**Características:**
-- Aplicación de escritorio multiplataforma
-- Generación de informes avanzados
-- Integración con Stimulsoft Reports
-- Licencia MIT
+**Features:**
+- Cross-platform desktop application
+- Advanced report generation
+- Stimulsoft Reports integration
+- MIT License
 
 **Links:**
-- [Código fuente](https://github.com/valdepeace/electron-stimulsoft) 💻
+- [Source code](https://github.com/valdepeace/electron-stimulsoft) 💻
 
 ---
 
 ### 📡 [Node-RED Contrib Ruptela](https://github.com/valdepeace/node-red-contrib-ruptela)
 
-**Descripción:** Nodo personalizado para Node-RED que implementa el protocolo de GPS tracking Ruptela.
+**Description:** Custom node for Node-RED implementing the Ruptela GPS tracking protocol.
 
-**Tecnologías:** JavaScript, Node-RED
+**Technologies:** JavaScript, Node-RED
 
-**Características:**
-- Protocolo GPS tracking
-- Integración con Node-RED
-- Procesamiento de datos de geolocalización
+**Features:**
+- GPS tracking protocol
+- Node-RED integration
+- Geolocation data processing
 - MIT License
 
 **Links:**
-- [Código fuente](https://github.com/valdepeace/node-red-contrib-ruptela) 💻
+- [Source code](https://github.com/valdepeace/node-red-contrib-ruptela) 💻
 
 ---
 
 ### 🔌 [LoopBack Connectors](https://github.com/valdepeace)
 
-**Descripción:** Conectores personalizados para LoopBack framework.
+**Description:** Custom connectors for LoopBack framework.
 
-**Proyectos:**
-- **loopback-connector-minio** - Conector para MinIO Object Storage
-- **loopback-connector-imap** - Conector IMAP para manejo de emails
+**Projects:**
+- **loopback-connector-minio** - Connector for MinIO Object Storage
+- **loopback-connector-imap** - IMAP connector for email handling
 
-**Tecnologías:** JavaScript, LoopBack, Node.js
+**Technologies:** JavaScript, LoopBack, Node.js
 
 **Links:**
 - [MinIO Connector](https://github.com/valdepeace/loopback-connector-minio) 💻
@@ -108,57 +108,57 @@ Aquí encontrarás una selección de mis proyectos más destacados. Cada uno rep
 
 ---
 
-## 🌱 Proyectos Recientes
+## 🌱 Recent Projects
 
 ### 🤖 [Awesome IA](https://github.com/valdepeace/awesome-ia)
 
-**Descripción:** Colección curada de recursos sobre Inteligencia Artificial.
+**Description:** Curated collection of Artificial Intelligence resources.
 
 **Links:**
-- [Ver recursos](https://github.com/valdepeace/awesome-ia) 📚
+- [View resources](https://github.com/valdepeace/awesome-ia) 📚
 
 ---
 
-## 🤝 Contribuciones Open Source
+## 🤝 Open Source Contributions
 
-He contribuido a diversos proyectos de la comunidad:
+I've contributed to various community projects:
 
-- **Mastra** - Framework de agentes TypeScript AI
-- **LoopBack4 Microservice Catalog** - Catálogo de microservicios
-- **AST Explorer** - Herramienta para explorar ASTs
-- **Awesome Node.js** - Lista curada de paquetes Node.js
-
----
-
-## 📊 Estadísticas
-
-- **116+ repositorios públicos** en GitHub
-- **⭐ Proyecto más popular:** tachograph-structure (10 estrellas)
-- **Logros:** Arctic Code Vault Contributor, Pull Shark x2
-- **Tecnologías principales:** TypeScript, JavaScript, Java
+- **Mastra** - TypeScript AI agents framework
+- **LoopBack4 Microservice Catalog** - Microservices catalog
+- **AST Explorer** - Tool for exploring ASTs
+- **Awesome Node.js** - Curated list of Node.js packages
 
 ---
 
-## 💼 Experiencia Profesional
+## 📊 Statistics
 
-**Empresas:**
+- **116+ public repositories** on GitHub
+- **⭐ Most popular project:** tachograph-structure (10 stars)
+- **Achievements:** Arctic Code Vault Contributor, Pull Shark x2
+- **Main technologies:** TypeScript, JavaScript, Java
+
+---
+
+## 💼 Professional Experience
+
+**Companies:**
 - Nttdata
 - Capitole Consulting
 - Lynxspa España
 - Thingtrack sl
 
-**Ubicación:** Sevilla, España
+**Location:** Seville, Spain
 
 ---
 
-## 🔗 Ver Más
+## 🔗 See More
 
-[Ver todos mis proyectos en GitHub →](https://github.com/valdepeace?tab=repositories)
+[View all my projects on GitHub →](https://github.com/valdepeace?tab=repositories)
 
 ---
 
-## 💡 ¿Tienes una idea?
+## 💡 Have an idea?
 
-Si tienes un proyecto interesante o quieres colaborar, ¡me encantaría escucharte!
+If you have an interesting project or want to collaborate, I'd love to hear from you!
 
-[Contáctame →](/about#contacto)
+[Contact me →](/about#contact)

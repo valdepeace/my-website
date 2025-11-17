@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
 import styles from './styles.module.css';
 
 type FeatureItem = {
@@ -11,32 +12,38 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: '💻 Desarrollo',
+    title: '💻 Development',
     Svg: require('@site/static/img/dev-illustration.svg').default,
     description: (
       <>
-        Apasionado por crear soluciones tecnológicas innovadoras y eficientes.
-        Especializado en desarrollo web moderno con las últimas tecnologías.
+        <Translate id="homepage.features.development">
+          Passionate about creating innovative and efficient technological solutions.
+          Specialized in modern web development with the latest technologies.
+        </Translate>
       </>
     ),
   },
   {
-    title: '📝 Contenido',
+    title: '📝 Content',
     Svg: require('@site/static/img/content-illustration.svg').default,
     description: (
       <>
-        Comparto conocimientos y experiencias a través de artículos técnicos,
-        tutoriales y reflexiones sobre tecnología y desarrollo.
+        <Translate id="homepage.features.content">
+          Sharing knowledge and experiences through technical articles,
+          tutorials and reflections on technology and development.
+        </Translate>
       </>
     ),
   },
   {
-    title: '🚀 Proyectos',
+    title: '🚀 Projects',
     Svg: require('@site/static/img/projects-illustration.svg').default,
     description: (
       <>
-        Construyendo proyectos que impactan y resuelven problemas reales.
-        Explora mi portafolio de trabajos y colaboraciones.
+        <Translate id="homepage.features.projects">
+          Building projects that impact and solve real problems.
+          Explore my portfolio of works and collaborations.
+        </Translate>
       </>
     ),
   },
