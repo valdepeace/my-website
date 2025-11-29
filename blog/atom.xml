@@ -15,10 +15,6 @@
         <summary type="html"><![CDATA[Summary: A concise comparison between Mastra (TypeScript-first agent framework) and Microsoft's Agent Framework + Azure AI Foundry (Microsoft's managed agent platform).]]></summary>
         <content type="html"><![CDATA[<p>Summary: A concise comparison between Mastra (TypeScript-first agent framework) and Microsoft's Agent Framework + Azure AI Foundry (Microsoft's managed agent platform).</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-one-line-summary">1. One-line summary<a href="https://valdepeace.com/blog/mastra-vs-microsoft-agent-framework#1-one-line-summary" class="hash-link" aria-label="Direct link to 1. One-line summary" title="Direct link to 1. One-line summary" translate="no">​</a></h2>
-<ul>
-<li class=""><strong>Mastra</strong> → A TypeScript/Node framework for building agents, workflows, RAG, MCP, evals and tracing, aimed at JS/TS developers and modern web/backend apps.</li>
-<li class=""><strong>Microsoft Agent Framework + Azure AI Foundry</strong> → SDKs (.NET/Python) and a managed Azure platform for enterprise-grade multi-agent systems with deep Azure integration.</li>
-</ul>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-quick-comparison">2. Quick comparison<a href="https://valdepeace.com/blog/mastra-vs-microsoft-agent-framework#2-quick-comparison" class="hash-link" aria-label="Direct link to 2. Quick comparison" title="Direct link to 2. Quick comparison" translate="no">​</a></h2>
 <table><thead><tr><th>Aspect</th><th>Mastra</th><th>Microsoft Agent Framework + Azure AI Foundry</th></tr></thead><tbody><tr><td>Language / runtime</td><td>TypeScript / Node — ideal if your stack is JS</td><td>.NET and Python — first-class in Azure environments</td></tr><tr><td>Mental model</td><td>TypeScript-first framework for agents, pipelines, RAG, tracing, MCP</td><td>SDK + runtime for multi-agent graphs, successor of Semantic Kernel / AutoGen</td></tr><tr><td>Deployment</td><td>Self-host anywhere; Mastra Cloud for traces/evals</td><td>Standalone or connected to managed Foundry Agent Service in Azure</td></tr><tr><td>Model vendors</td><td>Multi-provider (OpenAI, Azure OpenAI, Claude, Gemini, Llama...)</td><td>Multi-provider with first-class Azure model integrations</td></tr><tr><td>Workflows &amp; orchestration</td><td>Pipeline / graph style in TS, suspend/resume, streaming</td><td>Graph-based orchestration, conditional routing, long-running, HITL</td></tr><tr><td>RAG / Connectors</td><td>Vector stores (Postgres, Pinecone), RAG templates</td><td>Native integration with Azure AI Search, Fabric, OneLake, SharePoint</td></tr><tr><td>MCP &amp; tools</td><td>Strong MCP support, agent networks and tools</td><td>MCP as a tool type; Foundry provides catalog of managed resources</td></tr><tr><td>Observability</td><td>Mastra Cloud: traces, evals, scoring, UI</td><td>OpenTelemetry + Azure Monitor; platform dashboards &amp; governance</td></tr><tr><td>Azure integration</td><td>Can run in Azure but agnostic by design</td><td>Deep, official Azure integration (Foundry, Fabric, Entra, Defender)</td></tr><tr><td>License / community</td><td>Open source (Apache 2.0); JS-focused community</td><td>Open source (MIT) + Microsoft ecosystem &amp; docs</td></tr></tbody></table>
@@ -39,16 +35,15 @@
 <ul>
 <li class="">For quick PoCs, internal automations, scrapers and MCP-first flows: <strong>Mastra</strong>.</li>
 <li class="">For regulated corporate projects inside Azure, where governance and integrations matter: <strong>MAF + Foundry</strong>.</li>
-</ul>
-<p>If you want, I can now draft an architecture diagram showing a hybrid setup (Mastra + Foundry) for a concrete use case (e.g., copilot for AppInsights or payment reconciliation).</p>]]></content>
+</ul>]]></content>
         <author>
             <name>Andrés Carmona Gil</name>
             <uri>https://github.com/valdepeace</uri>
         </author>
-        <category label="mastra" term="mastra"/>
-        <category label="microsoft-agent-framework" term="microsoft-agent-framework"/>
-        <category label="comparison" term="comparison"/>
-        <category label="ai-agents" term="ai-agents"/>
+        <category label="Mastra" term="Mastra"/>
+        <category label="Microsoft Agent Framework" term="Microsoft Agent Framework"/>
+        <category label="Comparison" term="Comparison"/>
+        <category label="AI Agents" term="AI Agents"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Not Everything is a PoC, and You Don't Need Netflix for a CRUD]]></title>
