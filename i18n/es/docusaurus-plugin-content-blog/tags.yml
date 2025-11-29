@@ -22,3 +22,23 @@ technical-debt:
   label: Technical Debt
   permalink: /technical-debt
   description: Technical debt management
+
+mastra:
+  label: Mastra
+  permalink: /mastra
+  description: Framework Mastra (TypeScript) para agentes
+
+microsoft-agent-framework:
+  label: Microsoft Agent Framework
+  permalink: /microsoft-agent-framework
+  description: Microsoft Agent Framework y Azure AI Foundry
+
+comparison:
+  label: Comparativa
+  permalink: /comparison
+  description: Artículos comparativos
+
+ai-agents:
+  label: Agentes AI
+  permalink: /ai-agents
+  description: Frameworks de agentes y agentes IA

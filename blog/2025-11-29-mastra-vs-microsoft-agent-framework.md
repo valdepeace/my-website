@@ -9,8 +9,7 @@ Summary: A concise comparison between Mastra (TypeScript-first agent framework) 
 
 ## 1. One-line summary
 
-- **Mastra** → A TypeScript/Node framework for building agents, workflows, RAG, MCP, evals and tracing, aimed at JS/TS developers and modern web/backend apps.
-- **Microsoft Agent Framework + Azure AI Foundry** → SDKs (.NET/Python) and a managed Azure platform for enterprise-grade multi-agent systems with deep Azure integration.
+<!--truncate-->
 
 ---
 
@@ -49,4 +48,3 @@ Summary: A concise comparison between Mastra (TypeScript-first agent framework) 
 - For quick PoCs, internal automations, scrapers and MCP-first flows: **Mastra**.
 - For regulated corporate projects inside Azure, where governance and integrations matter: **MAF + Foundry**.
 
-If you want, I can now draft an architecture diagram showing a hybrid setup (Mastra + Foundry) for a concrete use case (e.g., copilot for AppInsights or payment reconciliation).

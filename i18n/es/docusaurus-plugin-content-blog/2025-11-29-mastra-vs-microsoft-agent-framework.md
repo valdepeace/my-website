@@ -9,8 +9,8 @@ Resumen: Comparativa concisa entre Mastra (framework TypeScript) y Microsoft Age
 
 ## 1. Resumen en una frase
 
-- **Mastra** → Framework TypeScript/Node para construir agentes, workflows, RAG, MCP, evals y trazas, pensado para desarrolladores JS/TS y apps web/backend modernas.
-- **Microsoft Agent Framework + Azure AI Foundry** → SDKs (.NET/Python) y plataforma gestionada en Azure para sistemas multi-agente empresariales con integración profunda en Azure.
+<!--truncate-->
+**Mastra** → Framework TypeScript/Node para construir agentes, workflows, RAG, MCP, evals y trazas, pensado para desarrolladores JS/TS y apps web/backend modernas.
 
 ---
 
@@ -49,4 +49,4 @@ Resumen: Comparativa concisa entre Mastra (framework TypeScript) y Microsoft Age
 - PoCs, automatizaciones internas, scrapers y MCP-first: **Mastra**.
 - Proyectos corporativos regulados dentro de Azure: **MAF + Foundry**.
 
-Si quieres, puedo dibujar ahora una arquitectura concreta (Mastra + Foundry) para un caso real (por ejemplo, un copilot sobre AppInsights o conciliación de pagos).
+
