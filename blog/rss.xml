@@ -4,10 +4,49 @@
         <title>Andrés Carmona Gil Blog</title>
         <link>https://valdepeace.com/blog</link>
         <description>Andrés Carmona Gil Blog</description>
-        <lastBuildDate>Sun, 16 Nov 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 29 Nov 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Mastra vs Microsoft Agent Framework + Azure AI Foundry — A Practical Comparison]]></title>
+            <link>https://valdepeace.com/blog/mastra-vs-microsoft-agent-framework</link>
+            <guid>https://valdepeace.com/blog/mastra-vs-microsoft-agent-framework</guid>
+            <pubDate>Sat, 29 Nov 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Summary: A concise comparison between Mastra (TypeScript-first agent framework) and Microsoft's Agent Framework + Azure AI Foundry (Microsoft's managed agent platform).]]></description>
+            <content:encoded><![CDATA[<p>Summary: A concise comparison between Mastra (TypeScript-first agent framework) and Microsoft's Agent Framework + Azure AI Foundry (Microsoft's managed agent platform).</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-one-line-summary">1. One-line summary<a href="https://valdepeace.com/blog/mastra-vs-microsoft-agent-framework#1-one-line-summary" class="hash-link" aria-label="Direct link to 1. One-line summary" title="Direct link to 1. One-line summary" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Mastra</strong> → A TypeScript/Node framework for building agents, workflows, RAG, MCP, evals and tracing, aimed at JS/TS developers and modern web/backend apps.</li>
+<li class=""><strong>Microsoft Agent Framework + Azure AI Foundry</strong> → SDKs (.NET/Python) and a managed Azure platform for enterprise-grade multi-agent systems with deep Azure integration.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-quick-comparison">2. Quick comparison<a href="https://valdepeace.com/blog/mastra-vs-microsoft-agent-framework#2-quick-comparison" class="hash-link" aria-label="Direct link to 2. Quick comparison" title="Direct link to 2. Quick comparison" translate="no">​</a></h2>
+<table><thead><tr><th>Aspect</th><th>Mastra</th><th>Microsoft Agent Framework + Azure AI Foundry</th></tr></thead><tbody><tr><td>Language / runtime</td><td>TypeScript / Node — ideal if your stack is JS</td><td>.NET and Python — first-class in Azure environments</td></tr><tr><td>Mental model</td><td>TypeScript-first framework for agents, pipelines, RAG, tracing, MCP</td><td>SDK + runtime for multi-agent graphs, successor of Semantic Kernel / AutoGen</td></tr><tr><td>Deployment</td><td>Self-host anywhere; Mastra Cloud for traces/evals</td><td>Standalone or connected to managed Foundry Agent Service in Azure</td></tr><tr><td>Model vendors</td><td>Multi-provider (OpenAI, Azure OpenAI, Claude, Gemini, Llama...)</td><td>Multi-provider with first-class Azure model integrations</td></tr><tr><td>Workflows &amp; orchestration</td><td>Pipeline / graph style in TS, suspend/resume, streaming</td><td>Graph-based orchestration, conditional routing, long-running, HITL</td></tr><tr><td>RAG / Connectors</td><td>Vector stores (Postgres, Pinecone), RAG templates</td><td>Native integration with Azure AI Search, Fabric, OneLake, SharePoint</td></tr><tr><td>MCP &amp; tools</td><td>Strong MCP support, agent networks and tools</td><td>MCP as a tool type; Foundry provides catalog of managed resources</td></tr><tr><td>Observability</td><td>Mastra Cloud: traces, evals, scoring, UI</td><td>OpenTelemetry + Azure Monitor; platform dashboards &amp; governance</td></tr><tr><td>Azure integration</td><td>Can run in Azure but agnostic by design</td><td>Deep, official Azure integration (Foundry, Fabric, Entra, Defender)</td></tr><tr><td>License / community</td><td>Open source (Apache 2.0); JS-focused community</td><td>Open source (MIT) + Microsoft ecosystem &amp; docs</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-which-to-choose-depending-on-context">3. Which to choose depending on context<a href="https://valdepeace.com/blog/mastra-vs-microsoft-agent-framework#3-which-to-choose-depending-on-context" class="hash-link" aria-label="Direct link to 3. Which to choose depending on context" title="Direct link to 3. Which to choose depending on context" translate="no">​</a></h2>
+<ul>
+<li class="">If your stack is Node/TypeScript and you want fast iteration, Mastra is the natural fit: same language, quick developer velocity, good for MCP and scrapers.</li>
+<li class="">If you need full enterprise Azure governance (Foundry, Fabric, Defender, Entra), or your customer requires a managed Azure solution, Microsoft Agent Framework + Foundry is appropriate.</li>
+</ul>
+<p><strong>Hybrid approach (recommended for mixed environments):</strong></p>
+<ol>
+<li class="">Keep an agent core in JS (Mastra) for rapid iteration and product features.</li>
+<li class="">For enterprise-grade RAG or Azure-centred customers, deploy Agent Framework / Foundry agents as managed services and expose them as APIs.</li>
+<li class="">Use your Node/Mastra code to orchestrate and call those managed agents where strict governance is required.</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-tldr--practical-suggestion">4. TL;DR / Practical suggestion<a href="https://valdepeace.com/blog/mastra-vs-microsoft-agent-framework#4-tldr--practical-suggestion" class="hash-link" aria-label="Direct link to 4. TL;DR / Practical suggestion" title="Direct link to 4. TL;DR / Practical suggestion" translate="no">​</a></h2>
+<ul>
+<li class="">For quick PoCs, internal automations, scrapers and MCP-first flows: <strong>Mastra</strong>.</li>
+<li class="">For regulated corporate projects inside Azure, where governance and integrations matter: <strong>MAF + Foundry</strong>.</li>
+</ul>
+<p>If you want, I can now draft an architecture diagram showing a hybrid setup (Mastra + Foundry) for a concrete use case (e.g., copilot for AppInsights or payment reconciliation).</p>]]></content:encoded>
+            <category>mastra</category>
+            <category>microsoft-agent-framework</category>
+            <category>comparison</category>
+            <category>ai-agents</category>
+        </item>
         <item>
             <title><![CDATA[Not Everything is a PoC, and You Don't Need Netflix for a CRUD]]></title>
             <link>https://valdepeace.com/blog/over-engineering-vs-poc</link>
