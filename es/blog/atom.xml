@@ -43,8 +43,8 @@
         </author>
         <category label="Mastra" term="Mastra"/>
         <category label="Microsoft Agent Framework" term="Microsoft Agent Framework"/>
-        <category label="comparativa" term="comparativa"/>
-        <category label="agentes-ai" term="agentes-ai"/>
+        <category label="Comparativa" term="Comparativa"/>
+        <category label="Agentes AI" term="Agentes AI"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Ni todo es una PoC, ni hay que hacer un Netflix para un CRUD]]></title>
@@ -301,7 +301,7 @@ Cuando alguien pida "hazlo rápido":</p>
             <name>Andrés Carmona Gil</name>
             <uri>https://github.com/valdepeace</uri>
         </author>
-        <category label="arquitectura" term="arquitectura"/>
+        <category label="Arquitectura" term="Arquitectura"/>
         <category label="buenas-prácticas" term="buenas-prácticas"/>
         <category label="ingeniería-software" term="ingeniería-software"/>
         <category label="deuda-técnica" term="deuda-técnica"/>

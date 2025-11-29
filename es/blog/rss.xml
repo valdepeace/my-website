@@ -40,8 +40,8 @@
 </ul>]]></content:encoded>
             <category>Mastra</category>
             <category>Microsoft Agent Framework</category>
-            <category>comparativa</category>
-            <category>agentes-ai</category>
+            <category>Comparativa</category>
+            <category>Agentes AI</category>
         </item>
         <item>
             <title><![CDATA[Ni todo es una PoC, ni hay que hacer un Netflix para un CRUD]]></title>
@@ -294,7 +294,7 @@ Cuando alguien pida "hazlo rápido":</p>
 <li class=""><a href="https://blog.scaledcode.com/blog/poc-to-production/" target="_blank" rel="noopener noreferrer" class="">When Proof of Concepts Become Production Code</a></li>
 <li class=""><a href="https://martinfowler.com/bliki/Yagni.html" target="_blank" rel="noopener noreferrer" class="">YAGNI - Martin Fowler</a></li>
 </ul>]]></content:encoded>
-            <category>arquitectura</category>
+            <category>Arquitectura</category>
             <category>buenas-prácticas</category>
             <category>ingeniería-software</category>
             <category>deuda-técnica</category>
