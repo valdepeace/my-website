@@ -5,48 +5,127 @@ authors: [valdepeace]
 tags: [mastra, microsoft-agent-framework, comparativa, agentes-ai]
 ---
 
-Resumen: Comparativa concisa entre Mastra (framework TypeScript) y Microsoft Agent Framework + Azure AI Foundry (plataforma gestionada de Microsoft para agentes).
-
-## 1. Resumen en una frase
+Resumen: Comparativa entre Mastra (framework TypeScript) y Microsoft Agent Framework + Azure AI Foundry.
 
 <!--truncate-->
-**Mastra** → Framework TypeScript/Node para construir agentes, workflows, RAG, MCP, evals y trazas, pensado para desarrolladores JS/TS y apps web/backend modernas.
+
+## 1. Introducción
+
+Dos formas de construir agentes de IA en producción:
+
+- **Mastra**: framework de agentes en TypeScript que pone el runtime y la orquestación en tu backend.
+- **Agent Framework + Azure AI Foundry**: librería de orquestación (.NET/Python) más un servicio gestionado en Azure donde viven agentes, threads y runs.
+
+## 2. Modelo mental común: agents, threads y runs
+
+Conceptos compartidos:
+
+- **Agent**: persona virtual con instrucciones, modelo, tools y memoria.
+- **Thread / Session**: hilo de conversación que mantiene el contexto.
+- **Messages**: intercambio entre `user` y `assistant`.
+- **Run**: ejecución concreta del agente.
+
+La diferencia principal es dónde vive la máquina de estados: en tu backend (Mastra) o en un servicio gestionado (Azure AI Agents).
 
 ---
 
-## 2. Comparativa rápida
+## 3. ¿Qué ofrece cada enfoque?
 
-| Aspecto | Mastra | Microsoft Agent Framework + Azure AI Foundry |
+### Mastra
+
+- Framework TS + runtime en tu app.
+- Tools, workflows, RAG, trazas y evaluaciones (Mastra Cloud).
+- Buena DX para equipos JS/TS.
+
+### Agent Framework + Azure AI Foundry
+
+- Agent Framework para orquestación (.NET/Python).
+- Azure AI Foundry como servicio gestionado (agentes, threads, runs).
+- Integración nativa con AI Search, Fabric, OneLake y servicios Azure.
+
+---
+
+## 4. Tabla comparativa (resumen)
+
+| Aspecto | Mastra | Agent Framework + Azure Foundry |
 |---|---|---|
-| Lenguaje / runtime | TypeScript / Node — ideal si tu stack es JS | .NET y Python — soporte nativo en Azure |
-| Modelo mental | Framework TS para agentes, pipelines, RAG, trazas, MCP | SDK + runtime para grafos multi-agente, sucesor de Semantic Kernel / AutoGen |
-| Despliegue | Se ejecuta donde quieras; Mastra Cloud para trazas/evals | Standalone o conectado al servicio gestionado Foundry en Azure |
-| Proveedores de modelos | Multi-proveedor (OpenAI, Azure OpenAI, Claude, Gemini, Llama...) | Multi-proveedor con integración nativa en Azure |
-| Workflows / orquestación | Pipelines / graphs en TS: suspend/resume, streaming | Orquestación basada en grafos, routing condicional, long-running, HITL |
-| RAG / Conectores | Vector stores (Postgres, Pinecone), plantillas RAG | Integración nativa con Azure AI Search, Fabric, OneLake, SharePoint |
-| MCP y herramientas | Fuerte soporte MCP, agent networks y herramientas | MCP como tipo de tool; Foundry aporta catálogo de recursos gestionados |
-| Observabilidad | Mastra Cloud: traces, evals, scoring, UI | OpenTelemetry + Azure Monitor; paneles y gobernanza a nivel plataforma |
-| Integración con Azure | Se puede desplegar en Azure pero es agnóstico | Integración profunda y oficial con Foundry, Fabric, Entra, Defender |
-| Licencia / comunidad | Open source (Apache 2.0) con comunidad JS | Open source (MIT) mantenido por Microsoft y ecosistema |
+| Tipo | Framework TS + observabilidad | Librería (.NET/Python) + servicio gestionado |
+| Lenguaje | TypeScript / Node | .NET / Python |
+| Runtime | En tu backend | En Azure (servicio gestionado) |
+| Integración Azure | Vía SDKs | Nativa |
+| Lock-in | Bajo | Medio/alto |
 
 ---
 
-## 3. ¿Cuál elegir según el contexto?
+## 5. Pros y contras
 
-- Si tu stack es Node/TypeScript y quieres iterar rápido: **Mastra**.
-- Si necesitas gobernanza corporativa en Azure y servicios gestionados: **MAF + Foundry**.
+### Pros y contras — Mastra
 
-**Enfoque híbrido (recomendado):**
+#### Pros — Mastra
 
-1. Núcleo ágil en JS (Mastra) para desarrollo rápido.
-2. Para clientes Azure-first, desplegar agentes en Foundry y exponer APIs gestionadas.
-3. Orquestar desde tus servicios Node/Mastra las llamadas a los agentes gestionados cuando haga falta.
+- 100% TypeScript; alta velocidad de desarrollo en JS stacks.
+- Control total del runtime y orquestación.
+
+#### Contras — Mastra
+
+- Debes gestionar infraestructura y gobernanza por tu cuenta.
+
+### Pros y contras — Agent Framework + Foundry
+
+#### Pros — Agent Framework + Foundry
+
+- Servicio gestionado para threads/runs y escalado.
+- Integración y gobierno enterprise en Azure.
+
+#### Contras — Agent Framework + Foundry
+
+- Mayor acoplamiento a la plataforma Azure.
 
 ---
 
-## 4. Recomendación práctica
+## 6. Enfoque híbrido (recomendado en muchos casos)
 
-- PoCs, automatizaciones internas, scrapers y MCP-first: **Mastra**.
-- Proyectos corporativos regulados dentro de Azure: **MAF + Foundry**.
+- Mantén un núcleo de agentes/producto en Mastra para iteración rápida.
+- Usa Foundry como herramienta especializada para datos y gobernanza, expuesta como APIs.
+
+## 7. Ejemplo rápido (esquema)
+
+```ts
+// hybridAgent.ts (esquema)
+import { createAgent } from "mastra";
+
+export const hybridAgent = createAgent({
+  name: "hybrid-agent",
+  instructions: "Decide cuándo delegar a Azure",
+  model: { provider: "openai", name: "gpt-4o-mini" },
+  tools: {
+    askAzure: {
+      description: "Consulta al agente de Azure",
+      execute: async ({ query }: { query: string }) => ({ answer: "(respuesta simulada)" }),
+    },
+  },
+});
+```
+
+---
+
+## 8. Conclusión
+
+- Si tu equipo vive en TypeScript, Mastra facilita iterar rápido.
+- Si necesitas gobernanza y servicios Azure, Agent Framework + Foundry encaja mejor.
+- La combinación híbrida suele ofrecer lo mejor de ambos mundos.
+
+---
+
+## Referencias
+
+- Documentación de Mastra — [https://mastra.ai/docs](https://mastra.ai/docs)
+- Repositorio Mastra en GitHub — [https://github.com/mastra-ai/mastra](https://github.com/mastra-ai/mastra)
+- Libro/guía de Mastra — [https://mastra.ai/book](https://mastra.ai/book)
+- Plantillas Mastra — [https://mastra.ai/templates](https://mastra.ai/templates)
+- Azure AI Foundry (Microsoft Learn) — [https://learn.microsoft.com/es-es/azure/ai-foundry/](https://learn.microsoft.com/es-es/azure/ai-foundry/)
+- SDK Azure AI Agents (`@azure/ai-agents`) — [https://www.npmjs.com/package/@azure/ai-agents](https://www.npmjs.com/package/@azure/ai-agents)
+- Azure Identity (`@azure/identity`) — [https://www.npmjs.com/package/@azure/identity](https://www.npmjs.com/package/@azure/identity)
+- Documentación general de Azure — [https://learn.microsoft.com/azure](https://learn.microsoft.com/azure)
 
 

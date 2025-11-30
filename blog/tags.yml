@@ -1,3 +1,32 @@
+arquitectura:
+  label: Architecture
+  permalink: /arquitectura
+  description: Arquitectura de software
+
+buenas-practicas:
+  label: Best Practices
+  permalink: /buenas-practicas
+  description: Buenas prácticas de desarrollo
+
+ingenieria-software:
+  label: Software Engineering
+  permalink: /ingenieria-software
+  description: Principios y prácticas de ingeniería de software
+
+deuda-tecnica:
+  label: Technical Debt
+  permalink: /deuda-tecnica
+  description: Gestión de deuda técnica
+
+comparativa:
+  label: Comparison
+  permalink: /comparativa
+  description: Artículos comparativos
+
+agentes-ai:
+  label: AI Agents
+  permalink: /agentes-ai
+  description: Frameworks de agentes y agentes IA
 personal:
   label: Personal
   permalink: /personal

@@ -79,7 +79,7 @@ I'm a developer passionate about technology and creating innovative solutions. I
 - **10 stars** on tachograph-structure project
 - **Multiple contributions** to open source projects
 
-## 📫 Contact
+## Contact
 
 Want to collaborate on a project or just chat about technology?
 

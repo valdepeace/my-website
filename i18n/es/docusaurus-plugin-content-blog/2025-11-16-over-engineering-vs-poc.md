@@ -2,7 +2,7 @@
 slug: over-engineering-vs-poc
 title: Ni todo es una PoC, ni hay que hacer un Netflix para un CRUD
 authors: [valdepeace]
-tags: [arquitectura, buenas-prácticas, ingeniería-software, deuda-técnica]
+tags: [arquitectura, buenas-practicas, ingenieria-software, deuda-tecnica]
 ---
 
 En los últimos años he visto dos extremos igual de dañinos en muchos equipos de desarrollo: el de la **sobre-ingeniería** y el de la **PoC eterna**. Este post va de por qué ambos extremos son una mala práctica de ingeniería y de cómo encontrar un punto medio razonable.
