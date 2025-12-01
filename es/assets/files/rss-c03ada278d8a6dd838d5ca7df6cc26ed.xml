@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>My Website Blog</title>
+    <link>/blog</link>
+    <description>RSS feed placeholder</description>
+    <language>en</language>
+  </channel>
+</rss>

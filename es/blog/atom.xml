@@ -2,40 +2,114 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://valdepeace.com/es/blog</id>
     <title>Andrés Carmona Gil Blog</title>
-    <updated>2025-11-29T00:00:00.000Z</updated>
+    <updated>2025-11-30T12:59:03.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://valdepeace.com/es/blog"/>
     <subtitle>Andrés Carmona Gil Blog</subtitle>
     <icon>https://valdepeace.com/es/img/favicon.ico</icon>
     <entry>
+        <title type="html"><![CDATA[Author]]></title>
+        <id>https://valdepeace.com/es/blog/authors/all-sebastien-lorber-articles</id>
+        <link href="https://valdepeace.com/es/blog/authors/all-sebastien-lorber-articles"/>
+        <updated>2025-11-30T12:59:03.000Z</updated>
+        <summary type="html"><![CDATA[This is a placeholder author page for all-sebastien-lorber-articles. Update with links or a proper bio as needed.]]></summary>
+        <content type="html"><![CDATA[<p>This is a placeholder author page for <code>all-sebastien-lorber-articles</code>. Update with links or a proper bio as needed.</p>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Author]]></title>
+        <id>https://valdepeace.com/es/blog/authors/yangshun</id>
+        <link href="https://valdepeace.com/es/blog/authors/yangshun"/>
+        <updated>2025-11-30T12:59:03.000Z</updated>
+        <summary type="html"><![CDATA[This is a placeholder author page for yangshun. You can update this file with a fuller bio, avatar, and links.]]></summary>
+        <content type="html"><![CDATA[<p>This is a placeholder author page for <code>yangshun</code>. You can update this file with a fuller bio, avatar, and links.</p>]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Mastra vs Microsoft Agent Framework + Azure AI Foundry — Comparativa práctica]]></title>
         <id>https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework</id>
         <link href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework"/>
         <updated>2025-11-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Resumen: Comparativa concisa entre Mastra (framework TypeScript) y Microsoft Agent Framework + Azure AI Foundry (plataforma gestionada de Microsoft para agentes).]]></summary>
-        <content type="html"><![CDATA[<p>Resumen: Comparativa concisa entre Mastra (framework TypeScript) y Microsoft Agent Framework + Azure AI Foundry (plataforma gestionada de Microsoft para agentes).</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-resumen-en-una-frase">1. Resumen en una frase<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#1-resumen-en-una-frase" class="hash-link" aria-label="Enlace directo al 1. Resumen en una frase" title="Enlace directo al 1. Resumen en una frase" translate="no">​</a></h2>
-<p><strong>Mastra</strong> → Framework TypeScript/Node para construir agentes, workflows, RAG, MCP, evals y trazas, pensado para desarrolladores JS/TS y apps web/backend modernas.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-comparativa-rápida">2. Comparativa rápida<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#2-comparativa-r%C3%A1pida" class="hash-link" aria-label="Enlace directo al 2. Comparativa rápida" title="Enlace directo al 2. Comparativa rápida" translate="no">​</a></h2>
-<table><thead><tr><th>Aspecto</th><th>Mastra</th><th>Microsoft Agent Framework + Azure AI Foundry</th></tr></thead><tbody><tr><td>Lenguaje / runtime</td><td>TypeScript / Node — ideal si tu stack es JS</td><td>.NET y Python — soporte nativo en Azure</td></tr><tr><td>Modelo mental</td><td>Framework TS para agentes, pipelines, RAG, trazas, MCP</td><td>SDK + runtime para grafos multi-agente, sucesor de Semantic Kernel / AutoGen</td></tr><tr><td>Despliegue</td><td>Se ejecuta donde quieras; Mastra Cloud para trazas/evals</td><td>Standalone o conectado al servicio gestionado Foundry en Azure</td></tr><tr><td>Proveedores de modelos</td><td>Multi-proveedor (OpenAI, Azure OpenAI, Claude, Gemini, Llama...)</td><td>Multi-proveedor con integración nativa en Azure</td></tr><tr><td>Workflows / orquestación</td><td>Pipelines / graphs en TS: suspend/resume, streaming</td><td>Orquestación basada en grafos, routing condicional, long-running, HITL</td></tr><tr><td>RAG / Conectores</td><td>Vector stores (Postgres, Pinecone), plantillas RAG</td><td>Integración nativa con Azure AI Search, Fabric, OneLake, SharePoint</td></tr><tr><td>MCP y herramientas</td><td>Fuerte soporte MCP, agent networks y herramientas</td><td>MCP como tipo de tool; Foundry aporta catálogo de recursos gestionados</td></tr><tr><td>Observabilidad</td><td>Mastra Cloud: traces, evals, scoring, UI</td><td>OpenTelemetry + Azure Monitor; paneles y gobernanza a nivel plataforma</td></tr><tr><td>Integración con Azure</td><td>Se puede desplegar en Azure pero es agnóstico</td><td>Integración profunda y oficial con Foundry, Fabric, Entra, Defender</td></tr><tr><td>Licencia / comunidad</td><td>Open source (Apache 2.0) con comunidad JS</td><td>Open source (MIT) mantenido por Microsoft y ecosistema</td></tr></tbody></table>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-cuál-elegir-según-el-contexto">3. ¿Cuál elegir según el contexto?<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#3-cu%C3%A1l-elegir-seg%C3%BAn-el-contexto" class="hash-link" aria-label="Enlace directo al 3. ¿Cuál elegir según el contexto?" title="Enlace directo al 3. ¿Cuál elegir según el contexto?" translate="no">​</a></h2>
+        <summary type="html"><![CDATA[Resumen: Comparativa entre Mastra (framework TypeScript) y Microsoft Agent Framework + Azure AI Foundry.]]></summary>
+        <content type="html"><![CDATA[<p>Resumen: Comparativa entre Mastra (framework TypeScript) y Microsoft Agent Framework + Azure AI Foundry.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-introducción">1. Introducción<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#1-introducci%C3%B3n" class="hash-link" aria-label="Enlace directo al 1. Introducción" title="Enlace directo al 1. Introducción" translate="no">​</a></h2>
+<p>Dos formas de construir agentes de IA en producción:</p>
 <ul>
-<li class="">Si tu stack es Node/TypeScript y quieres iterar rápido: <strong>Mastra</strong>.</li>
-<li class="">Si necesitas gobernanza corporativa en Azure y servicios gestionados: <strong>MAF + Foundry</strong>.</li>
+<li class=""><strong>Mastra</strong>: framework de agentes en TypeScript que pone el runtime y la orquestación en tu backend.</li>
+<li class=""><strong>Agent Framework + Azure AI Foundry</strong>: librería de orquestación (.NET/Python) más un servicio gestionado en Azure donde viven agentes, threads y runs.</li>
 </ul>
-<p><strong>Enfoque híbrido (recomendado):</strong></p>
-<ol>
-<li class="">Núcleo ágil en JS (Mastra) para desarrollo rápido.</li>
-<li class="">Para clientes Azure-first, desplegar agentes en Foundry y exponer APIs gestionadas.</li>
-<li class="">Orquestar desde tus servicios Node/Mastra las llamadas a los agentes gestionados cuando haga falta.</li>
-</ol>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-recomendación-práctica">4. Recomendación práctica<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#4-recomendaci%C3%B3n-pr%C3%A1ctica" class="hash-link" aria-label="Enlace directo al 4. Recomendación práctica" title="Enlace directo al 4. Recomendación práctica" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-modelo-mental-común-agents-threads-y-runs">2. Modelo mental común: agents, threads y runs<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#2-modelo-mental-com%C3%BAn-agents-threads-y-runs" class="hash-link" aria-label="Enlace directo al 2. Modelo mental común: agents, threads y runs" title="Enlace directo al 2. Modelo mental común: agents, threads y runs" translate="no">​</a></h2>
+<p>Conceptos compartidos:</p>
 <ul>
-<li class="">PoCs, automatizaciones internas, scrapers y MCP-first: <strong>Mastra</strong>.</li>
-<li class="">Proyectos corporativos regulados dentro de Azure: <strong>MAF + Foundry</strong>.</li>
+<li class=""><strong>Agent</strong>: persona virtual con instrucciones, modelo, tools y memoria.</li>
+<li class=""><strong>Thread / Session</strong>: hilo de conversación que mantiene el contexto.</li>
+<li class=""><strong>Messages</strong>: intercambio entre <code>user</code> y <code>assistant</code>.</li>
+<li class=""><strong>Run</strong>: ejecución concreta del agente.</li>
+</ul>
+<p>La diferencia principal es dónde vive la máquina de estados: en tu backend (Mastra) o en un servicio gestionado (Azure AI Agents).</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-qué-ofrece-cada-enfoque">3. ¿Qué ofrece cada enfoque?<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#3-qu%C3%A9-ofrece-cada-enfoque" class="hash-link" aria-label="Enlace directo al 3. ¿Qué ofrece cada enfoque?" title="Enlace directo al 3. ¿Qué ofrece cada enfoque?" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="mastra">Mastra<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#mastra" class="hash-link" aria-label="Enlace directo al Mastra" title="Enlace directo al Mastra" translate="no">​</a></h3>
+<ul>
+<li class="">Framework TS + runtime en tu app.</li>
+<li class="">Tools, workflows, RAG, trazas y evaluaciones (Mastra Cloud).</li>
+<li class="">Buena DX para equipos JS/TS.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="agent-framework--azure-ai-foundry">Agent Framework + Azure AI Foundry<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#agent-framework--azure-ai-foundry" class="hash-link" aria-label="Enlace directo al Agent Framework + Azure AI Foundry" title="Enlace directo al Agent Framework + Azure AI Foundry" translate="no">​</a></h3>
+<ul>
+<li class="">Agent Framework para orquestación (.NET/Python).</li>
+<li class="">Azure AI Foundry como servicio gestionado (agentes, threads, runs).</li>
+<li class="">Integración nativa con AI Search, Fabric, OneLake y servicios Azure.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-tabla-comparativa-resumen">4. Tabla comparativa (resumen)<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#4-tabla-comparativa-resumen" class="hash-link" aria-label="Enlace directo al 4. Tabla comparativa (resumen)" title="Enlace directo al 4. Tabla comparativa (resumen)" translate="no">​</a></h2>
+<table><thead><tr><th>Aspecto</th><th>Mastra</th><th>Agent Framework + Azure Foundry</th></tr></thead><tbody><tr><td>Tipo</td><td>Framework TS + observabilidad</td><td>Librería (.NET/Python) + servicio gestionado</td></tr><tr><td>Lenguaje</td><td>TypeScript / Node</td><td>.NET / Python</td></tr><tr><td>Runtime</td><td>En tu backend</td><td>En Azure (servicio gestionado)</td></tr><tr><td>Integración Azure</td><td>Vía SDKs</td><td>Nativa</td></tr><tr><td>Lock-in</td><td>Bajo</td><td>Medio/alto</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-pros-y-contras">5. Pros y contras<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#5-pros-y-contras" class="hash-link" aria-label="Enlace directo al 5. Pros y contras" title="Enlace directo al 5. Pros y contras" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pros-y-contras--mastra">Pros y contras — Mastra<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#pros-y-contras--mastra" class="hash-link" aria-label="Enlace directo al Pros y contras — Mastra" title="Enlace directo al Pros y contras — Mastra" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="pros--mastra">Pros — Mastra<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#pros--mastra" class="hash-link" aria-label="Enlace directo al Pros — Mastra" title="Enlace directo al Pros — Mastra" translate="no">​</a></h4>
+<ul>
+<li class="">100% TypeScript; alta velocidad de desarrollo en JS stacks.</li>
+<li class="">Control total del runtime y orquestación.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="contras--mastra">Contras — Mastra<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#contras--mastra" class="hash-link" aria-label="Enlace directo al Contras — Mastra" title="Enlace directo al Contras — Mastra" translate="no">​</a></h4>
+<ul>
+<li class="">Debes gestionar infraestructura y gobernanza por tu cuenta.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pros-y-contras--agent-framework--foundry">Pros y contras — Agent Framework + Foundry<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#pros-y-contras--agent-framework--foundry" class="hash-link" aria-label="Enlace directo al Pros y contras — Agent Framework + Foundry" title="Enlace directo al Pros y contras — Agent Framework + Foundry" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="pros--agent-framework--foundry">Pros — Agent Framework + Foundry<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#pros--agent-framework--foundry" class="hash-link" aria-label="Enlace directo al Pros — Agent Framework + Foundry" title="Enlace directo al Pros — Agent Framework + Foundry" translate="no">​</a></h4>
+<ul>
+<li class="">Servicio gestionado para threads/runs y escalado.</li>
+<li class="">Integración y gobierno enterprise en Azure.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="contras--agent-framework--foundry">Contras — Agent Framework + Foundry<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#contras--agent-framework--foundry" class="hash-link" aria-label="Enlace directo al Contras — Agent Framework + Foundry" title="Enlace directo al Contras — Agent Framework + Foundry" translate="no">​</a></h4>
+<ul>
+<li class="">Mayor acoplamiento a la plataforma Azure.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="6-enfoque-híbrido-recomendado-en-muchos-casos">6. Enfoque híbrido (recomendado en muchos casos)<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#6-enfoque-h%C3%ADbrido-recomendado-en-muchos-casos" class="hash-link" aria-label="Enlace directo al 6. Enfoque híbrido (recomendado en muchos casos)" title="Enlace directo al 6. Enfoque híbrido (recomendado en muchos casos)" translate="no">​</a></h2>
+<ul>
+<li class="">Mantén un núcleo de agentes/producto en Mastra para iteración rápida.</li>
+<li class="">Usa Foundry como herramienta especializada para datos y gobernanza, expuesta como APIs.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="7-ejemplo-rápido-esquema">7. Ejemplo rápido (esquema)<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#7-ejemplo-r%C3%A1pido-esquema" class="hash-link" aria-label="Enlace directo al 7. Ejemplo rápido (esquema)" title="Enlace directo al 7. Ejemplo rápido (esquema)" translate="no">​</a></h2>
+<div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// hybridAgent.ts (esquema)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">import</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> createAgent </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">from</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"mastra"</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">export</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> hybridAgent </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">createAgent</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  name</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"hybrid-agent"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  instructions</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"Decide cuándo delegar a Azure"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  model</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> provider</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"openai"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> name</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"gpt-4o-mini"</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  tools</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    askAzure</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      description</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"Consulta al agente de Azure"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token function-variable function" style="color:#d73a49">execute</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">async</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> query </span><span class="token punctuation" style="color:#393A34">}</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> query</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token builtin">string</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> answer</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"(respuesta simulada)"</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="8-conclusión">8. Conclusión<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#8-conclusi%C3%B3n" class="hash-link" aria-label="Enlace directo al 8. Conclusión" title="Enlace directo al 8. Conclusión" translate="no">​</a></h2>
+<ul>
+<li class="">Si tu equipo vive en TypeScript, Mastra facilita iterar rápido.</li>
+<li class="">Si necesitas gobernanza y servicios Azure, Agent Framework + Foundry encaja mejor.</li>
+<li class="">La combinación híbrida suele ofrecer lo mejor de ambos mundos.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="referencias">Referencias<a href="https://valdepeace.com/es/blog/mastra-vs-microsoft-agent-framework#referencias" class="hash-link" aria-label="Enlace directo al Referencias" title="Enlace directo al Referencias" translate="no">​</a></h2>
+<ul>
+<li class="">Documentación de Mastra — <a href="https://mastra.ai/docs" target="_blank" rel="noopener noreferrer" class="">https://mastra.ai/docs</a></li>
+<li class="">Repositorio Mastra en GitHub — <a href="https://github.com/mastra-ai/mastra" target="_blank" rel="noopener noreferrer" class="">https://github.com/mastra-ai/mastra</a></li>
+<li class="">Libro/guía de Mastra — <a href="https://mastra.ai/book" target="_blank" rel="noopener noreferrer" class="">https://mastra.ai/book</a></li>
+<li class="">Plantillas Mastra — <a href="https://mastra.ai/templates" target="_blank" rel="noopener noreferrer" class="">https://mastra.ai/templates</a></li>
+<li class="">Azure AI Foundry (Microsoft Learn) — <a href="https://learn.microsoft.com/es-es/azure/ai-foundry/" target="_blank" rel="noopener noreferrer" class="">https://learn.microsoft.com/es-es/azure/ai-foundry/</a></li>
+<li class="">SDK Azure AI Agents (<code>@azure/ai-agents</code>) — <a href="https://www.npmjs.com/package/@azure/ai-agents" target="_blank" rel="noopener noreferrer" class="">https://www.npmjs.com/package/@azure/ai-agents</a></li>
+<li class="">Azure Identity (<code>@azure/identity</code>) — <a href="https://www.npmjs.com/package/@azure/identity" target="_blank" rel="noopener noreferrer" class="">https://www.npmjs.com/package/@azure/identity</a></li>
+<li class="">Documentación general de Azure — <a href="https://learn.microsoft.com/azure" target="_blank" rel="noopener noreferrer" class="">https://learn.microsoft.com/azure</a></li>
 </ul>]]></content>
         <author>
             <name>Andrés Carmona Gil</name>
@@ -302,9 +376,9 @@ Cuando alguien pida "hazlo rápido":</p>
             <uri>https://github.com/valdepeace</uri>
         </author>
         <category label="Arquitectura" term="Arquitectura"/>
-        <category label="buenas-prácticas" term="buenas-prácticas"/>
-        <category label="ingeniería-software" term="ingeniería-software"/>
-        <category label="deuda-técnica" term="deuda-técnica"/>
+        <category label="Buenas Prácticas" term="Buenas Prácticas"/>
+        <category label="Ingeniería Software" term="Ingeniería Software"/>
+        <category label="Deuda Técnica" term="Deuda Técnica"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[¡Bienvenido a mi blog!]]></title>
@@ -337,7 +411,7 @@ Cuando alguien pida "hazlo rápido":</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mantente-conectado">Mantente conectado<a href="https://valdepeace.com/es/blog/welcome#mantente-conectado" class="hash-link" aria-label="Enlace directo al Mantente conectado" title="Enlace directo al Mantente conectado" translate="no">​</a></h2>
 <p>Si te interesa el contenido, puedes:</p>
 <ul>
-<li class="">Suscribirte al <a class="" href="https://valdepeace.com/es/blog/rss.xml">RSS feed</a></li>
+<li class="">Suscribirte al <a href="https://valdepeace.com/es/assets/files/rss-c03ada278d8a6dd838d5ca7df6cc26ed.xml" target="_blank" class="">RSS feed</a></li>
 <li class="">Seguirme en <a href="https://twitter.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">Twitter</a></li>
 <li class="">Conectar en <a href="https://www.linkedin.com/in/valdepeace" target="_blank" rel="noopener noreferrer" class="">LinkedIn</a></li>
 <li class="">Ver mi trabajo en <a href="https://github.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">GitHub</a></li>
