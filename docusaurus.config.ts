@@ -36,7 +36,7 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en', 'es'],
   },
-
+themes: ['@docusaurus/theme-mermaid'],
   presets: [
     [
       'classic',
@@ -58,13 +58,13 @@ const config: Config = {
           postsPerPage: 'ALL',
           blogSidebarTitle: 'Latest posts',
           blogSidebarCount: 10,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl: 'https://github.com/tu-usuario/my-website/tree/main/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+            // Please change this to your repo.
+            // Remove this to remove the "edit this page" links.
+            // editUrl: 'https://github.com/tu-usuario/my-website/tree/main/',
+            // Useful options to enforce blogging best practices
+            onInlineTags: 'warn',
+            onInlineAuthors: 'warn',
+            onUntruncatedBlogPosts: 'warn',
         },
         theme: {
           customCss: './src/css/custom.css',
