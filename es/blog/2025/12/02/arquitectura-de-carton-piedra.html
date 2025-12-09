@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda | Andrés Carmona Gil</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://valdepeace.com/es/img/profile.png"><meta data-rh="true" name="twitter:image" content="https://valdepeace.com/es/img/profile.png"><meta data-rh="true" property="og:url" content="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra"><meta data-rh="true" property="og:locale" content="es"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="es"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="es"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda | Andrés Carmona Gil"><meta data-rh="true" name="description" content="Qué es la arquitectura de cartón piedra, por qué aparece y cómo mejorarla sin reescribir todo."><meta data-rh="true" property="og:description" content="Qué es la arquitectura de cartón piedra, por qué aparece y cómo mejorarla sin reescribir todo."><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-12-02T00:00:00.000Z"><meta data-rh="true" property="article:author" content="https://github.com/valdepeace"><meta data-rh="true" property="article:tag" content="Architecture,refactor,Best Practices"><link data-rh="true" rel="icon" href="/es/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra"><link data-rh="true" rel="alternate" href="https://valdepeace.com/blog/2025/12/02/arquitectura-de-carton-piedra" hreflang="en"><link data-rh="true" rel="alternate" href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra" hreflang="es"><link data-rh="true" rel="alternate" href="https://valdepeace.com/blog/2025/12/02/arquitectura-de-carton-piedra" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra","mainEntityOfPage":"https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra","url":"https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra","headline":"Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda","name":"Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda","description":"Qué es la arquitectura de cartón piedra, por qué aparece y cómo mejorarla sin reescribir todo.","datePublished":"2025-12-02T00:00:00.000Z","author":{"@type":"Person","name":"Andrés Carmona Gil","description":"Desarrollador & Creador de Contenido","url":"https://github.com/valdepeace","image":"https://github.com/valdepeace.png"},"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://valdepeace.com/es/blog","name":"Personal Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/es/blog/rss.xml" title="Andrés Carmona Gil RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/es/blog/atom.xml" title="Andrés Carmona Gil Atom Feed"><link rel="stylesheet" href="/es/assets/css/styles.01770b0d.css">
+<script src="/es/assets/js/runtime~main.d0fc5854.js" defer="defer"></script>
+<script src="/es/assets/js/main.fed6aabb.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/es/img/profile.png"><link rel="preload" as="image" href="https://github.com/valdepeace.png"><div role="region" aria-label="Saltar al contenido principal"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Saltar al contenido principal</a></div><nav aria-label="Principal" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Alternar barra lateral" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/es/"><div class="navbar__logo"><img src="/es/img/profile.png" alt="Andrés Carmona" class="themedComponent_mlkZ themedComponent--light_NVdE" height="32" width="32" style="border-radius:50%"><img src="/es/img/profile.png" alt="Andrés Carmona" class="themedComponent_mlkZ themedComponent--dark_xIcU" height="32" width="32" style="border-radius:50%"></div><b class="navbar__title text--truncate">Andrés Carmona</b></a><a class="navbar__item navbar__link" href="/es/about">Sobre Mí</a><a class="navbar__item navbar__link" href="/es/projects">Proyectos</a><a class="navbar__item navbar__link" href="/es/docs/intro">Documentación</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/es/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" class="iconLanguage_nlXk"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg>Español</a><ul class="dropdown__menu"><li><a href="/blog/2025/12/02/arquitectura-de-carton-piedra" target="_self" rel="noopener noreferrer" class="dropdown__link" lang="en">English</a></li><li><a href="/es/blog/2025/12/02/arquitectura-de-carton-piedra" target="_self" rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang="es">Español</a></li></ul></div><a href="https://github.com/valdepeace" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://www.linkedin.com/in/valdepeace" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="modo del sistema" aria-label="Cambiar entre modo oscuro y claro (actualmente modo del sistema)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="Navegación de publicaciones recientes"><div class="sidebarItemTitle_pO2u margin-bottom--md">Últimos posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/es/blog/2025/12/02/arquitectura-de-carton-piedra">Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/es/blog/2025/12/02/cardboard-architecture">Cardboard Architecture: when code looks clean but nobody understands it</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/es/blog/mastra-vs-microsoft-agent-framework">Mastra vs Microsoft Agent Framework + Azure AI Foundry — Comparativa práctica</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/es/blog/over-engineering-vs-poc">Ni todo es una PoC, ni hay que hacer un Netflix para un CRUD</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/es/blog/welcome">¡Bienvenido a mi blog!</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-12-02T00:00:00.000Z">2 de diciembre de 2025</time> · <!-- -->6 min de lectura</div><div class="margin-top--md margin-bottom--sm row"><div class="col col--12 authorCol_Hf19"><div class="avatar margin-bottom--sm"><a class="avatar__photo-link" href="/es/blog/authors/valdepeace"><img class="avatar__photo authorImage_XqGP" src="https://github.com/valdepeace.png" alt="Andrés Carmona Gil"></a><div class="avatar__intro authorDetails_lV9A"><div class="avatar__name"><a href="/es/blog/authors/valdepeace"><span class="authorName_yefp" translate="no">Andrés Carmona Gil</span></a></div><small class="authorTitle_nd0D" title="Desarrollador &amp; Creador de Contenido">Desarrollador &amp; Creador de Contenido</small><div class="authorSocials_rSDt"><a href="https://x.com/valdepeace" target="_blank" rel="noopener noreferrer" class="authorSocialLink_owbf" title="X"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 1200 1227" style="--dark:#000;--light:#fff" class="authorSocialIcon_XYv3 xSvg_y3PF"><path d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z"></path></svg></a><a href="https://www.linkedin.com/in/valdepeace/" target="_blank" rel="noopener noreferrer" class="authorSocialLink_owbf" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid" viewBox="0 0 256 256" style="--dark:#0a66c2;--light:#ffffffe6" class="authorSocialIcon_XYv3 linkedinSvg_FCgI"><path d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"></path></svg></a><a href="https://github.com/valdepeace" target="_blank" rel="noopener noreferrer" class="authorSocialLink_owbf" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 250" preserveAspectRatio="xMidYMid" style="--dark:#000;--light:#fff" class="authorSocialIcon_XYv3 githubSvg_Uu4N"><path d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0Zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931Zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66Zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08Zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27Zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622Zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868Zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403Z"></path></svg></a></div></div></div></div></div></header><div id="__blog-post-container" class="markdown"><h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="arquitectura-de-cartón-piedra-cuando-el-código-parece-limpio-pero-no-hay-quien-lo-entienda">Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda<a href="#arquitectura-de-cartón-piedra-cuando-el-código-parece-limpio-pero-no-hay-quien-lo-entienda" class="hash-link" aria-label="Enlace directo al Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda" title="Enlace directo al Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda" translate="no">​</a></h2>
+<p>Hay proyectos que, al abrirlos, dan muy buena impresión:</p>
+<ul>
+<li class="">Carpetas bien puestas: <code>core</code>, <code>domain</code>, <code>infrastructure</code>, <code>services</code>, <code>helpers</code>…</li>
+<li class="">Clases con nombres serios: <code>UserService</code>, <code>OrderManager</code>, <code>PaymentHandler</code>…</li>
+<li class="">Documentación extensa, diagramas, README detallado…</li>
+</ul>
+<p>Y sin embargo, cuando intentas seguir <strong>cómo funciona realmente el sistema</strong>, te encuentras con algo muy distinto:
+métodos que llaman a otros métodos que llaman a otros métodos, capas que solo delegan, lógica de negocio repartida por todo el repositorio… y tú pensando:</p>
+<blockquote>
+<p>“Esto parece muy arquitectónico, pero entenderlo es un dolor.”</p>
+</blockquote>
+<p>A eso es a lo que me gusta llamar <strong>arquitectura de cartón piedra</strong>: por fuera parece sólida, pero por dentro no sostiene bien el peso del negocio.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-es-la-arquitectura-de-cartón-piedra">¿Qué es la “arquitectura de cartón piedra”?<a href="#qué-es-la-arquitectura-de-cartón-piedra" class="hash-link" aria-label="Enlace directo al ¿Qué es la “arquitectura de cartón piedra”?" title="Enlace directo al ¿Qué es la “arquitectura de cartón piedra”?" translate="no">​</a></h2>
+<p>No es un término oficial, pero describe muy bien una situación bastante común:</p>
+<blockquote>
+<p><strong>Arquitectura de cartón piedra</strong>: cuando se construye una estructura de carpetas y capas que <em>simula</em> una arquitectura limpia, pero en la práctica no ayuda a entender el flujo ni a mantener el sistema.</p>
+</blockquote>
+<p>Algunos síntomas típicos:</p>
+<ul>
+<li class="">
+<p>Abres el proyecto y ves mil capas, pero <strong>no sabes dónde vive el negocio</strong>.</p>
+</li>
+<li class="">
+<p>Para seguir un caso de uso sencillo (por ejemplo, crear un pedido) tienes que abrir <strong>8–10 ficheros</strong>.</p>
+</li>
+<li class="">
+<p>La mayoría de las clases son <strong>pasamanos</strong>:</p>
+<ul>
+<li class=""><code>Controller</code> → <code>Manager</code> → <code>Handler</code> → <code>Service</code> → <code>Processor</code> → <code>Repository</code>…
+y cada uno solo delega al siguiente.</li>
+</ul>
+</li>
+<li class="">
+<p>La lógica de negocio está <strong>fragmentada</strong>:</p>
+<ul>
+<li class="">un trozo en el controller,</li>
+<li class="">otro en un helper,</li>
+<li class="">otro en el repositorio,</li>
+<li class="">otro en un “util” genérico.</li>
+</ul>
+</li>
+</ul>
+<p>Puede haber documentación muy buena…
+pero si la estructura del código no refleja bien el negocio, <strong>la arquitectura no está cumpliendo su función</strong>.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="por-qué-pasa-esto">¿Por qué pasa esto?<a href="#por-qué-pasa-esto" class="hash-link" aria-label="Enlace directo al ¿Por qué pasa esto?" title="Enlace directo al ¿Por qué pasa esto?" translate="no">​</a></h2>
+<p>Normalmente se mezclan varias cosas:</p>
+<ol>
+<li class="">
+<p><strong>Diseñar por carpeta, no por dominio</strong>
+Se copia una estructura “de libro” (o de otro proyecto) sin pensar si encaja con el negocio real.</p>
+</li>
+<li class="">
+<p><strong>Confundir “más capas” con “mejor arquitectura”</strong></p>
+<ul>
+<li class="">Se añaden capas tipo <code>Manager</code>, <code>Handler</code>, <code>Processor</code>, etc.</li>
+<li class="">Pero muchas veces esas capas no encapsulan nada nuevo, solo complican el recorrido.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Cargo cult de patrones</strong>
+Se aplican etiquetas como “Clean Architecture”, “DDD”, “Hexagonal”…
+pero solo en lo superficial: nombres de carpetas y clases, sin respetar los principios.</p>
+</li>
+<li class="">
+<p><strong>Miedo a equivocarse</strong>
+Se crean capas “por si acaso las necesitamos luego”,
+y al final se acumulan niveles de indirección innecesarios.</p>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cómo-se-vive-trabajar-en-un-proyecto-así">Cómo se vive trabajar en un proyecto así<a href="#cómo-se-vive-trabajar-en-un-proyecto-así" class="hash-link" aria-label="Enlace directo al Cómo se vive trabajar en un proyecto así" title="Enlace directo al Cómo se vive trabajar en un proyecto así" translate="no">​</a></h2>
+<p>Si has caído en uno de estos proyectos, probablemente te suena:</p>
+<ul>
+<li class="">Para hacer un cambio pequeño tienes que tocar código en <strong>medio repositorio</strong>.</li>
+<li class="">No está claro dónde <strong>debería</strong> ir una nueva regla de negocio.</li>
+<li class="">Refactorizar da miedo porque no entiendes bien el flujo completo.</li>
+<li class="">La documentación se vuelve obligatoria porque el código, por sí solo, <strong>no se explica</strong>.</li>
+</ul>
+<p>Una arquitectura sana debería ser casi lo contrario:</p>
+<blockquote>
+<p>Aunque no haya documentación perfecta,
+deberías intuir dónde están las cosas con solo ver la estructura básica.</p>
+</blockquote>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cómo-es-una-arquitectura-que-ayuda-de-verdad">¿Cómo es una arquitectura que ayuda de verdad?<a href="#cómo-es-una-arquitectura-que-ayuda-de-verdad" class="hash-link" aria-label="Enlace directo al ¿Cómo es una arquitectura que ayuda de verdad?" title="Enlace directo al ¿Cómo es una arquitectura que ayuda de verdad?" translate="no">​</a></h2>
+<p>Una buena arquitectura no va de tener muchas capas, sino de que:</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-el-flujo-sea-fácil-de-seguir">1. El flujo sea fácil de seguir<a href="#1-el-flujo-sea-fácil-de-seguir" class="hash-link" aria-label="Enlace directo al 1. El flujo sea fácil de seguir" title="Enlace directo al 1. El flujo sea fácil de seguir" translate="no">​</a></h3>
+<p>Ejemplo muy simple:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">HTTP Request → Controller → Caso de uso → Repositorios/Adaptadores → Respuesta</span><br></span></code></pre></div></div>
+<p>Es decir, puedes explicar qué pasa con una frase y unos pocos ficheros.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-la-lógica-de-negocio-esté-concentrada-en-sitios-previsibles">2. La lógica de negocio esté concentrada en sitios previsibles<a href="#2-la-lógica-de-negocio-esté-concentrada-en-sitios-previsibles" class="hash-link" aria-label="Enlace directo al 2. La lógica de negocio esté concentrada en sitios previsibles" title="Enlace directo al 2. La lógica de negocio esté concentrada en sitios previsibles" translate="no">​</a></h3>
+<p>Por ejemplo:</p>
+<ul>
+<li class=""><code>CreateOrderUseCase</code></li>
+<li class=""><code>ReserveSeatService</code></li>
+<li class=""><code>CalculatePriceDomainService</code></li>
+</ul>
+<p>Y no escondida en helpers genéricos o en métodos random de un repositorio.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-las-capas-existan-por-una-razón-clara">3. Las capas existan por una razón clara<a href="#3-las-capas-existan-por-una-razón-clara" class="hash-link" aria-label="Enlace directo al 3. Las capas existan por una razón clara" title="Enlace directo al 3. Las capas existan por una razón clara" translate="no">​</a></h3>
+<p>Un esquema típico (y suficiente en muchos casos) podría ser:</p>
+<ul>
+<li class=""><strong>Interface / API</strong>: controllers, DTOs, validaciones de entrada.</li>
+<li class=""><strong>Application</strong>: casos de uso, orquestación de procesos.</li>
+<li class=""><strong>Domain</strong>: entidades, reglas de negocio puras.</li>
+<li class=""><strong>Infrastructure</strong>: repositorios, acceso a bases de datos, APIs externas, colas, etc.</li>
+</ul>
+<p>La clave es que, si alguien te pregunta:</p>
+<blockquote>
+<p>“¿Dónde está la lógica de <em>reservar un curso</em>?”</p>
+</blockquote>
+<p>puedas responder algo tipo:</p>
+<blockquote>
+<p>“Mira en <code>application/ReserveCourse.ts</code> y en <code>domain/CourseReservation</code>.”</p>
+</blockquote>
+<p>Sin tener que hacer un <em>“buscar en todo el repo”</em>.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="checklist-rápido-huele-a-cartón-piedra">Checklist rápido: ¿huele a cartón piedra?<a href="#checklist-rápido-huele-a-cartón-piedra" class="hash-link" aria-label="Enlace directo al Checklist rápido: ¿huele a cartón piedra?" title="Enlace directo al Checklist rápido: ¿huele a cartón piedra?" translate="no">​</a></h2>
+<p>Algunas preguntas útiles cuando revisas un proyecto:</p>
+<ol>
+<li class="">
+<p><strong>¿Cuántos ficheros tengo que abrir para seguir un caso de uso sencillo?</strong></p>
+<ul>
+<li class="">Si son más de 5–6, sospecha.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>¿Cuántas clases solo delegan sin añadir lógica nueva?</strong></p>
+<ul>
+<li class="">Si la mayoría son “pasamanos”, sobran capas.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>¿Sé claramente dónde vive el negocio?</strong></p>
+<ul>
+<li class="">¿Hay un sitio claro para los casos de uso?</li>
+</ul>
+</li>
+<li class="">
+<p><strong>¿La estructura está basada en “features” o en “capas genéricas”?</strong></p>
+<ul>
+<li class=""><code>orders/</code>, <code>payments/</code>, <code>users/</code> suele ser más útil que
+<code>managers/</code>, <code>helpers/</code>, <code>processors/</code>.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>¿Qué pasa si el “desarrollador héroe” no está?</strong></p>
+<ul>
+<li class="">¿El equipo puede mantener el sistema sin él/ella?</li>
+</ul>
+</li>
+</ol>
+<p>Cuantas más respuestas incómodas, más probable que estés delante de una arquitectura de cartón piedra.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cómo-mejorar-sin-reescribirlo-todo">Cómo mejorar sin reescribirlo todo<a href="#cómo-mejorar-sin-reescribirlo-todo" class="hash-link" aria-label="Enlace directo al Cómo mejorar sin reescribirlo todo" title="Enlace directo al Cómo mejorar sin reescribirlo todo" translate="no">​</a></h2>
+<p>No siempre puedes tirar el proyecto y empezar de cero (de hecho, casi nunca).
+Pero sí puedes <strong>mejorar poco a poco</strong>:</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-elegir-un-caso-de-uso-clave-y-mapearlo">1. Elegir un caso de uso clave y mapearlo<a href="#1-elegir-un-caso-de-uso-clave-y-mapearlo" class="hash-link" aria-label="Enlace directo al 1. Elegir un caso de uso clave y mapearlo" title="Enlace directo al 1. Elegir un caso de uso clave y mapearlo" translate="no">​</a></h3>
+<p>Por ejemplo: “crear pedido”.</p>
+<ul>
+<li class="">Dibuja el flujo actual (aunque sea en un papel) desde el endpoint hasta la base de datos.</li>
+<li class="">Identifica capas que no aportan nada.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-concentrar-la-lógica-de-negocio">2. Concentrar la lógica de negocio<a href="#2-concentrar-la-lógica-de-negocio" class="hash-link" aria-label="Enlace directo al 2. Concentrar la lógica de negocio" title="Enlace directo al 2. Concentrar la lógica de negocio" translate="no">​</a></h3>
+<ul>
+<li class="">Crea un <code>CreateOrderUseCase</code> o similar.</li>
+<li class="">Ve moviendo reglas dispersas (en controller, helpers, etc.) hacia ese caso de uso.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-eliminar-pasamanos-innecesarios">3. Eliminar pasamanos innecesarios<a href="#3-eliminar-pasamanos-innecesarios" class="hash-link" aria-label="Enlace directo al 3. Eliminar pasamanos innecesarios" title="Enlace directo al 3. Eliminar pasamanos innecesarios" translate="no">​</a></h3>
+<ul>
+<li class="">Si un <code>Manager</code> solo llama a un <code>Service</code> sin añadir nada, fusiónalos.</li>
+<li class="">Menos capas, más claridad.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-nombrar-por-dominio-no-por-patrón">4. Nombrar por dominio, no por patrón<a href="#4-nombrar-por-dominio-no-por-patrón" class="hash-link" aria-label="Enlace directo al 4. Nombrar por dominio, no por patrón" title="Enlace directo al 4. Nombrar por dominio, no por patrón" translate="no">​</a></h3>
+<p>Mejor:</p>
+<ul>
+<li class=""><code>AssignSeatToPassenger</code></li>
+<li class=""><code>CalculateInvoiceTotals</code></li>
+</ul>
+<p>que:</p>
+<ul>
+<li class=""><code>SeatManager</code></li>
+<li class=""><code>InvoiceProcessor</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-documentar-el-flujo-no-solo-la-arquitectura">5. Documentar el flujo, no solo la arquitectura<a href="#5-documentar-el-flujo-no-solo-la-arquitectura" class="hash-link" aria-label="Enlace directo al 5. Documentar el flujo, no solo la arquitectura" title="Enlace directo al 5. Documentar el flujo, no solo la arquitectura" translate="no">​</a></h3>
+<p>Un diagrama sencillo del tipo:</p>
+<div class="language-mermaid codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-mermaid codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">flowchart LR</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  A[HTTP Request] --&gt; B[OrderController]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  B --&gt; C[CreateOrderUseCase]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  C --&gt; D[OrderRepository]</span><br></span></code></pre></div></div>
+<p>vale oro si realmente refleja lo que pasa.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cerrar-el-círculo">Cerrar el círculo<a href="#cerrar-el-círculo" class="hash-link" aria-label="Enlace directo al Cerrar el círculo" title="Enlace directo al Cerrar el círculo" translate="no">​</a></h2>
+<p>Al final, la reflexión es sencilla:</p>
+<ul>
+<li class=""><strong>Arquitectura no es cuántas carpetas tienes</strong>,
+sino cuánto te ayuda a pensar y cambiar el negocio.</li>
+<li class="">Documentar está genial, pero la mejor documentación es un código y una estructura
+que “se explican solos”.</li>
+<li class="">Y un desarrollador realmente senior no es solo el que desarrolla rápido,
+sino el que deja un sistema que cualquier persona del equipo puede entender y seguir ampliando.</li>
+</ul>
+<p>Si al abrir un proyecto tienes la sensación de que todo está muy “bonito”, pero <strong>no puedes seguir el flujo sin sufrir</strong>, probablemente no eres tú: es cartón piedra.</p>
+<p>Y la buena noticia es que, en cuanto empiezas a desarrollar ese olfato, también empiezas a diseñar tus propios proyectos de forma distinta: menos postureo, más claridad, más negocio… y menos dolor para el siguiente que venga detrás (aunque ese siguiente seas tú dentro de seis meses).</p>
+<hr>
+<p>Si quieres, en otro post podemos hacer el “modo práctico”: coger un caso de uso real tuyo y enseñar un <em>antes vs después</em> de refactor, con código.</p></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><b>Etiquetas:</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a rel="tag" title="Software architecture" class="tag_zVej tagRegular_sFm0" href="/es/blog/tags/architecture">Architecture</a></li><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/es/blog/tags/refactor">refactor</a></li><li class="tag_QGVx"><a rel="tag" title="Software development best practices" class="tag_zVej tagRegular_sFm0" href="/es/blog/tags/best-practices">Best Practices</a></li></ul></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Navegación por las páginas de publicación del blog"><a class="pagination-nav__link pagination-nav__link--next" href="/es/blog/2025/12/02/cardboard-architecture"><div class="pagination-nav__sublabel">Publicación más antigua</div><div class="pagination-nav__label">Cardboard Architecture: when code looks clean but nobody understands it</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#arquitectura-de-cartón-piedra-cuando-el-código-parece-limpio-pero-no-hay-quien-lo-entienda" class="table-of-contents__link toc-highlight">Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda</a></li><li><a href="#qué-es-la-arquitectura-de-cartón-piedra" class="table-of-contents__link toc-highlight">¿Qué es la “arquitectura de cartón piedra”?</a></li><li><a href="#por-qué-pasa-esto" class="table-of-contents__link toc-highlight">¿Por qué pasa esto?</a></li><li><a href="#cómo-se-vive-trabajar-en-un-proyecto-así" class="table-of-contents__link toc-highlight">Cómo se vive trabajar en un proyecto así</a></li><li><a href="#cómo-es-una-arquitectura-que-ayuda-de-verdad" class="table-of-contents__link toc-highlight">¿Cómo es una arquitectura que ayuda de verdad?</a><ul><li><a href="#1-el-flujo-sea-fácil-de-seguir" class="table-of-contents__link toc-highlight">1. El flujo sea fácil de seguir</a></li><li><a href="#2-la-lógica-de-negocio-esté-concentrada-en-sitios-previsibles" class="table-of-contents__link toc-highlight">2. La lógica de negocio esté concentrada en sitios previsibles</a></li><li><a href="#3-las-capas-existan-por-una-razón-clara" class="table-of-contents__link toc-highlight">3. Las capas existan por una razón clara</a></li></ul></li><li><a href="#checklist-rápido-huele-a-cartón-piedra" class="table-of-contents__link toc-highlight">Checklist rápido: ¿huele a cartón piedra?</a></li><li><a href="#cómo-mejorar-sin-reescribirlo-todo" class="table-of-contents__link toc-highlight">Cómo mejorar sin reescribirlo todo</a><ul><li><a href="#1-elegir-un-caso-de-uso-clave-y-mapearlo" class="table-of-contents__link toc-highlight">1. Elegir un caso de uso clave y mapearlo</a></li><li><a href="#2-concentrar-la-lógica-de-negocio" class="table-of-contents__link toc-highlight">2. Concentrar la lógica de negocio</a></li><li><a href="#3-eliminar-pasamanos-innecesarios" class="table-of-contents__link toc-highlight">3. Eliminar pasamanos innecesarios</a></li><li><a href="#4-nombrar-por-dominio-no-por-patrón" class="table-of-contents__link toc-highlight">4. Nombrar por dominio, no por patrón</a></li><li><a href="#5-documentar-el-flujo-no-solo-la-arquitectura" class="table-of-contents__link toc-highlight">5. Documentar el flujo, no solo la arquitectura</a></li></ul></li><li><a href="#cerrar-el-círculo" class="table-of-contents__link toc-highlight">Cerrar el círculo</a></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Sitio</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/es/about">Sobre Mí</a></li><li class="footer__item"><a class="footer__link-item" href="/es/projects">Proyectos</a></li><li class="footer__item"><a class="footer__link-item" href="/es/blog">Blog</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Redes Sociales</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/valdepeace" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/in/valdepeace" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://twitter.com/valdepeace" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Más</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/es/docs/intro">Documentación</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Andrés Carmona Gil. Hecho con ❤️ usando Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
