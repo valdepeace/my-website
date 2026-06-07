@@ -4,17 +4,79 @@
         <title>Andrés Carmona Gil Blog</title>
         <link>https://valdepeace.com/es/blog</link>
         <description>Andrés Carmona Gil Blog</description>
-        <lastBuildDate>Tue, 02 Dec 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 05 Jun 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>es</language>
         <item>
+            <title><![CDATA[Por qué he creado mastra-azure-ai-search]]></title>
+            <link>https://valdepeace.com/es/blog/mastra-azure-ai-search</link>
+            <guid>https://valdepeace.com/es/blog/mastra-azure-ai-search</guid>
+            <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Una nota corta sobre publicar un vector store de Azure AI Search para Mastra mientras la PR upstream sigue pendiente.]]></description>
+            <content:encoded><![CDATA[<p>He estado trabajando en <strong>mastra-azure-ai-search</strong>, un proveedor de vector store de Azure AI Search para Mastra.</p>
+<p>El motivo es sencillo: abrí el trabajo de integración en Mastra, pero la PR todavía no ha sido aprobada. En vez de dejar el adaptador bloqueado dentro de una pull request pendiente, he decidido publicarlo como paquete independiente para poder usarlo, probarlo y mejorarlo ya.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="el-contexto">El contexto<a href="https://valdepeace.com/es/blog/mastra-azure-ai-search#el-contexto" class="hash-link" aria-label="Enlace directo al El contexto" title="Enlace directo al El contexto" translate="no">​</a></h2>
+<p>Mastra ya tiene un modelo limpio para vector stores y memoria. Azure AI Search, por su parte, es una opción muy interesante cuando estás construyendo sobre Azure y necesitas búsqueda vectorial, búsqueda híbrida, ranking semántico e infraestructura preparada para entornos enterprise.</p>
+<p>La pieza que faltaba era un puente directo entre ambos mundos:</p>
+<ul>
+<li class="">agentes y memoria de Mastra por un lado;</li>
+<li class="">índices, vectores y filtros de Azure AI Search por otro.</li>
+</ul>
+<p>Eso es lo que intenta aportar <code>mastra-azure-ai-search</code>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="por-qué-un-paquete-separado">¿Por qué un paquete separado?<a href="https://valdepeace.com/es/blog/mastra-azure-ai-search#por-qu%C3%A9-un-paquete-separado" class="hash-link" aria-label="Enlace directo al ¿Por qué un paquete separado?" title="Enlace directo al ¿Por qué un paquete separado?" translate="no">​</a></h2>
+<p>La idea inicial era contribuirlo directamente al monorepo de Mastra. Ese trabajo está reflejado en <a href="https://github.com/mastra-ai/mastra/pull/10146" target="_blank" rel="noopener noreferrer" class="">mastra-ai/mastra#10146</a>.</p>
+<p>Pero el flujo de contribución open source lleva tiempo: revisiones, nombres de paquetes, encaje con la API, expectativas de mantenimiento y calendario de releases. Mientras eso se resuelve, necesitaba algo práctico que funcionara hoy.</p>
+<p>También hay una parte humana en esto. Las contribuciones open source normalmente son trabajo no pagado, hecho en ratos libres y con la intención de ayudar al proyecto. No espero una aprobación inmediata, pero algo de feedback, aunque sea un "ahora no" o un "queremos que esto tenga otra forma", haría mucho más fácil seguir avanzando.</p>
+<p>Así que extraje el trabajo en un paquete independiente:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm install mastra-azure-ai-search</span><br></span></code></pre></div></div>
+<p>Esto permite usar la implementación sin esperar a la decisión upstream.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-hace-el-adaptador">Qué hace el adaptador<a href="https://valdepeace.com/es/blog/mastra-azure-ai-search#qu%C3%A9-hace-el-adaptador" class="hash-link" aria-label="Enlace directo al Qué hace el adaptador" title="Enlace directo al Qué hace el adaptador" translate="no">​</a></h2>
+<p>El paquete proporciona una implementación <code>AzureAISearchVector</code> para Mastra. En la práctica, eso significa:</p>
+<ul>
+<li class="">crear y eliminar índices vectoriales en Azure AI Search;</li>
+<li class="">insertar, consultar, actualizar y borrar vectores;</li>
+<li class="">usar API keys o credenciales de Azure;</li>
+<li class="">mapear filtros de metadata de Mastra a filtros de Azure AI Search;</li>
+<li class="">soportar patrones de búsqueda semántica, híbrida y multi-vector;</li>
+<li class="">integrarse con Mastra Memory para semantic recall.</li>
+</ul>
+<p>La parte delicada no era simplemente "mandar vectores a Azure". Lo complicado era traducir las expectativas del vector store de Mastra a los conceptos de Azure AI Search sin obligar al usuario a pensar demasiado en el esquema interno de Azure.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="los-filtros-de-metadata-eran-el-detalle-importante">Los filtros de metadata eran el detalle importante<a href="https://valdepeace.com/es/blog/mastra-azure-ai-search#los-filtros-de-metadata-eran-el-detalle-importante" class="hash-link" aria-label="Enlace directo al Los filtros de metadata eran el detalle importante" title="Enlace directo al Los filtros de metadata eran el detalle importante" translate="no">​</a></h2>
+<p>Para memoria y RAG, la similitud vectorial solo es la mitad de la historia. Normalmente también necesitas filtros como:</p>
+<div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  thread_id</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"thread-123"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  resource_id</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"customer-456"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
+<p>Mastra Memory puede pasar metadata indexes para semantic recall. El adaptador mapea esos campos a campos filtrables de Azure AI Search y, al mismo tiempo, guarda el objeto completo de metadata como JSON.</p>
+<p>Eso hace posible usar Azure AI Search como backend práctico para memoria de agentes, no solo como una base de datos vectorial sin contexto.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-he-aprendido">Qué he aprendido<a href="https://valdepeace.com/es/blog/mastra-azure-ai-search#qu%C3%A9-he-aprendido" class="hash-link" aria-label="Enlace directo al Qué he aprendido" title="Enlace directo al Qué he aprendido" translate="no">​</a></h2>
+<p>Ha sido un buen recordatorio de que las integraciones rara vez van solo del happy path. Las operaciones vectoriales básicas son razonablemente directas. El trabajo real está en los bordes:</p>
+<ul>
+<li class="">cómo se comportan los exports del paquete en ESM y CJS;</li>
+<li class="">cómo mapear filtros de una abstracción a otra;</li>
+<li class="">cómo mantener una API familiar para usuarios de Mastra;</li>
+<li class="">cómo testear sin necesitar credenciales de Azure en cada test unitario;</li>
+<li class="">cómo conservar flexibilidad para características avanzadas de Azure AI Search.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cierre">Cierre<a href="https://valdepeace.com/es/blog/mastra-azure-ai-search#cierre" class="hash-link" aria-label="Enlace directo al Cierre" title="Enlace directo al Cierre" translate="no">​</a></h2>
+<p>Sigo esperando que la PR upstream pueda entrar de alguna forma. Mientras tanto, <code>mastra-azure-ai-search</code> es mi forma de desbloquear el caso de uso sin obligar a nadie a esperar.</p>
+<p>A veces el camino pragmático es publicar primero un paquete pequeño e independiente, dejar que la gente lo pruebe, y usar ese feedback para mejorar después la contribución upstream.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="enlaces">Enlaces<a href="https://valdepeace.com/es/blog/mastra-azure-ai-search#enlaces" class="hash-link" aria-label="Enlace directo al Enlaces" title="Enlace directo al Enlaces" translate="no">​</a></h2>
+<ul>
+<li class="">Repositorio del paquete: <a href="https://github.com/valdepeace/mastra-azure-ai-search" target="_blank" rel="noopener noreferrer" class="">valdepeace/mastra-azure-ai-search</a></li>
+<li class="">PR upstream: <a href="https://github.com/mastra-ai/mastra/pull/10146" target="_blank" rel="noopener noreferrer" class="">mastra-ai/mastra#10146</a></li>
+<li class="">Repositorio demo: <a href="https://github.com/valdepeace/mastra-azure-aisearch-demo" target="_blank" rel="noopener noreferrer" class="">valdepeace/mastra-azure-aisearch-demo</a></li>
+</ul>]]></content:encoded>
+            <category>Mastra</category>
+            <category>Azure AI Search</category>
+            <category>Agentes AI</category>
+            <category>Open Source</category>
+        </item>
+        <item>
             <title><![CDATA[Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda]]></title>
-            <link>https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra</link>
-            <guid>https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra</guid>
+            <link>https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture</link>
+            <guid>https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture</guid>
             <pubDate>Tue, 02 Dec 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Qué es la arquitectura de cartón piedra, por qué aparece y cómo mejorarla sin reescribir todo.]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="arquitectura-de-cartón-piedra-cuando-el-código-parece-limpio-pero-no-hay-quien-lo-entienda">Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#arquitectura-de-cart%C3%B3n-piedra-cuando-el-c%C3%B3digo-parece-limpio-pero-no-hay-quien-lo-entienda" class="hash-link" aria-label="Enlace directo al Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda" title="Enlace directo al Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda" translate="no">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="arquitectura-de-cartón-piedra-cuando-el-código-parece-limpio-pero-no-hay-quien-lo-entienda">Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#arquitectura-de-cart%C3%B3n-piedra-cuando-el-c%C3%B3digo-parece-limpio-pero-no-hay-quien-lo-entienda" class="hash-link" aria-label="Enlace directo al Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda" title="Enlace directo al Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda" translate="no">​</a></h2>
 <p>Hay proyectos que, al abrirlos, dan muy buena impresión:</p>
 <ul>
 <li class="">Carpetas bien puestas: <code>core</code>, <code>domain</code>, <code>infrastructure</code>, <code>services</code>, <code>helpers</code>…</li>
@@ -28,7 +90,7 @@ métodos que llaman a otros métodos que llaman a otros métodos, capas que solo
 </blockquote>
 <p>A eso es a lo que me gusta llamar <strong>arquitectura de cartón piedra</strong>: por fuera parece sólida, pero por dentro no sostiene bien el peso del negocio.</p>
 <hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-es-la-arquitectura-de-cartón-piedra">¿Qué es la “arquitectura de cartón piedra”?<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#qu%C3%A9-es-la-arquitectura-de-cart%C3%B3n-piedra" class="hash-link" aria-label="Enlace directo al ¿Qué es la “arquitectura de cartón piedra”?" title="Enlace directo al ¿Qué es la “arquitectura de cartón piedra”?" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-es-la-arquitectura-de-cartón-piedra">¿Qué es la “arquitectura de cartón piedra”?<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#qu%C3%A9-es-la-arquitectura-de-cart%C3%B3n-piedra" class="hash-link" aria-label="Enlace directo al ¿Qué es la “arquitectura de cartón piedra”?" title="Enlace directo al ¿Qué es la “arquitectura de cartón piedra”?" translate="no">​</a></h2>
 <p>No es un término oficial, pero describe muy bien una situación bastante común:</p>
 <blockquote>
 <p><strong>Arquitectura de cartón piedra</strong>: cuando se construye una estructura de carpetas y capas que <em>simula</em> una arquitectura limpia, pero en la práctica no ayuda a entender el flujo ni a mantener el sistema.</p>
@@ -61,7 +123,7 @@ y cada uno solo delega al siguiente.</li>
 <p>Puede haber documentación muy buena…
 pero si la estructura del código no refleja bien el negocio, <strong>la arquitectura no está cumpliendo su función</strong>.</p>
 <hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="por-qué-pasa-esto">¿Por qué pasa esto?<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#por-qu%C3%A9-pasa-esto" class="hash-link" aria-label="Enlace directo al ¿Por qué pasa esto?" title="Enlace directo al ¿Por qué pasa esto?" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="por-qué-pasa-esto">¿Por qué pasa esto?<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#por-qu%C3%A9-pasa-esto" class="hash-link" aria-label="Enlace directo al ¿Por qué pasa esto?" title="Enlace directo al ¿Por qué pasa esto?" translate="no">​</a></h2>
 <p>Normalmente se mezclan varias cosas:</p>
 <ol>
 <li class="">
@@ -87,7 +149,7 @@ y al final se acumulan niveles de indirección innecesarios.</p>
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cómo-se-vive-trabajar-en-un-proyecto-así">Cómo se vive trabajar en un proyecto así<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#c%C3%B3mo-se-vive-trabajar-en-un-proyecto-as%C3%AD" class="hash-link" aria-label="Enlace directo al Cómo se vive trabajar en un proyecto así" title="Enlace directo al Cómo se vive trabajar en un proyecto así" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cómo-se-vive-trabajar-en-un-proyecto-así">Cómo se vive trabajar en un proyecto así<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#c%C3%B3mo-se-vive-trabajar-en-un-proyecto-as%C3%AD" class="hash-link" aria-label="Enlace directo al Cómo se vive trabajar en un proyecto así" title="Enlace directo al Cómo se vive trabajar en un proyecto así" translate="no">​</a></h2>
 <p>Si has caído en uno de estos proyectos, probablemente te suena:</p>
 <ul>
 <li class="">Para hacer un cambio pequeño tienes que tocar código en <strong>medio repositorio</strong>.</li>
@@ -101,13 +163,13 @@ y al final se acumulan niveles de indirección innecesarios.</p>
 deberías intuir dónde están las cosas con solo ver la estructura básica.</p>
 </blockquote>
 <hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cómo-es-una-arquitectura-que-ayuda-de-verdad">¿Cómo es una arquitectura que ayuda de verdad?<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#c%C3%B3mo-es-una-arquitectura-que-ayuda-de-verdad" class="hash-link" aria-label="Enlace directo al ¿Cómo es una arquitectura que ayuda de verdad?" title="Enlace directo al ¿Cómo es una arquitectura que ayuda de verdad?" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cómo-es-una-arquitectura-que-ayuda-de-verdad">¿Cómo es una arquitectura que ayuda de verdad?<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#c%C3%B3mo-es-una-arquitectura-que-ayuda-de-verdad" class="hash-link" aria-label="Enlace directo al ¿Cómo es una arquitectura que ayuda de verdad?" title="Enlace directo al ¿Cómo es una arquitectura que ayuda de verdad?" translate="no">​</a></h2>
 <p>Una buena arquitectura no va de tener muchas capas, sino de que:</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-el-flujo-sea-fácil-de-seguir">1. El flujo sea fácil de seguir<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#1-el-flujo-sea-f%C3%A1cil-de-seguir" class="hash-link" aria-label="Enlace directo al 1. El flujo sea fácil de seguir" title="Enlace directo al 1. El flujo sea fácil de seguir" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-el-flujo-sea-fácil-de-seguir">1. El flujo sea fácil de seguir<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#1-el-flujo-sea-f%C3%A1cil-de-seguir" class="hash-link" aria-label="Enlace directo al 1. El flujo sea fácil de seguir" title="Enlace directo al 1. El flujo sea fácil de seguir" translate="no">​</a></h3>
 <p>Ejemplo muy simple:</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">HTTP Request → Controller → Caso de uso → Repositorios/Adaptadores → Respuesta</span><br></span></code></pre></div></div>
 <p>Es decir, puedes explicar qué pasa con una frase y unos pocos ficheros.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-la-lógica-de-negocio-esté-concentrada-en-sitios-previsibles">2. La lógica de negocio esté concentrada en sitios previsibles<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#2-la-l%C3%B3gica-de-negocio-est%C3%A9-concentrada-en-sitios-previsibles" class="hash-link" aria-label="Enlace directo al 2. La lógica de negocio esté concentrada en sitios previsibles" title="Enlace directo al 2. La lógica de negocio esté concentrada en sitios previsibles" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-la-lógica-de-negocio-esté-concentrada-en-sitios-previsibles">2. La lógica de negocio esté concentrada en sitios previsibles<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#2-la-l%C3%B3gica-de-negocio-est%C3%A9-concentrada-en-sitios-previsibles" class="hash-link" aria-label="Enlace directo al 2. La lógica de negocio esté concentrada en sitios previsibles" title="Enlace directo al 2. La lógica de negocio esté concentrada en sitios previsibles" translate="no">​</a></h3>
 <p>Por ejemplo:</p>
 <ul>
 <li class=""><code>CreateOrderUseCase</code></li>
@@ -115,7 +177,7 @@ deberías intuir dónde están las cosas con solo ver la estructura básica.</p>
 <li class=""><code>CalculatePriceDomainService</code></li>
 </ul>
 <p>Y no escondida en helpers genéricos o en métodos random de un repositorio.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-las-capas-existan-por-una-razón-clara">3. Las capas existan por una razón clara<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#3-las-capas-existan-por-una-raz%C3%B3n-clara" class="hash-link" aria-label="Enlace directo al 3. Las capas existan por una razón clara" title="Enlace directo al 3. Las capas existan por una razón clara" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-las-capas-existan-por-una-razón-clara">3. Las capas existan por una razón clara<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#3-las-capas-existan-por-una-raz%C3%B3n-clara" class="hash-link" aria-label="Enlace directo al 3. Las capas existan por una razón clara" title="Enlace directo al 3. Las capas existan por una razón clara" translate="no">​</a></h3>
 <p>Un esquema típico (y suficiente en muchos casos) podría ser:</p>
 <ul>
 <li class=""><strong>Interface / API</strong>: controllers, DTOs, validaciones de entrada.</li>
@@ -133,7 +195,7 @@ deberías intuir dónde están las cosas con solo ver la estructura básica.</p>
 </blockquote>
 <p>Sin tener que hacer un <em>“buscar en todo el repo”</em>.</p>
 <hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="checklist-rápido-huele-a-cartón-piedra">Checklist rápido: ¿huele a cartón piedra?<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#checklist-r%C3%A1pido-huele-a-cart%C3%B3n-piedra" class="hash-link" aria-label="Enlace directo al Checklist rápido: ¿huele a cartón piedra?" title="Enlace directo al Checklist rápido: ¿huele a cartón piedra?" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="checklist-rápido-huele-a-cartón-piedra">Checklist rápido: ¿huele a cartón piedra?<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#checklist-r%C3%A1pido-huele-a-cart%C3%B3n-piedra" class="hash-link" aria-label="Enlace directo al Checklist rápido: ¿huele a cartón piedra?" title="Enlace directo al Checklist rápido: ¿huele a cartón piedra?" translate="no">​</a></h2>
 <p>Algunas preguntas útiles cuando revisas un proyecto:</p>
 <ol>
 <li class="">
@@ -170,26 +232,26 @@ deberías intuir dónde están las cosas con solo ver la estructura básica.</p>
 </ol>
 <p>Cuantas más respuestas incómodas, más probable que estés delante de una arquitectura de cartón piedra.</p>
 <hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cómo-mejorar-sin-reescribirlo-todo">Cómo mejorar sin reescribirlo todo<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#c%C3%B3mo-mejorar-sin-reescribirlo-todo" class="hash-link" aria-label="Enlace directo al Cómo mejorar sin reescribirlo todo" title="Enlace directo al Cómo mejorar sin reescribirlo todo" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cómo-mejorar-sin-reescribirlo-todo">Cómo mejorar sin reescribirlo todo<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#c%C3%B3mo-mejorar-sin-reescribirlo-todo" class="hash-link" aria-label="Enlace directo al Cómo mejorar sin reescribirlo todo" title="Enlace directo al Cómo mejorar sin reescribirlo todo" translate="no">​</a></h2>
 <p>No siempre puedes tirar el proyecto y empezar de cero (de hecho, casi nunca).
 Pero sí puedes <strong>mejorar poco a poco</strong>:</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-elegir-un-caso-de-uso-clave-y-mapearlo">1. Elegir un caso de uso clave y mapearlo<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#1-elegir-un-caso-de-uso-clave-y-mapearlo" class="hash-link" aria-label="Enlace directo al 1. Elegir un caso de uso clave y mapearlo" title="Enlace directo al 1. Elegir un caso de uso clave y mapearlo" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-elegir-un-caso-de-uso-clave-y-mapearlo">1. Elegir un caso de uso clave y mapearlo<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#1-elegir-un-caso-de-uso-clave-y-mapearlo" class="hash-link" aria-label="Enlace directo al 1. Elegir un caso de uso clave y mapearlo" title="Enlace directo al 1. Elegir un caso de uso clave y mapearlo" translate="no">​</a></h3>
 <p>Por ejemplo: “crear pedido”.</p>
 <ul>
 <li class="">Dibuja el flujo actual (aunque sea en un papel) desde el endpoint hasta la base de datos.</li>
 <li class="">Identifica capas que no aportan nada.</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-concentrar-la-lógica-de-negocio">2. Concentrar la lógica de negocio<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#2-concentrar-la-l%C3%B3gica-de-negocio" class="hash-link" aria-label="Enlace directo al 2. Concentrar la lógica de negocio" title="Enlace directo al 2. Concentrar la lógica de negocio" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-concentrar-la-lógica-de-negocio">2. Concentrar la lógica de negocio<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#2-concentrar-la-l%C3%B3gica-de-negocio" class="hash-link" aria-label="Enlace directo al 2. Concentrar la lógica de negocio" title="Enlace directo al 2. Concentrar la lógica de negocio" translate="no">​</a></h3>
 <ul>
 <li class="">Crea un <code>CreateOrderUseCase</code> o similar.</li>
 <li class="">Ve moviendo reglas dispersas (en controller, helpers, etc.) hacia ese caso de uso.</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-eliminar-pasamanos-innecesarios">3. Eliminar pasamanos innecesarios<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#3-eliminar-pasamanos-innecesarios" class="hash-link" aria-label="Enlace directo al 3. Eliminar pasamanos innecesarios" title="Enlace directo al 3. Eliminar pasamanos innecesarios" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-eliminar-pasamanos-innecesarios">3. Eliminar pasamanos innecesarios<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#3-eliminar-pasamanos-innecesarios" class="hash-link" aria-label="Enlace directo al 3. Eliminar pasamanos innecesarios" title="Enlace directo al 3. Eliminar pasamanos innecesarios" translate="no">​</a></h3>
 <ul>
 <li class="">Si un <code>Manager</code> solo llama a un <code>Service</code> sin añadir nada, fusiónalos.</li>
 <li class="">Menos capas, más claridad.</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-nombrar-por-dominio-no-por-patrón">4. Nombrar por dominio, no por patrón<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#4-nombrar-por-dominio-no-por-patr%C3%B3n" class="hash-link" aria-label="Enlace directo al 4. Nombrar por dominio, no por patrón" title="Enlace directo al 4. Nombrar por dominio, no por patrón" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-nombrar-por-dominio-no-por-patrón">4. Nombrar por dominio, no por patrón<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#4-nombrar-por-dominio-no-por-patr%C3%B3n" class="hash-link" aria-label="Enlace directo al 4. Nombrar por dominio, no por patrón" title="Enlace directo al 4. Nombrar por dominio, no por patrón" translate="no">​</a></h3>
 <p>Mejor:</p>
 <ul>
 <li class=""><code>AssignSeatToPassenger</code></li>
@@ -200,12 +262,12 @@ Pero sí puedes <strong>mejorar poco a poco</strong>:</p>
 <li class=""><code>SeatManager</code></li>
 <li class=""><code>InvoiceProcessor</code></li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-documentar-el-flujo-no-solo-la-arquitectura">5. Documentar el flujo, no solo la arquitectura<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#5-documentar-el-flujo-no-solo-la-arquitectura" class="hash-link" aria-label="Enlace directo al 5. Documentar el flujo, no solo la arquitectura" title="Enlace directo al 5. Documentar el flujo, no solo la arquitectura" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-documentar-el-flujo-no-solo-la-arquitectura">5. Documentar el flujo, no solo la arquitectura<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#5-documentar-el-flujo-no-solo-la-arquitectura" class="hash-link" aria-label="Enlace directo al 5. Documentar el flujo, no solo la arquitectura" title="Enlace directo al 5. Documentar el flujo, no solo la arquitectura" translate="no">​</a></h3>
 <p>Un diagrama sencillo del tipo:</p>
 <div class="language-mermaid codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-mermaid codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">flowchart LR</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  A[HTTP Request] --&gt; B[OrderController]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  B --&gt; C[CreateOrderUseCase]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  C --&gt; D[OrderRepository]</span><br></span></code></pre></div></div>
 <p>vale oro si realmente refleja lo que pasa.</p>
 <hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cerrar-el-círculo">Cerrar el círculo<a href="https://valdepeace.com/es/blog/2025/12/02/arquitectura-de-carton-piedra#cerrar-el-c%C3%ADrculo" class="hash-link" aria-label="Enlace directo al Cerrar el círculo" title="Enlace directo al Cerrar el círculo" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cerrar-el-círculo">Cerrar el círculo<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#cerrar-el-c%C3%ADrculo" class="hash-link" aria-label="Enlace directo al Cerrar el círculo" title="Enlace directo al Cerrar el círculo" translate="no">​</a></h2>
 <p>Al final, la reflexión es sencilla:</p>
 <ul>
 <li class=""><strong>Arquitectura no es cuántas carpetas tienes</strong>,
@@ -219,223 +281,9 @@ sino el que deja un sistema que cualquier persona del equipo puede entender y se
 <p>Y la buena noticia es que, en cuanto empiezas a desarrollar ese olfato, también empiezas a diseñar tus propios proyectos de forma distinta: menos postureo, más claridad, más negocio… y menos dolor para el siguiente que venga detrás (aunque ese siguiente seas tú dentro de seis meses).</p>
 <hr>
 <p>Si quieres, en otro post podemos hacer el “modo práctico”: coger un caso de uso real tuyo y enseñar un <em>antes vs después</em> de refactor, con código.</p>]]></content:encoded>
-            <category>Architecture</category>
-            <category>refactor</category>
-            <category>Best Practices</category>
-        </item>
-        <item>
-            <title><![CDATA[Cardboard Architecture: when code looks clean but nobody understands it]]></title>
-            <link>https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture</link>
-            <guid>https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture</guid>
-            <pubDate>Tue, 02 Dec 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[What 'cardboard architecture' is, why it appears, and how to improve it without rewriting everything.]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cardboard-architecture-when-code-looks-clean-but-nobody-understands-it">Cardboard Architecture: when code looks clean but nobody understands it<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#cardboard-architecture-when-code-looks-clean-but-nobody-understands-it" class="hash-link" aria-label="Enlace directo al Cardboard Architecture: when code looks clean but nobody understands it" title="Enlace directo al Cardboard Architecture: when code looks clean but nobody understands it" translate="no">​</a></h2>
-<p>Some projects give a great first impression when you open them:</p>
-<ul>
-<li class="">Well-organized folders: <code>core</code>, <code>domain</code>, <code>infrastructure</code>, <code>services</code>, <code>helpers</code>…</li>
-<li class="">Classes with serious names: <code>UserService</code>, <code>OrderManager</code>, <code>PaymentHandler</code>…</li>
-<li class="">Extensive documentation, diagrams, detailed README…</li>
-</ul>
-<p>And yet, when you try to follow <strong>how the system actually works</strong>, you find something very different:
-methods calling other methods calling other methods, layers that only delegate, business logic scattered across the repository… and you thinking:</p>
-<blockquote>
-<p>“This looks architectural, but understanding it is painful.”</p>
-</blockquote>
-<p>That’s what I like to call <strong>cardboard architecture</strong>: it looks solid on the outside but doesn’t really hold the weight of the business inside.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-cardboard-architecture">What is “cardboard architecture”?<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#what-is-cardboard-architecture" class="hash-link" aria-label="Enlace directo al What is “cardboard architecture”?" title="Enlace directo al What is “cardboard architecture”?" translate="no">​</a></h2>
-<p>It’s not an official term, but it describes a very common situation well:</p>
-<blockquote>
-<p><strong>Cardboard architecture</strong>: when you build a folder-and-layer structure that <em>simulates</em> clean architecture, but in practice doesn’t help you understand the flow or maintain the system.</p>
-</blockquote>
-<p>Typical symptoms:</p>
-<ul>
-<li class="">
-<p>You open the project and see a thousand layers, but <strong>you don’t know where the business logic lives</strong>.</p>
-</li>
-<li class="">
-<p>To follow a simple use case (e.g., create an order) you need to open <strong>8–10 files</strong>.</p>
-</li>
-<li class="">
-<p>Most classes are <strong>pass-throughs</strong>:</p>
-<ul>
-<li class=""><code>Controller</code> → <code>Manager</code> → <code>Handler</code> → <code>Service</code> → <code>Processor</code> → <code>Repository</code>…
-and each one just delegates to the next.</li>
-</ul>
-</li>
-<li class="">
-<p>Business logic is <strong>fragmented</strong>:</p>
-<ul>
-<li class="">a bit in the controller,</li>
-<li class="">another in a helper,</li>
-<li class="">another in the repository,</li>
-<li class="">another in a generic <code>util</code>.</li>
-</ul>
-</li>
-</ul>
-<p>There may be excellent documentation…
-but if the code structure doesn’t reflect the business, <strong>the architecture fails its purpose</strong>.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-does-this-happen">Why does this happen?<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#why-does-this-happen" class="hash-link" aria-label="Enlace directo al Why does this happen?" title="Enlace directo al Why does this happen?" translate="no">​</a></h2>
-<p>Usually several things mix together:</p>
-<ol>
-<li class="">
-<p><strong>Designing by folder, not by domain</strong>
-Copying a “textbook” structure (or another project) without thinking if it fits the real business.</p>
-</li>
-<li class="">
-<p><strong>Confusing “more layers” with “better architecture”</strong></p>
-<ul>
-<li class="">Adding layers like <code>Manager</code>, <code>Handler</code>, <code>Processor</code>, etc.</li>
-<li class="">But often those layers don’t encapsulate anything new, they just complicate the path.</li>
-</ul>
-</li>
-<li class="">
-<p><strong>Cargo-culting patterns</strong>
-Applying labels like “Clean Architecture”, “DDD”, “Hexagonal”…
-but only superficially: folder and class names, not the principles.</p>
-</li>
-<li class="">
-<p><strong>Fear of being wrong</strong>
-Creating layers “in case we need them later”,
-and ending up with accumulated unnecessary indirection levels.</p>
-</li>
-</ol>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-it-feels-like-to-work-on-such-a-project">What it feels like to work on such a project<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#what-it-feels-like-to-work-on-such-a-project" class="hash-link" aria-label="Enlace directo al What it feels like to work on such a project" title="Enlace directo al What it feels like to work on such a project" translate="no">​</a></h2>
-<p>If you’ve landed in one of these projects, this will sound familiar:</p>
-<ul>
-<li class="">To make a small change you have to touch code across <strong>half the repo</strong>.</li>
-<li class="">It’s unclear where a new business rule <strong>should</strong> live.</li>
-<li class="">Refactoring is scary because you don’t fully understand the whole flow.</li>
-<li class="">Documentation becomes mandatory because the code alone <strong>doesn’t explain itself</strong>.</li>
-</ul>
-<p>A healthy architecture should be almost the opposite:</p>
-<blockquote>
-<p>Even without perfect docs,
-you should be able to guess where things live just by looking at the basic structure.</p>
-</blockquote>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-does-an-actually-helpful-architecture-look-like">What does an actually helpful architecture look like?<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#what-does-an-actually-helpful-architecture-look-like" class="hash-link" aria-label="Enlace directo al What does an actually helpful architecture look like?" title="Enlace directo al What does an actually helpful architecture look like?" translate="no">​</a></h2>
-<p>Good architecture isn’t about having many layers, it’s about:</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-the-flow-being-easy-to-follow">1. The flow being easy to follow<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#1-the-flow-being-easy-to-follow" class="hash-link" aria-label="Enlace directo al 1. The flow being easy to follow" title="Enlace directo al 1. The flow being easy to follow" translate="no">​</a></h3>
-<p>Very simple example:</p>
-<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">HTTP Request → Controller → Use Case → Repositories/Adapters → Response</span><br></span></code></pre></div></div>
-<p>Meaning you can explain what happens in one sentence and a few files.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-business-logic-concentrated-in-predictable-places">2. Business logic concentrated in predictable places<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#2-business-logic-concentrated-in-predictable-places" class="hash-link" aria-label="Enlace directo al 2. Business logic concentrated in predictable places" title="Enlace directo al 2. Business logic concentrated in predictable places" translate="no">​</a></h3>
-<p>For example:</p>
-<ul>
-<li class=""><code>CreateOrderUseCase</code></li>
-<li class=""><code>ReserveSeatService</code></li>
-<li class=""><code>CalculatePriceDomainService</code></li>
-</ul>
-<p>Not hidden in generic helpers or random repository methods.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-layers-existing-for-a-clear-reason">3. Layers existing for a clear reason<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#3-layers-existing-for-a-clear-reason" class="hash-link" aria-label="Enlace directo al 3. Layers existing for a clear reason" title="Enlace directo al 3. Layers existing for a clear reason" translate="no">​</a></h3>
-<p>A typical (and often sufficient) layout could be:</p>
-<ul>
-<li class=""><strong>Interface / API</strong>: controllers, DTOs, input validation.</li>
-<li class=""><strong>Application</strong>: use cases, process orchestration.</li>
-<li class=""><strong>Domain</strong>: entities, pure business rules.</li>
-<li class=""><strong>Infrastructure</strong>: repositories, DB access, external APIs, queues, etc.</li>
-</ul>
-<p>The key is that if someone asks:</p>
-<blockquote>
-<p>“Where is the logic to <em>reserve a course</em>?”</p>
-</blockquote>
-<p>you can answer:</p>
-<blockquote>
-<p>“Look in <code>application/ReserveCourse.ts</code> and <code>domain/CourseReservation</code>.”</p>
-</blockquote>
-<p>without doing a repo-wide search.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="quick-checklist-does-it-smell-like-cardboard-architecture">Quick checklist: does it smell like cardboard architecture?<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#quick-checklist-does-it-smell-like-cardboard-architecture" class="hash-link" aria-label="Enlace directo al Quick checklist: does it smell like cardboard architecture?" title="Enlace directo al Quick checklist: does it smell like cardboard architecture?" translate="no">​</a></h2>
-<p>Some useful questions when reviewing a project:</p>
-<ol>
-<li class="">
-<p><strong>How many files do I need to open to follow a simple use case?</strong></p>
-<ul>
-<li class="">If more than 5–6, be suspicious.</li>
-</ul>
-</li>
-<li class="">
-<p><strong>How many classes only delegate without adding logic?</strong></p>
-<ul>
-<li class="">If most are passthroughs, you have too many layers.</li>
-</ul>
-</li>
-<li class="">
-<p><strong>Do I clearly know where the business lives?</strong></p>
-<ul>
-<li class="">Is there a clear place for use cases?</li>
-</ul>
-</li>
-<li class="">
-<p><strong>Is the structure feature-based or generic layers-based?</strong></p>
-<ul>
-<li class=""><code>orders/</code>, <code>payments/</code>, <code>users/</code> is often more useful than
-<code>managers/</code>, <code>helpers/</code>, <code>processors/</code>.</li>
-</ul>
-</li>
-<li class="">
-<p><strong>What happens if the “hero developer” is not available?</strong></p>
-<ul>
-<li class="">Can the team maintain the system without them?</li>
-</ul>
-</li>
-</ol>
-<p>The more uncomfortable answers, the more likely you’re facing cardboard architecture.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-to-improve-without-rewriting-everything">How to improve without rewriting everything<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#how-to-improve-without-rewriting-everything" class="hash-link" aria-label="Enlace directo al How to improve without rewriting everything" title="Enlace directo al How to improve without rewriting everything" translate="no">​</a></h2>
-<p>You rarely can throw away the project and start over (in fact, almost never).
-But you can <strong>improve incrementally</strong>:</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-pick-a-key-use-case-and-map-it">1. Pick a key use case and map it<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#1-pick-a-key-use-case-and-map-it" class="hash-link" aria-label="Enlace directo al 1. Pick a key use case and map it" title="Enlace directo al 1. Pick a key use case and map it" translate="no">​</a></h3>
-<p>Example: “create order”.</p>
-<ul>
-<li class="">Draw the current flow (even on paper) from endpoint to DB.</li>
-<li class="">Identify layers that contribute nothing.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-concentrate-business-logic">2. Concentrate business logic<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#2-concentrate-business-logic" class="hash-link" aria-label="Enlace directo al 2. Concentrate business logic" title="Enlace directo al 2. Concentrate business logic" translate="no">​</a></h3>
-<ul>
-<li class="">Create a <code>CreateOrderUseCase</code> or similar.</li>
-<li class="">Move scattered rules (in controllers, helpers, etc.) into that use case.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-remove-unnecessary-pass-throughs">3. Remove unnecessary pass-throughs<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#3-remove-unnecessary-pass-throughs" class="hash-link" aria-label="Enlace directo al 3. Remove unnecessary pass-throughs" title="Enlace directo al 3. Remove unnecessary pass-throughs" translate="no">​</a></h3>
-<ul>
-<li class="">If a <code>Manager</code> only calls a <code>Service</code> without adding value, merge them.</li>
-<li class="">Fewer layers, more clarity.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-name-by-domain-not-by-pattern">4. Name by domain, not by pattern<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#4-name-by-domain-not-by-pattern" class="hash-link" aria-label="Enlace directo al 4. Name by domain, not by pattern" title="Enlace directo al 4. Name by domain, not by pattern" translate="no">​</a></h3>
-<p>Better:</p>
-<ul>
-<li class=""><code>AssignSeatToPassenger</code></li>
-<li class=""><code>CalculateInvoiceTotals</code></li>
-</ul>
-<p>than:</p>
-<ul>
-<li class=""><code>SeatManager</code></li>
-<li class=""><code>InvoiceProcessor</code></li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-document-the-flow-not-only-the-architecture">5. Document the flow, not only the architecture<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#5-document-the-flow-not-only-the-architecture" class="hash-link" aria-label="Enlace directo al 5. Document the flow, not only the architecture" title="Enlace directo al 5. Document the flow, not only the architecture" translate="no">​</a></h3>
-<p>A simple diagram like:</p>
-<div class="language-mermaid codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-mermaid codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">flowchart LR</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  A[HTTP Request] --&gt; B[OrderController]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  B --&gt; C[CreateOrderUseCase]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  C --&gt; D[OrderRepository]</span><br></span></code></pre></div></div>
-<p>is gold if it truly reflects what happens.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="closing-the-loop">Closing the loop<a href="https://valdepeace.com/es/blog/2025/12/02/cardboard-architecture#closing-the-loop" class="hash-link" aria-label="Enlace directo al Closing the loop" title="Enlace directo al Closing the loop" translate="no">​</a></h2>
-<p>The takeaway is simple:</p>
-<ul>
-<li class=""><strong>Architecture is not how many folders you have</strong>,
-it’s how much it helps you think about and change the business.</li>
-<li class="">Documentation is great, but the best documentation is code and structure that “explain themselves”.</li>
-<li class="">A truly senior developer is not just fast,
-but the one who leaves a system any teammate can understand and extend.</li>
-</ul>
-<p>If a project looks pretty but you <strong>can’t</strong> follow the flow without suffering, it’s probably not you: it’s cardboard.</p>
-<p>And the good news: once you develop that sense, you start designing your own projects differently: less posture, more clarity, more business focus… and less pain for whoever comes next (even if that’s you in six months).</p>
-<hr>
-<p>If you want, in another post we can do the “practical mode”: take a real use case of yours and show a before vs after refactor, with code.</p>]]></content:encoded>
-            <category>Architecture</category>
-            <category>refactor</category>
-            <category>Best Practices</category>
+            <category>Arquitectura</category>
+            <category>Refactor</category>
+            <category>Buenas Prácticas</category>
         </item>
         <item>
             <title><![CDATA[Mastra vs Microsoft Agent Framework + Azure AI Foundry — Comparativa práctica]]></title>
@@ -818,13 +666,12 @@ Cuando alguien pida "hazlo rápido":</p>
 <p>Si te interesa el contenido, puedes:</p>
 <ul>
 <li class="">Suscribirte al <a href="https://valdepeace.com/es/assets/files/rss-c03ada278d8a6dd838d5ca7df6cc26ed.xml" target="_blank" class="">RSS feed</a></li>
-<li class="">Seguirme en <a href="https://twitter.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">Twitter</a></li>
 <li class="">Conectar en <a href="https://www.linkedin.com/in/valdepeace" target="_blank" rel="noopener noreferrer" class="">LinkedIn</a></li>
 <li class="">Ver mi trabajo en <a href="https://github.com/valdepeace" target="_blank" rel="noopener noreferrer" class="">GitHub</a></li>
 </ul>
 <p>¡Gracias por estar aquí! 🚀</p>
 <hr>
-<p><em>¿Tienes algún tema que te gustaría que cubriera? ¡Déjame un comentario o contactáctame!</em></p>]]></content:encoded>
+<p><em>¿Tienes algún tema que te gustaría que cubra? ¡Déjame un comentario o contáctame!</em></p>]]></content:encoded>
             <category>Personal</category>
         </item>
     </channel>
