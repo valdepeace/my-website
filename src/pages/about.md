@@ -85,7 +85,6 @@ Want to collaborate on a project or just chat about technology?
 
 - LinkedIn: [valdepeace](https://www.linkedin.com/in/valdepeace)
 - 🐙 GitHub: [valdepeace](https://github.com/valdepeace)
-- 🐦 Twitter: [@valdepeace](https://twitter.com/valdepeace)
 
 ---
 

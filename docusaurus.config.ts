@@ -36,17 +36,12 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en', 'es'],
   },
-themes: ['@docusaurus/theme-mermaid'],
+  themes: ['@docusaurus/theme-mermaid'],
   presets: [
     [
       'classic',
       {
-        docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl: 'https://github.com/tu-usuario/my-website/tree/main/',
-        },
+        docs: false,
         blog: {
           showReadingTime: true,
           feedOptions: {
@@ -58,13 +53,9 @@ themes: ['@docusaurus/theme-mermaid'],
           postsPerPage: 'ALL',
           blogSidebarTitle: 'Latest posts',
           blogSidebarCount: 10,
-            // Please change this to your repo.
-            // Remove this to remove the "edit this page" links.
-            // editUrl: 'https://github.com/tu-usuario/my-website/tree/main/',
-            // Useful options to enforce blogging best practices
-            onInlineTags: 'warn',
-            onInlineAuthors: 'warn',
-            onUntruncatedBlogPosts: 'warn',
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -92,12 +83,6 @@ themes: ['@docusaurus/theme-mermaid'],
       items: [
         {to: '/about', label: 'About Me', position: 'left'},
         {to: '/projects', label: 'Projects', position: 'left'},
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Docs',
-        },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
           type: 'localeDropdown',
@@ -145,19 +130,6 @@ themes: ['@docusaurus/theme-mermaid'],
             {
               label: 'LinkedIn',
               href: 'https://www.linkedin.com/in/valdepeace',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/valdepeace',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Documentation',
-              to: '/docs/intro',
             },
           ],
         },

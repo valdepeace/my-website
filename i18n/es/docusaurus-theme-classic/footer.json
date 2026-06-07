@@ -7,10 +7,6 @@
     "message": "Redes Sociales",
     "description": "El título de la columna de enlaces del pie con título=Redes Sociales"
   },
-  "link.title.More": {
-    "message": "Más",
-    "description": "El título de la columna de enlaces del pie con título=Más"
-  },
   "link.item.label.About Me": {
     "message": "Sobre Mí",
     "description": "La etiqueta del enlace del pie con etiqueta=Sobre Mí enlazando a /about"
@@ -31,16 +27,8 @@
     "message": "LinkedIn",
     "description": "La etiqueta del enlace del pie con etiqueta=LinkedIn enlazando a https://www.linkedin.com/in/valdepeace"
   },
-  "link.item.label.Twitter": {
-    "message": "Twitter",
-    "description": "La etiqueta del enlace del pie con etiqueta=Twitter enlazando a https://twitter.com/valdepeace"
-  },
-  "link.item.label.Documentation": {
-    "message": "Documentación",
-    "description": "La etiqueta del enlace del pie con etiqueta=Documentación enlazando a /docs/intro"
-  },
   "copyright": {
-    "message": "Copyright © 2025 Andrés Carmona Gil. Hecho con ❤️ usando Docusaurus.",
+    "message": "Copyright © 2026 Andrés Carmona Gil. Hecho con ❤️ usando Docusaurus.",
     "description": "El copyright del pie"
   }
 }

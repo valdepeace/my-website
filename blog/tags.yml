@@ -52,6 +52,11 @@ technical-debt:
   permalink: /technical-debt
   description: Technical debt management
 
+refactor:
+  label: Refactor
+  permalink: /refactor
+  description: Refactoring and incremental code improvement
+
 mastra:
   label: Mastra
   permalink: /mastra
@@ -71,3 +76,13 @@ ai-agents:
   label: AI Agents
   permalink: /ai-agents
   description: Agent frameworks and AI agents
+
+azure-ai-search:
+  label: Azure AI Search
+  permalink: /azure-ai-search
+  description: Azure AI Search integrations and vector search
+
+open-source:
+  label: Open Source
+  permalink: /open-source
+  description: Open source projects and contributions

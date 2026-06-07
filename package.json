@@ -2,8 +2,8 @@
   "name": "my-website",
   "version": "0.0.0",
   "private": true,
-  "description": "Sitio web personal de Andrés Carmona Gil - Desarrollador Full Stack",
-  "homepage": "https://valdepeace.github.io/my-website/",
+  "description": "Personal website of Andrés Carmona Gil - Full Stack Developer",
+  "homepage": "https://valdepeace.com/",
   "repository": {
     "type": "git",
     "url": "https://github.com/valdepeace/my-website.git"
@@ -18,7 +18,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",

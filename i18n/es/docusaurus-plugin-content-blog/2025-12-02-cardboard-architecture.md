@@ -3,7 +3,7 @@ title: "Arquitectura de cartón piedra: cuando el código parece limpio, pero no
 description: "Qué es la arquitectura de cartón piedra, por qué aparece y cómo mejorarla sin reescribir todo."
 authors: ["valdepeace"]
 date: "2025-12-02"
-tags: ["architecture","refactor","best-practices"]
+tags: ["arquitectura","refactor","buenas-practicas"]
 ---
 
 ## Arquitectura de cartón piedra: cuando el código parece limpio, pero no hay quien lo entienda
@@ -20,6 +20,8 @@ métodos que llaman a otros métodos que llaman a otros métodos, capas que solo
 > “Esto parece muy arquitectónico, pero entenderlo es un dolor.”
 
 A eso es a lo que me gusta llamar **arquitectura de cartón piedra**: por fuera parece sólida, pero por dentro no sostiene bien el peso del negocio.
+
+<!-- truncate -->
 
 ---
 

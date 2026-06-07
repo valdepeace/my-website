@@ -21,6 +21,8 @@ methods calling other methods calling other methods, layers that only delegate, 
 
 That’s what I like to call **cardboard architecture**: it looks solid on the outside but doesn’t really hold the weight of the business inside.
 
+<!-- truncate -->
+
 ---
 
 ## What is “cardboard architecture”?

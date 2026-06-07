@@ -2,7 +2,7 @@
 
 [![Deploy to GitHub Pages](https://github.com/valdepeace/my-website/actions/workflows/deploy.yml/badge.svg)](https://github.com/valdepeace/my-website/actions/workflows/deploy.yml)
 
-**🌐 Sitio en vivo:** [https://valdepeace.github.io/my-website/](https://valdepeace.github.io/my-website/)
+**🌐 Sitio en vivo:** [https://valdepeace.com/](https://valdepeace.com/)
 
 Esta es mi web personal construida con [Docusaurus](https://docusaurus.io/), un generador de sitios estáticos moderno.
 
@@ -51,7 +51,7 @@ Edita `docusaurus.config.ts` y actualiza:
 - `title`: Tu nombre
 - `tagline`: Tu descripción
 - `url`: Tu URL del sitio
-- Enlaces de GitHub, LinkedIn, Twitter
+- Enlaces de GitHub y LinkedIn
 
 ### 2. Actualiza tu perfil de autor
 Edita `blog/authors.yml` con tu información

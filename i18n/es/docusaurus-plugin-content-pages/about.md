@@ -85,7 +85,6 @@ Soy un desarrollador apasionado por la tecnología y la creación de soluciones 
 
 - LinkedIn: [valdepeace](https://www.linkedin.com/in/valdepeace)
 - 🐙 GitHub: [valdepeace](https://github.com/valdepeace)
-- 🐦 Twitter: [@valdepeace](https://twitter.com/valdepeace)
 
 ---
 

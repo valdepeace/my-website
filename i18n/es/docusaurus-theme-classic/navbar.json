@@ -15,10 +15,6 @@
     "message": "Proyectos",
     "description": "Elemento del navbar con etiqueta Proyectos"
   },
-  "item.label.Docs": {
-    "message": "Documentación",
-    "description": "Elemento del navbar con etiqueta Documentación"
-  },
   "item.label.Blog": {
     "message": "Blog",
     "description": "Elemento del navbar con etiqueta Blog"
