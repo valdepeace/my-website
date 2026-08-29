@@ -1,6 +1,6 @@
 ---
 slug: agent-orchestrator
-title: Agent Orchestrator: making parallel coding agents manageable
+title: "Agent Orchestrator: making parallel coding agents manageable"
 description: "A practical look at Agent Orchestrator, the desktop workspace I am using to coordinate isolated coding agents across a project."
 authors: [valdepeace]
 tags: [ai-agents, software-engineering, open-source]
