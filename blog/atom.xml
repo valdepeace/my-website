@@ -2,11 +2,56 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://valdepeace.com/blog</id>
     <title>Andrés Carmona Gil Blog</title>
-    <updated>2026-06-05T00:00:00.000Z</updated>
+    <updated>2026-08-23T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://valdepeace.com/blog"/>
     <subtitle>Andrés Carmona Gil Blog</subtitle>
     <icon>https://valdepeace.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Agent Orchestrator: making parallel coding agents manageable]]></title>
+        <id>https://valdepeace.com/blog/agent-orchestrator</id>
+        <link href="https://valdepeace.com/blog/agent-orchestrator"/>
+        <updated>2026-08-23T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A practical look at Agent Orchestrator, the desktop workspace I am using to coordinate isolated coding agents across a project.]]></summary>
+        <content type="html"><![CDATA[<p>I have spent enough time juggling terminals, branches and pull requests to know that running several coding agents is not just a bigger version of running one. It is a coordination problem. <strong><a href="https://github.com/Untrivial-ai/agent-orchestrator" target="_blank" rel="noopener noreferrer" class="">Agent Orchestrator (AO)</a></strong> is a desktop app built to solve that problem, and I am using it to coordinate the work on this site.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-ao-changes">What AO changes<a href="https://valdepeace.com/blog/agent-orchestrator#what-ao-changes" class="hash-link" aria-label="Direct link to What AO changes" title="Direct link to What AO changes" translate="no">​</a></h2>
+<p>One coding agent can complete a focused task. Several agents working on the same repository introduce a different set of questions: which task should happen first, what context does each agent need, where is each change, and which pull request needs attention?</p>
+<p>AO gives every task its own worker: one agent, one workspace, and—when the work is Git-backed—its own branch and worktree. That isolation is the practical foundation. A documentation change and a UI fix can move forward in parallel without agents sharing a dirty directory or stepping on the same branch.</p>
+<p>Above the workers sits a project-level orchestrator. Its job is not to implement every detail; it plans the larger outcome, delegates focused work, follows progress, and sends follow-up context where it belongs. Workers own implementation, tests, commits and pull requests.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a-live-view-instead-of-scattered-tabs">A live view instead of scattered tabs<a href="https://valdepeace.com/blog/agent-orchestrator#a-live-view-instead-of-scattered-tabs" class="hash-link" aria-label="Direct link to A live view instead of scattered tabs" title="Direct link to A live view instead of scattered tabs" translate="no">​</a></h2>
+<p>The part I find most useful is the live Kanban board. It groups worker sessions by the state that matters: <strong>Working</strong>, <strong>Needs You</strong>, <strong>In Review</strong>, and <strong>Ready to Merge</strong>. A card keeps the task, agent, branch, activity, pull request and status together.</p>
+<p>That is a much better operating model than reconstructing the project from terminal tabs and GitHub notifications. AO also follows CI and review state beside the worker, including agent-driven reviews, so feedback can go back to the agent that owns the change instead of becoming detached from its context.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-i-am-using-it-here">How I am using it here<a href="https://valdepeace.com/blog/agent-orchestrator#how-i-am-using-it-here" class="hash-link" aria-label="Direct link to How I am using it here" title="Direct link to How I am using it here" translate="no">​</a></h2>
+<p>This post is itself a small example. I am working inside an AO worker for the <code>my-website</code> repository, with an orchestrator coordinating the wider task. The worker has an isolated worktree and branch, so writing this bilingual post does not interfere with other work happening in the project.</p>
+<p>The flow is straightforward:</p>
+<ol>
+<li class="">The orchestrator turns a project outcome into focused tasks.</li>
+<li class="">Each worker implements and verifies its assigned change in isolation.</li>
+<li class="">The worker opens a pull request and carries CI and review feedback through to completion.</li>
+<li class="">The Kanban shows what is still moving and what needs a human decision.</li>
+</ol>
+<p>It is not magic: the quality of the result still depends on clear tasks, sensible boundaries and review. But it removes a lot of the mechanical coordination that otherwise makes parallel agent work harder than it needs to be.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="two-interfaces-one-workflow">Two interfaces, one workflow<a href="https://valdepeace.com/blog/agent-orchestrator#two-interfaces-one-workflow" class="hash-link" aria-label="Direct link to Two interfaces, one workflow" title="Direct link to Two interfaces, one workflow" translate="no">​</a></h2>
+<p>AO does not force a single way of talking to an agent. You can use structured chat or the coding agent's native terminal UI while AO keeps the task context and workspace state attached to the same session.</p>
+<p>For UI work, each worker also gets an isolated browser profile. That matters when two agents are testing different local flows at the same time: sessions, cookies and browser state do not leak between them.</p>
+<p>The app supports 26 coding agents, including Claude Code, Codex, Cursor, GitHub Copilot, Aider, Cline and Devin. The point is not to replace those tools; it is to give them a shared project workflow without flattening their native interfaces.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a-low-friction-starting-point">A low-friction starting point<a href="https://valdepeace.com/blog/agent-orchestrator#a-low-friction-starting-point" class="hash-link" aria-label="Direct link to A low-friction starting point" title="Direct link to A low-friction starting point" translate="no">​</a></h2>
+<p>AO ships as prebuilt desktop apps for macOS, Windows and Linux. You point it at a repository and the desktop app runs its daemon for you, so there is no AO CLI setup required just to start using it.</p>
+<p>For me, that is the right level of abstraction. I still want Git branches, pull requests, CI and reviews. I just do not want to manually keep every agent, workspace and browser session aligned. AO gives those moving parts a place to live—and, more importantly, makes their current state visible.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="links">Links<a href="https://valdepeace.com/blog/agent-orchestrator#links" class="hash-link" aria-label="Direct link to Links" title="Direct link to Links" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://github.com/Untrivial-ai/agent-orchestrator" target="_blank" rel="noopener noreferrer" class="">Agent Orchestrator on GitHub</a></li>
+<li class=""><a href="https://aoagents.dev/docs" target="_blank" rel="noopener noreferrer" class="">AO documentation</a></li>
+<li class=""><a href="https://github.com/Untrivial-ai/agent-orchestrator/releases" target="_blank" rel="noopener noreferrer" class="">Download AO</a></li>
+</ul>]]></content>
+        <author>
+            <name>Andrés Carmona Gil</name>
+            <uri>https://github.com/valdepeace</uri>
+        </author>
+        <category label="AI Agents" term="AI Agents"/>
+        <category label="Software Engineering" term="Software Engineering"/>
+        <category label="Open Source" term="Open Source"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Why I built mastra-azure-ai-search]]></title>
         <id>https://valdepeace.com/blog/mastra-azure-ai-search</id>

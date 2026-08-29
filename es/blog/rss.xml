@@ -4,10 +4,51 @@
         <title>Andrés Carmona Gil Blog</title>
         <link>https://valdepeace.com/es/blog</link>
         <description>Andrés Carmona Gil Blog</description>
-        <lastBuildDate>Fri, 05 Jun 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 23 Aug 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>es</language>
+        <item>
+            <title><![CDATA[Agent Orchestrator: hacer manejables los agentes de código en paralelo]]></title>
+            <link>https://valdepeace.com/es/blog/agent-orchestrator</link>
+            <guid>https://valdepeace.com/es/blog/agent-orchestrator</guid>
+            <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Una mirada práctica a Agent Orchestrator, el entorno de escritorio que estoy usando para coordinar agentes de código aislados dentro de un proyecto.]]></description>
+            <content:encoded><![CDATA[<p>He pasado suficiente tiempo alternando entre terminales, ramas y pull requests como para saber que ejecutar varios agentes de código no es simplemente una versión más grande de ejecutar uno. Es un problema de coordinación. <strong><a href="https://github.com/Untrivial-ai/agent-orchestrator" target="_blank" rel="noopener noreferrer" class="">Agent Orchestrator (AO)</a></strong> es una aplicación de escritorio creada para resolverlo, y la estoy usando para coordinar el trabajo en esta web.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-cambia-ao">Qué cambia AO<a href="https://valdepeace.com/es/blog/agent-orchestrator#qu%C3%A9-cambia-ao" class="hash-link" aria-label="Enlace directo al Qué cambia AO" title="Enlace directo al Qué cambia AO" translate="no">​</a></h2>
+<p>Un agente de código puede completar una tarea concreta. Varios agentes trabajando sobre el mismo repositorio introducen otro tipo de preguntas: qué tarea debe ir primero, qué contexto necesita cada agente, dónde está cada cambio y qué pull request necesita atención.</p>
+<p>AO da a cada tarea su propio worker: un agente, un espacio de trabajo y—cuando el trabajo usa Git—su propia rama y worktree. Ese aislamiento es la base práctica. Un cambio de documentación y un arreglo de interfaz pueden avanzar en paralelo sin que los agentes compartan un directorio sucio ni pisen la misma rama.</p>
+<p>Por encima de los workers está el orquestador a nivel de proyecto. Su trabajo no es implementar cada detalle: planifica el resultado global, delega trabajo acotado, sigue el progreso y envía el contexto adicional donde corresponde. Los workers se responsabilizan de la implementación, las pruebas, los commits y las pull requests.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="una-vista-en-vivo-en-lugar-de-pestañas-dispersas">Una vista en vivo en lugar de pestañas dispersas<a href="https://valdepeace.com/es/blog/agent-orchestrator#una-vista-en-vivo-en-lugar-de-pesta%C3%B1as-dispersas" class="hash-link" aria-label="Enlace directo al Una vista en vivo en lugar de pestañas dispersas" title="Enlace directo al Una vista en vivo en lugar de pestañas dispersas" translate="no">​</a></h2>
+<p>La parte que más útil me resulta es el tablero Kanban en vivo. Agrupa las sesiones de workers según el estado que importa: <strong>Working</strong>, <strong>Needs You</strong>, <strong>In Review</strong> y <strong>Ready to Merge</strong>. Cada tarjeta mantiene unidas la tarea, el agente, la rama, la actividad, la pull request y el estado.</p>
+<p>Es un modelo operativo mucho mejor que reconstruir el proyecto a partir de pestañas de terminal y notificaciones de GitHub. AO también sigue el estado de CI y las revisiones junto al worker, incluidas las revisiones impulsadas por agentes, de modo que el feedback puede volver al agente responsable del cambio sin perder su contexto.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cómo-lo-estoy-usando-aquí">Cómo lo estoy usando aquí<a href="https://valdepeace.com/es/blog/agent-orchestrator#c%C3%B3mo-lo-estoy-usando-aqu%C3%AD" class="hash-link" aria-label="Enlace directo al Cómo lo estoy usando aquí" title="Enlace directo al Cómo lo estoy usando aquí" translate="no">​</a></h2>
+<p>Este post es un ejemplo pequeño. Estoy trabajando dentro de un worker de AO para el repositorio <code>my-website</code>, con un orquestador coordinando la tarea más amplia. El worker tiene un worktree y una rama aislados, por lo que escribir este post bilingüe no interfiere con otro trabajo que esté ocurriendo en el proyecto.</p>
+<p>El flujo es directo:</p>
+<ol>
+<li class="">El orquestador convierte un objetivo de proyecto en tareas acotadas.</li>
+<li class="">Cada worker implementa y verifica el cambio que tiene asignado de forma aislada.</li>
+<li class="">El worker abre una pull request y lleva el feedback de CI y revisión hasta completarlo.</li>
+<li class="">El Kanban muestra qué sigue en marcha y qué necesita una decisión humana.</li>
+</ol>
+<p>No es magia: la calidad del resultado sigue dependiendo de tareas claras, límites sensatos y revisión. Pero elimina mucha de la coordinación mecánica que, de otro modo, hace que el trabajo paralelo con agentes sea más difícil de lo necesario.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="dos-interfaces-un-flujo-de-trabajo">Dos interfaces, un flujo de trabajo<a href="https://valdepeace.com/es/blog/agent-orchestrator#dos-interfaces-un-flujo-de-trabajo" class="hash-link" aria-label="Enlace directo al Dos interfaces, un flujo de trabajo" title="Enlace directo al Dos interfaces, un flujo de trabajo" translate="no">​</a></h2>
+<p>AO no obliga a usar una única forma de hablar con un agente. Puedes usar chat estructurado o la interfaz de terminal nativa del agente mientras AO mantiene el contexto de la tarea y el estado del espacio de trabajo ligados a la misma sesión.</p>
+<p>Para trabajo de interfaz, cada worker también obtiene un perfil de navegador aislado. Eso importa cuando dos agentes prueban flujos locales distintos al mismo tiempo: las sesiones, cookies y el estado del navegador no se filtran entre ellos.</p>
+<p>La aplicación soporta 26 agentes de código, incluidos Claude Code, Codex, Cursor, GitHub Copilot, Aider, Cline y Devin. La idea no es reemplazar esas herramientas; es darles un flujo de trabajo compartido de proyecto sin aplanar sus interfaces nativas.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="un-inicio-sin-fricción">Un inicio sin fricción<a href="https://valdepeace.com/es/blog/agent-orchestrator#un-inicio-sin-fricci%C3%B3n" class="hash-link" aria-label="Enlace directo al Un inicio sin fricción" title="Enlace directo al Un inicio sin fricción" translate="no">​</a></h2>
+<p>AO se distribuye como aplicación de escritorio precompilada para macOS, Windows y Linux. Solo tienes que apuntarlo a un repositorio y la aplicación ejecuta su daemon, así que no necesitas configurar la CLI de AO para empezar a usarlo.</p>
+<p>Para mí, es el nivel de abstracción adecuado. Sigo queriendo ramas Git, pull requests, CI y revisiones. Lo que no quiero es mantener manualmente alineados cada agente, espacio de trabajo y sesión de navegador. AO da un lugar a todas esas piezas móviles y, más importante, hace visible su estado actual.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="enlaces">Enlaces<a href="https://valdepeace.com/es/blog/agent-orchestrator#enlaces" class="hash-link" aria-label="Enlace directo al Enlaces" title="Enlace directo al Enlaces" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://github.com/Untrivial-ai/agent-orchestrator" target="_blank" rel="noopener noreferrer" class="">Agent Orchestrator en GitHub</a></li>
+<li class=""><a href="https://aoagents.dev/docs" target="_blank" rel="noopener noreferrer" class="">Documentación de AO</a></li>
+<li class=""><a href="https://github.com/Untrivial-ai/agent-orchestrator/releases" target="_blank" rel="noopener noreferrer" class="">Descargar AO</a></li>
+</ul>]]></content:encoded>
+            <category>Agentes AI</category>
+            <category>Software Engineering</category>
+            <category>Open Source</category>
+        </item>
         <item>
             <title><![CDATA[Por qué he creado mastra-azure-ai-search]]></title>
             <link>https://valdepeace.com/es/blog/mastra-azure-ai-search</link>
