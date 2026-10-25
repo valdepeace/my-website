@@ -100,6 +100,16 @@ El endpoint Languages de GitHub informa de bytes por lenguaje detectado, no de t
 
 No se ejecutaron benchmarks controlados. La evidencia permite describir el sistema, no establecer un ranking de rendimiento ni repartir porcentajes entre modelo, prompt y harness. «No verificado» significa que en esta pasada no se confirmó una fuente; no significa «no soportado».
 
+## Conclusión: fragmentado por defecto
+
+| Evidencia de esta revisión | Lectura respaldada | Límite |
+| --- | --- | --- |
+| 74 productos catalogados | No se observa un contrato común por defecto para delegar, transferir contexto, aplicar permisos y devolver resultados. | La matriz de fuentes sigue incompleta. |
+| Gemini CLI y Qwen Code | Ambos proyectos documentan rutas A2A oficiales. | La de Qwen es opt-in; sus adaptadores no convierten Claude Code o Codex en clientes A2A nativos. |
+| ACP y MCP | Conectan editores con agentes, y agentes con herramientas/datos. | Ninguno sustituye a A2A. |
+
+«Cada uno hace la guerra por su cuenta» resume bien el comportamiento por defecto: orquestación específica de cada producto y algunos puentes. No demuestra que estén totalmente aislados. Es una lectura cualitativa de las fuentes revisadas, no un recuento completo de implementaciones ni un benchmark de interoperabilidad.
+
 ## Fuentes
 
 - [Agentes remotos de Gemini CLI](https://github.com/google-gemini/gemini-cli/blob/main/docs/core/remote-agents.md)
