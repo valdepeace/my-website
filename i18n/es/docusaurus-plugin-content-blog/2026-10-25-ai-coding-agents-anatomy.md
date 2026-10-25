@@ -1,81 +1,96 @@
 ---
-title: "Dentro de los agentes de programación con IA: prompts, harnesses, subagentes y el código alrededor del modelo"
-description: "Comparativa basada en fuentes de 74 agentes de programación y productos relacionados: runtimes, interoperabilidad, lenguajes de sus repositorios y artefactos de distribución."
+title: "Dentro de los agentes de programación con IA: prompts, harnesses y subagentes"
+description: "Un mapa visual, basado en fuentes, de cómo los agentes combinan modelos, instrucciones, herramientas, contexto y delegación."
 authors: [valdepeace]
 date: "2026-10-25"
 tags: [ai-agents, architecture, open-source]
 ---
 
-Cuando un agente de programación modifica un repositorio, el modelo de lenguaje es solo una parte del sistema. El harness elige qué contexto enviar, qué herramientas exponer, cómo ejecutarlas, qué hacer ante los errores y cuándo detenerse. El prompt orienta al modelo, pero no le concede acceso al sistema de archivos ni ejecuta por sí solo un comando de shell.
-
-He estado comparando esas piezas en 74 agentes de programación y productos relacionados. Es una instantánea basada en fuentes, no un ranking: los sistemas cerrados son más difíciles de inspeccionar y una capacidad no documentada queda como no verificada.
+Un agente de programación es un sistema construido alrededor de un modelo. El harness aporta contexto y herramientas, aplica permisos, ejecuta acciones y decide el siguiente paso.
 
 <!--truncate-->
 
-## El modelo no es el agente
+| **74** productos catalogados | **40** repositorios públicos revisados por lenguaje | **41** capturas de estrellas |
+| --- | --- | --- |
+| **0** experimentos controlados propios | Instantánea: 25 oct 2026 | Las estrellas miden interés, no calidad |
 
-Una forma útil de entenderlo es como un bucle. El modelo propone texto o una llamada estructurada a una herramienta; el harness comprueba permisos, ejecuta una acción y devuelve el resultado como nuevo contexto. La siguiente respuesta depende de esa retroalimentación y del prompt inicial.
+## El bucle del agente
 
 ```mermaid
-flowchart LR
-  U[Tarea y reglas del proyecto] --> H[El harness prepara contexto]
-  H --> M[El LLM propone respuesta o tool call]
-  M --> G{Permisos y política}
-  G -->|Permitir| T[Herramienta o acción en workspace]
-  G -->|Denegar o preguntar| H
-  T --> O[Observación y archivos modificados]
+flowchart TB
+  T["TAREA<br/>objetivo + límites"] --> H["HARNESS<br/>contexto · herramientas · permisos"]
+  H --> M["MODELO<br/>respuesta o tool call"]
+  M --> D{"Siguiente acción"}
+  D -->|"responder"| F["Respuesta a la persona"]
+  D -->|"usar herramienta"| P{"Comprobar permisos"}
+  P -->|"permitido"| X["Herramienta<br/>archivos · shell · Git"]
+  X --> O["Resultado observado"]
   O --> H
-  H -->|delegar| S[Subagente o agente externo]
+  P -->|"denegar / preguntar"| H
+  H -->|"delegar"| S["Subagente<br/>brief + contexto seleccionado"]
   S --> H
 ```
 
-Por eso, una comparación de prompts debe mantener constantes el modelo y las herramientas. Una comparación de harnesses debe fijar modelo, tarea y entorno. Sin esos controles, decir que «un agente lo hizo mejor» no identifica qué capa causó la diferencia.
+*Esquema conceptual: cada producto implementa y expone pasos distintos.*
 
-## Prompts: primero la evidencia
+## ¿Qué aporta cada capa?
 
-El código fuente y la documentación pública muestran fragmentos útiles de algunos agentes. No siempre revelan el prompt efectivo completo. Una plantilla puede incluir variables, instrucciones específicas del modo, descripciones de herramientas y reglas del proyecto añadidas en tiempo de ejecución. Un ejemplo escrito por un usuario no es el prompt por defecto del fabricante.
-
-Por eso el catálogo acompaña cada muestra de una etiqueta de procedencia y un enlace. Si no encontramos un fragmento verificable, lo indicamos en vez de reconstruirlo. Esto importa especialmente en productos cerrados como Cursor, Devin y Windsurf: un texto filtrado o recopilado por la comunidad no se convierte automáticamente en un prompt oficial.
-
-## Subagentes y comunicación
-
-Delegar es una función del runtime. Un controlador prepara una tarea y parte del contexto, inicia o contacta con un worker y decide cómo recibir y revisar el resultado. Algunos sistemas devuelven un informe; otros comparten tareas, mensajes o workspace. Un contexto nuevo puede reducir ruido, pero omitir interfaces o restricciones puede llevar al worker a resolver el problema equivocado.
-
-La comparativa distingue tres protocolos:
-
-| Mecanismo | Conexión que estandariza | Lo que no demuestra |
+| Capa | Qué aporta | Qué conviene inspeccionar |
 | --- | --- | --- |
-| A2A | Agente con agente: descubrimiento e intercambio de mensajes y tareas | Que un producto de coding implemente A2A de forma nativa |
-| ACP | Editor con agente de programación | Que el agente coordine con otro agente |
-| MCP | Host del agente con herramientas y datos | Comunicación entre agentes |
+| **Modelo** | Capacidad de programación, tool calling y formato de contexto | Versión, formato de API y condiciones de la tarea |
+| **System prompt** | Rol, prioridades, flujo de trabajo y límites | Fuente oficial, versión exacta y añadidos del runtime |
+| **Harness** | Herramientas, permisos, reintentos, sesiones y delegación | Bucle de herramientas, políticas y errores |
+| **Contexto + entorno** | Reglas del proyecto, archivos, historial, tests y accesos | Qué recibió el agente y qué pudo modificar |
 
-En la documentación oficial de Gemini CLI consultada para esta revisión, los agentes remotos se configuran mediante Agent Cards de A2A. Eso confirma una ruta cliente A2A nativa; no demuestra que Gemini CLI publique su propio endpoint A2A. La matriz de 74 fichas separa la delegación interna documentada de A2A y marca como no verificados los casos que aún no se han comprobado. La especificación A2A tampoco prescribe cómo debe hablar un agente con sus subagentes.
+Las capas interactúan; este estudio no les asigna porcentajes. Un fragmento público no siempre es el prompt efectivo completo: el runtime puede añadir modos, herramientas y reglas del proyecto. Si una muestra de prompt no tiene una fuente verificable, el catálogo no la reconstruye.
 
-Un agente también puede llamar al CLI oficial de A2A como herramienta o quedar envuelto por un puente comunitario. Esas vías conectan sistemas que de otro modo no serían compatibles, pero son integraciones alrededor del producto: no demuestran que el producto implemente A2A.
+## Delegación: ¿quién envía qué a quién?
 
-## Qué nos dice GitHub sobre la implementación
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as Persona
+  participant Main as Coordinador
+  participant Worker as Implementador
+  participant Review as Revisor
+  User->>Main: Objetivo + criterios de aceptación
+  Main->>Worker: Tarea + límites + contexto seleccionado
+  Worker-->>Main: Hallazgos + cambios + resultado de pruebas
+  Main->>Review: Diff + criterios de revisión
+  Review-->>Main: Problemas o aprobación
+  opt Se piden cambios
+    Main->>Worker: Correcciones concretas
+    Worker-->>Main: Cambios revisados
+    Main->>Review: Diff actualizado
+  end
+  Main->>Main: Verificar en el workspace compartido
+  Main-->>User: Resultado + límites pendientes
+```
 
-Para 40 repositorios públicos o archivados enlazados desde el catálogo, consulté el endpoint Languages de GitHub el 25 de octubre de 2026. Devuelve bytes por lenguaje detectado en un repositorio; la tabla muestra los principales. No describe todas las dependencias del runtime ni demuestra qué lenguajes se distribuyen en la aplicación final.
+*Es un modelo para comparar, no una transcripción atribuida a todos los productos. Algunos workers comparten workspace; otros devuelven mensajes o parches. El orquestador debe comprobar el resultado.*
 
-La instantánea refleja una implementación variada: Rust destaca en Codex, Goose, Zed y varias herramientas de terminal; TypeScript aparece en muchos productos de editor y CLI; Python es habitual en harnesses de investigación y SDK. Son observaciones de repositorios, no explicaciones de por qué sus mantenedores eligieron esos lenguajes. Esa motivación queda pendiente hasta localizar una fuente primaria que la explique.
+Un buen encargo transmite **objetivo, límites, contexto relevante y criterios de aceptación**. Una buena respuesta devuelve **hallazgos, archivos modificados y pruebas de verificación**. Con poco contexto, el worker se desvía; con demasiado, la tarea queda enterrada.
 
-También recogí estrellas de GitHub para 41 repositorios enlazados, en la misma fecha. Las estrellas cambian y no miden calidad. Algunas fichas no tienen un repositorio público vinculado. El repositorio de Seed pertenece al ecosistema/modelo, no a un harness de programación, y está identificado como tal.
+## Tres protocolos, tres trabajos
 
-Los tamaños de artefactos requieren la misma cautela. Un archivo Linux comprimido, un paquete npm descomprimido y un ejecutable independiente miden cosas distintas. Cuando hay una medida disponible, el catálogo indica versión, plataforma, arquitectura y formato; no los convierte en un ranking universal de «tamaño del agente».
+| Protocolo | Conecta | No demuestra |
+| --- | --- | --- |
+| **A2A** | Agentes mediante descubrimiento e intercambio de tareas y mensajes | Soporte nativo en un producto de programación |
+| **ACP** | Un editor y un agente de programación | Delegación entre agentes |
+| **MCP** | El host de un agente con herramientas o datos | Comunicación entre agentes |
 
-## Qué responde la evidencia y qué no
+La documentación de Gemini CLI revisada configura agentes remotos mediante Agent Cards de A2A. Eso verifica una ruta cliente A2A nativa; no demuestra que Gemini CLI ofrezca un endpoint A2A. Un puente comunitario o invocar el CLI de A2A como herramienta son integraciones alrededor del producto, no pruebas de soporte nativo.
 
-Esta primera revisión permite una conclusión práctica: el comportamiento surge conjuntamente del modelo, el prompt, el harness, el contexto, las herramientas y el entorno. No asigna un porcentaje a cada capa. Los prompts públicos están incompletos, muchos runtimes comerciales son opacos y «no verificado» significa que no quedó demostrado en esta revisión, no que el producto carezca de la función.
+## Qué permite afirmar esta instantánea
 
-Este artículo no incluye benchmarks propios. Un experimento justo variaría un factor cada vez: mismo modelo con distintos prompts, mismo modelo y prompt en distintos harnesses, mismo harness con distintos modelos, y delegación o skills activadas frente a desactivadas. Habría que medir tareas resueltas, regresiones, llamadas a herramientas, delegaciones, tokens, latencia y coste, y evaluar los cambios con tests independientes.
+El endpoint Languages de GitHub informa de bytes por lenguaje detectado, no de todo el runtime ni de lo que se distribuye al usuario. Las estrellas cambian y no miden calidad. Los tamaños de artefactos solo se comparan si coinciden versión, plataforma, arquitectura y formato del paquete.
 
-El siguiente paso es terminar la verificación de fuentes de las filas A2A y de tecnología pendientes, fijar los commits de los repositorios para hacer reproducibles las instantáneas y ejecutar tareas controladas antes de afirmar diferencias de rendimiento.
+No se ejecutaron benchmarks controlados. La evidencia permite describir el sistema, no establecer un ranking de rendimiento ni repartir porcentajes entre modelo, prompt y harness. «No verificado» significa que en esta pasada no se confirmó una fuente; no significa «no soportado».
 
 ## Fuentes
 
-- [Especificación A2A](https://github.com/a2aproject/A2A/blob/main/docs/specification.md) y [conceptos A2A](https://github.com/a2aproject/A2A/blob/main/docs/index.md)
-- [Agentes remotos en Gemini CLI](https://github.com/google-gemini/gemini-cli/blob/main/docs/core/remote-agents.md)
+- [Agentes remotos de Gemini CLI](https://github.com/google-gemini/gemini-cli/blob/main/docs/core/remote-agents.md)
+- [Especificación A2A](https://github.com/a2aproject/A2A/blob/main/docs/specification.md) · [conceptos A2A](https://github.com/a2aproject/A2A/blob/main/docs/index.md)
 - [API Languages de GitHub](https://docs.github.com/en/rest/repos/repos#list-repository-languages)
-- [CLI oficial de A2A](https://github.com/a2aproject/a2a-cli)
 - [Introducción a ACP](https://agentclientprotocol.com/get-started/introduction) · [Introducción a MCP](https://modelcontextprotocol.io/introduction)
-
+- [CLI oficial de A2A](https://github.com/a2aproject/a2a-cli)
