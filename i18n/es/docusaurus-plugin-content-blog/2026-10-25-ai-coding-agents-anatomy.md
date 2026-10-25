@@ -10,9 +10,11 @@ Un agente de programación es un sistema construido alrededor de un modelo. El h
 
 <!--truncate-->
 
-| **74** productos catalogados | **40** repositorios públicos revisados por lenguaje | **41** capturas de estrellas |
-| --- | --- | --- |
-| **0** experimentos controlados propios | Instantánea: 25 oct 2026 | Las estrellas miden interés, no calidad |
+| **74** productos catalogados | **40** repositorios públicos revisados por lenguaje |
+| --- | --- |
+| **41** capturas de estrellas · 25 oct 2026 | **0** experimentos controlados propios |
+
+*Las estrellas miden interés, no calidad.*
 
 ## El bucle del agente
 
@@ -35,12 +37,12 @@ flowchart TB
 
 ## ¿Qué aporta cada capa?
 
-| Capa | Qué aporta | Qué conviene inspeccionar |
-| --- | --- | --- |
-| **Modelo** | Capacidad de programación, tool calling y formato de contexto | Versión, formato de API y condiciones de la tarea |
-| **System prompt** | Rol, prioridades, flujo de trabajo y límites | Fuente oficial, versión exacta y añadidos del runtime |
-| **Harness** | Herramientas, permisos, reintentos, sesiones y delegación | Bucle de herramientas, políticas y errores |
-| **Contexto + entorno** | Reglas del proyecto, archivos, historial, tests y accesos | Qué recibió el agente y qué pudo modificar |
+| Capa | Aportación y evidencia que revisar |
+| --- | --- |
+| **Modelo** | Capacidad de programación y tool calling; revisar versión, formato de API y condiciones de tarea. |
+| **System prompt** | Rol, prioridades y límites; localizar fuente oficial y añadidos del runtime. |
+| **Harness** | Herramientas, permisos, reintentos, sesiones y delegación; inspeccionar bucle y políticas. |
+| **Contexto + entorno** | Reglas, archivos, historial, tests y accesos; comprobar qué recibió el agente. |
 
 Las capas interactúan; este estudio no les asigna porcentajes. Un fragmento público no siempre es el prompt efectivo completo: el runtime puede añadir modos, herramientas y reglas del proyecto. Si una muestra de prompt no tiene una fuente verificable, el catálogo no la reconstruye.
 
@@ -73,11 +75,11 @@ Un buen encargo transmite **objetivo, límites, contexto relevante y criterios d
 
 ## Tres protocolos, tres trabajos
 
-| Protocolo | Conecta | No demuestra |
-| --- | --- | --- |
-| **A2A** | Agentes mediante descubrimiento e intercambio de tareas y mensajes | Soporte nativo en un producto de programación |
-| **ACP** | Un editor y un agente de programación | Delegación entre agentes |
-| **MCP** | El host de un agente con herramientas o datos | Comunicación entre agentes |
+| Protocolo | Límite |
+| --- | --- |
+| **A2A** | Descubrimiento e intercambio de tareas y mensajes; el producto puede no tener soporte nativo. |
+| **ACP** | Editor ↔ agente de programación; esto no implica delegación entre agentes. |
+| **MCP** | Host de agente ↔ herramientas/datos; no es comunicación agente a agente. |
 
 La documentación de Gemini CLI revisada configura agentes remotos mediante Agent Cards de A2A. Eso verifica una ruta cliente A2A nativa; no demuestra que Gemini CLI ofrezca un endpoint A2A. Un puente comunitario o invocar el CLI de A2A como herramienta son integraciones alrededor del producto, no pruebas de soporte nativo.
 
