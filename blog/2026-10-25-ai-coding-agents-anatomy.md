@@ -10,9 +10,11 @@ A coding agent is a system around a model. The harness supplies context and tool
 
 <!--truncate-->
 
-| **74** products catalogued | **40** public repositories checked for languages | **41** GitHub star snapshots |
-| --- | --- | --- |
-| **0** controlled experiments run for this article | Snapshot: 25 Oct 2026 | Stars indicate interest, not quality |
+| **74** products catalogued | **40** public repositories checked for languages |
+| --- | --- |
+| **41** GitHub star snapshots · 25 Oct 2026 | **0** controlled experiments run for this article |
+
+*Stars indicate interest, not quality.*
 
 ## The agent loop
 
@@ -35,12 +37,12 @@ flowchart TB
 
 ## What shapes behaviour?
 
-| Layer | What it contributes | What to inspect |
-| --- | --- | --- |
-| **Model** | Coding ability, tool-call behaviour and supported context | Model version, API format, task conditions |
-| **System prompt** | Role, priorities, workflow and constraints | Official source, exact version and runtime additions |
-| **Harness** | Tools, permission gates, retries, session state and delegation | Tool loop, policy code and error handling |
-| **Context + environment** | Project instructions, files, history, tests and access | What the agent actually received and could change |
+| Layer | Contribution and evidence to inspect |
+| --- | --- |
+| **Model** | Coding and tool-call ability; check model version, API format and task conditions. |
+| **System prompt** | Role, priorities and constraints; check the official source and runtime additions. |
+| **Harness** | Tools, permissions, retries, sessions and delegation; inspect the loop and policy code. |
+| **Context + environment** | Project rules, files, history, tests and access; check what the agent actually received. |
 
 These layers interact; this study does not assign them percentages. Public prompt fragments are not necessarily the complete effective prompt: modes, tool descriptions and project rules may be added at runtime. If a prompt sample has no verifiable source, the catalog does not reconstruct it.
 
@@ -73,11 +75,11 @@ A useful hand-off carries **the goal, boundaries, relevant context and acceptanc
 
 ## Three protocols, three jobs
 
-| Protocol | Connects | Does not establish |
-| --- | --- | --- |
-| **A2A** | Agents through discovery and task/message exchange | Native support in a coding product |
-| **ACP** | An editor and a coding agent | Agent-to-agent delegation |
-| **MCP** | An agent host and tools or data | Agent-to-agent communication |
+| Protocol | Boundary |
+| --- | --- |
+| **A2A** | Agent discovery and task/message exchange; a product may still lack native support. |
+| **ACP** | Editor ↔ coding agent; this alone does not mean agent delegation. |
+| **MCP** | Agent host ↔ tools/data; it is not agent-to-agent communication. |
 
 The reviewed Gemini CLI documentation configures remote agents through A2A Agent Cards. That verifies a native A2A client path; it does not show that Gemini CLI serves an A2A endpoint. A community bridge or an A2A CLI invoked as a tool is an integration around a product, not proof of native support.
 
