@@ -8,6 +8,8 @@ tags: [ai-agents, architecture, open-source]
 
 Un agente de programación es un sistema construido alrededor de un modelo. El harness aporta contexto y herramientas, aplica permisos, ejecuta acciones y decide el siguiente paso.
 
+**Estudio y fuentes:** [comparativa interactiva de AgentScope](https://valdepeace.github.io/agentscope/) · [repositorio en GitHub](https://github.com/valdepeace/agentscope).
+
 <!--truncate-->
 
 | **74** productos catalogados | **40** repositorios públicos revisados por lenguaje |
@@ -81,7 +83,16 @@ Un buen encargo transmite **objetivo, límites, contexto relevante y criterios d
 | **ACP** | Editor ↔ agente de programación; esto no implica delegación entre agentes. |
 | **MCP** | Host de agente ↔ herramientas/datos; no es comunicación agente a agente. |
 
-La documentación de Gemini CLI revisada configura agentes remotos mediante Agent Cards de A2A. Eso verifica una ruta cliente A2A nativa; no demuestra que Gemini CLI ofrezca un endpoint A2A. Un puente comunitario o invocar el CLI de A2A como herramienta son integraciones alrededor del producto, no pruebas de soporte nativo.
+Dos CLI oficiales tienen rutas A2A en las fuentes revisadas:
+
+| CLI | Ruta respaldada por fuentes | Límite |
+| --- | --- | --- |
+| **Gemini CLI** | Se conecta a agentes remotos mediante Agent Cards de A2A. | Ser cliente no demuestra que ofrezca su propio endpoint A2A. |
+| **Qwen Code** | Las notas oficiales anuncian colaboración entre CLIs; su diseño marca A2A sobre sesiones como implementado tras `experimental.agentCollaboration` (desactivado por defecto). | Qwen coordina la sesión; esto no convierte a Claude Code ni Codex en peers A2A nativos. |
+
+Los adaptadores documentados de Qwen pueden ejecutar Qwen Code, Claude Code o Codex localmente o mediante un host Qwen remoto. El coordinador lleva el flujo de colaboración; hay que comprobar la versión y la opción experimental antes de darlo por disponible. [Diseño oficial](https://github.com/QwenLM/qwen-code/blob/main/docs/design/2026-10-05-session-multi-agent.md) · [Actualización de Qwen](https://qwenlm.github.io/qwen-code-docs/en/blog/updates/weekly-update-2026-10-15/)
+
+Invocar el CLI de A2A como herramienta o usar un puente comunitario también puede conectar otros productos, pero eso es una integración alrededor de ellos, no una prueba de soporte nativo.
 
 ## Qué permite afirmar esta instantánea
 
@@ -92,6 +103,7 @@ No se ejecutaron benchmarks controlados. La evidencia permite describir el siste
 ## Fuentes
 
 - [Agentes remotos de Gemini CLI](https://github.com/google-gemini/gemini-cli/blob/main/docs/core/remote-agents.md)
+- [Diseño multiagente de Qwen Code](https://github.com/QwenLM/qwen-code/blob/main/docs/design/2026-10-05-session-multi-agent.md) · [Actualización de Qwen](https://qwenlm.github.io/qwen-code-docs/en/blog/updates/weekly-update-2026-10-15/)
 - [Especificación A2A](https://github.com/a2aproject/A2A/blob/main/docs/specification.md) · [conceptos A2A](https://github.com/a2aproject/A2A/blob/main/docs/index.md)
 - [API Languages de GitHub](https://docs.github.com/en/rest/repos/repos#list-repository-languages)
 - [Introducción a ACP](https://agentclientprotocol.com/get-started/introduction) · [Introducción a MCP](https://modelcontextprotocol.io/introduction)
