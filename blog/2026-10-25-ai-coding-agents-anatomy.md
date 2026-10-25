@@ -100,6 +100,16 @@ GitHub's Languages endpoint reports bytes by detected language, not the full run
 
 No controlled benchmark was run. The evidence supports a system-level view, not a performance ranking or a percentage split between model, prompt and harness. “Unverified” means no supporting source was confirmed in this pass; it does not mean “unsupported.”
 
+## Conclusion: fragmented by default
+
+| Evidence from this snapshot | Supported reading | Limit |
+| --- | --- | --- |
+| 74 products catalogued | The review finds no shared default for delegation, context, permissions and result hand-off. | The source matrix is incomplete. |
+| Gemini CLI and Qwen Code | Official A2A paths are documented in both projects. | Qwen's path is opt-in; adapters do not make Claude Code or Codex native A2A clients. |
+| ACP and MCP | They connect editors to agents, and agents to tools/data. | Neither is a substitute for A2A. |
+
+“Each is doing its own thing” is a fair shorthand for the current default: product-specific orchestration with selective bridges. It is not evidence of total isolation. This is a qualitative reading of the reviewed sources, not a count of every implementation or a benchmark of interoperability.
+
 ## Sources
 
 - [Gemini CLI remote agents](https://github.com/google-gemini/gemini-cli/blob/main/docs/core/remote-agents.md)
