@@ -8,6 +8,8 @@ tags: [ai-agents, architecture, open-source]
 
 A coding agent is a system around a model. The harness supplies context and tools, enforces permissions, runs actions and decides what happens next.
 
+**Study and source files:** [interactive AgentScope study](https://valdepeace.github.io/agentscope/) · [GitHub repository](https://github.com/valdepeace/agentscope).
+
 <!--truncate-->
 
 | **74** products catalogued | **40** public repositories checked for languages |
@@ -81,7 +83,16 @@ A useful hand-off carries **the goal, boundaries, relevant context and acceptanc
 | **ACP** | Editor ↔ coding agent; this alone does not mean agent delegation. |
 | **MCP** | Agent host ↔ tools/data; it is not agent-to-agent communication. |
 
-The reviewed Gemini CLI documentation configures remote agents through A2A Agent Cards. That verifies a native A2A client path; it does not show that Gemini CLI serves an A2A endpoint. A community bridge or an A2A CLI invoked as a tool is an integration around a product, not proof of native support.
+Two official CLIs have A2A paths in the sources reviewed:
+
+| CLI | Evidence-backed path | Boundary |
+| --- | --- | --- |
+| **Gemini CLI** | Connects to remote agents through A2A Agent Cards. | Client support does not prove it serves its own A2A endpoint. |
+| **Qwen Code** | Official notes announce cross-CLI collaboration; its design marks A2A on sessions implemented behind `experimental.agentCollaboration` (off by default). | Qwen coordinates the session; this does not make Claude Code or Codex standalone native A2A peers. |
+
+Qwen's documented adapters can run Qwen Code, Claude Code or Codex locally, or through a remote Qwen host. The coordinator carries the collaboration flow; verify the feature flag and version before treating it as available. [Design note](https://github.com/QwenLM/qwen-code/blob/main/docs/design/2026-10-05-session-multi-agent.md) · [Qwen release update](https://qwenlm.github.io/qwen-code-docs/en/blog/updates/weekly-update-2026-10-15/)
+
+An A2A CLI invoked as a tool or a community bridge can connect other products, but that is an integration around them—not proof of native support.
 
 ## What the snapshot can say
 
@@ -92,6 +103,7 @@ No controlled benchmark was run. The evidence supports a system-level view, not 
 ## Sources
 
 - [Gemini CLI remote agents](https://github.com/google-gemini/gemini-cli/blob/main/docs/core/remote-agents.md)
+- [Qwen Code session multi-agent design](https://github.com/QwenLM/qwen-code/blob/main/docs/design/2026-10-05-session-multi-agent.md) · [Qwen release update](https://qwenlm.github.io/qwen-code-docs/en/blog/updates/weekly-update-2026-10-15/)
 - [A2A specification](https://github.com/a2aproject/A2A/blob/main/docs/specification.md) · [A2A concepts](https://github.com/a2aproject/A2A/blob/main/docs/index.md)
 - [GitHub Languages API](https://docs.github.com/en/rest/repos/repos#list-repository-languages)
 - [ACP introduction](https://agentclientprotocol.com/get-started/introduction) · [MCP introduction](https://modelcontextprotocol.io/introduction)
