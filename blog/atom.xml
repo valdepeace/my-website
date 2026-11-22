@@ -47,6 +47,7 @@
 <li class="">Evidence that the dual router and worker design beats a single good agent.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="read-the-full-study">Read the full study<a href="https://valdepeace.com/blog/2026/11/22/nine-code-agent-orchestrators#read-the-full-study" class="hash-link" aria-label="Direct link to Read the full study" title="Direct link to Read the full study" translate="no">​</a></h2>
+<p>One interactive diagram per orchestrator: <a class="" href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each">see the flows</a> · <a href="https://valdepeace.github.io/agentscope/orquestacion.html" target="_blank" rel="noopener noreferrer" class="">open them directly</a>.</p>
 <p>Notes per repository, comparison tables, the scoring rubric and the interactive diagrams: <a href="https://github.com/valdepeace/agentscope/tree/main/orchestrators" target="_blank" rel="noopener noreferrer" class="">agentscope/orchestrators</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits">Limits<a href="https://valdepeace.com/blog/2026/11/22/nine-code-agent-orchestrators#limits" class="hash-link" aria-label="Direct link to Limits" title="Direct link to Limits" translate="no">​</a></h2>
 <ul>
@@ -55,6 +56,70 @@
 <li class="">Nothing was run. No benchmark, no timing, no cost numbers.</li>
 <li class="">The 0 to 10 scores are judgments with explicit rules, not measurements.</li>
 </ul>]]></content>
+        <author>
+            <name>Andrés Carmona Gil</name>
+            <uri>https://github.com/valdepeace</uri>
+        </author>
+        <category label="AI Agents" term="AI Agents"/>
+        <category label="Architecture" term="Architecture"/>
+        <category label="Comparison" term="Comparison"/>
+        <category label="Open Source" term="Open Source"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Nine orchestrators, one diagram each]]></title>
+        <id>https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each</id>
+        <link href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each"/>
+        <updated>2026-11-22T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How a task travels from input to accepted result in nine code-agent orchestrators: who decides, how the worker is isolated, how a stuck worker is detected, who accepts the result.]]></summary>
+        <content type="html"><![CDATA[<p>Same question for nine open-source orchestrators: when a task goes in, <strong>who decides each step, the model or the code?</strong></p>
+<p>One diagram each. Read left to right.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="colour-key">Colour key<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#colour-key" class="hash-link" aria-label="Direct link to Colour key" title="Direct link to Colour key" translate="no">​</a></h2>
+<table><thead><tr><th>Colour</th><th>Meaning</th></tr></thead><tbody><tr><td>🟩 green</td><td>decided or done by <strong>code</strong></td></tr><tr><td>🟪 purple</td><td>decided by the <strong>LLM</strong></td></tr><tr><td>🟦 blue</td><td>mixed: LLM plus code</td></tr><tr><td>⬜ grey</td><td>none found / shared</td></tr><tr><td>🟧 orange</td><td><strong>self-report</strong>: the worker grades itself</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-flow-every-diagram-follows">The flow every diagram follows<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#the-flow-every-diagram-follows" class="hash-link" aria-label="Direct link to The flow every diagram follows" title="Direct link to The flow every diagram follows" translate="no">​</a></h2>
+<!-- -->
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-nine">The nine<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#the-nine" class="hash-link" aria-label="Direct link to The nine" title="Direct link to The nine" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cc-super-agent">cc-super-agent<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#cc-super-agent" class="hash-link" aria-label="Direct link to cc-super-agent" title="Direct link to cc-super-agent" translate="no">​</a></h3>
+<p>Everything in the prompt. Code only does logistics.</p>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cli-agent-orchestrator">cli-agent-orchestrator<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#cli-agent-orchestrator" class="hash-link" aria-label="Direct link to cli-agent-orchestrator" title="Direct link to cli-agent-orchestrator" translate="no">​</a></h3>
+<p>An LLM supervisor, no router in code.</p>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="gastown">gastown<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#gastown" class="hash-link" aria-label="Direct link to gastown" title="Direct link to gastown" translate="no">​</a></h3>
+<p>Four LLM roles; code dispatches and warns.</p>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="agent-orchestrator">agent-orchestrator<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#agent-orchestrator" class="hash-link" aria-label="Direct link to agent-orchestrator" title="Direct link to agent-orchestrator" translate="no">​</a></h3>
+<p>LLM at the edges, deterministic Go in between.</p>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="agent-swarm">agent-swarm<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#agent-swarm" class="hash-link" aria-label="Direct link to agent-swarm" title="Direct link to agent-swarm" translate="no">​</a></h3>
+<p>Code filters, admits and claims; the sweep acts on stuck workers (cases A and B).</p>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="super-super-harness">super-super-harness<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#super-super-harness" class="hash-link" aria-label="Direct link to super-super-harness" title="Direct link to super-super-harness" translate="no">​</a></h3>
+<p>Code runs the queue, the worktree and the retries.</p>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="dsh-superagent-prototype">dsh-superagent-prototype<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#dsh-superagent-prototype" class="hash-link" aria-label="Direct link to dsh-superagent-prototype" title="Direct link to dsh-superagent-prototype" translate="no">​</a></h3>
+<p>Small and clean. No stuck-worker detection found.</p>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="dsh-super-agent-lofisu">dsh-super-agent (LofiSu)<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#dsh-super-agent-lofisu" class="hash-link" aria-label="Direct link to dsh-super-agent (LofiSu)" title="Direct link to dsh-super-agent (LofiSu)" translate="no">​</a></h3>
+<p>Per-worker bash sandbox at OS level (bwrap / sandbox-exec); the watchdog escalates.</p>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="deer-flow">deer-flow<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#deer-flow" class="hash-link" aria-label="Direct link to deer-flow" title="Direct link to deer-flow" translate="no">​</a></h3>
+<p><strong>Code checks</strong> the result against tool evidence, if the lead passed criteria.</p>
+<!-- -->
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-repeats">What repeats<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#what-repeats" class="hash-link" aria-label="Direct link to What repeats" title="Direct link to What repeats" translate="no">​</a></h2>
+<ul>
+<li class="">🟧 <strong>Seven of nine accept the worker's own report</strong> (gastown adds an LLM reviewer on top). Only deer-flow checks tool evidence in code, and only if the lead passed criteria; agent-orchestrator derives it from PR and CI facts.</li>
+<li class=""><strong>Detection mostly warns.</strong> Few detectors act (agent-swarm cases A and B, LofiSu 2nd tick, deer-flow timeout).</li>
+<li class=""><strong>Isolation is weak by default.</strong> A git worktree or a directory is the usual ceiling; only LofiSu (OS sandbox) and agent-swarm (Docker, hardening opt-in) go further.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="explore-them">Explore them<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#explore-them" class="hash-link" aria-label="Direct link to Explore them" title="Direct link to Explore them" translate="no">​</a></h2>
+<p>Each diagram is interactive (zoom, focus, node index, every node with its <code>file:line</code> source): <strong><a href="https://valdepeace.github.io/agentscope/orquestacion.html" target="_blank" rel="noopener noreferrer" class="">open the nine diagrams</a></strong>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits">Limits<a href="https://valdepeace.com/blog/2026/11/22/orchestrators-one-diagram-each#limits" class="hash-link" aria-label="Direct link to Limits" title="Direct link to Limits" translate="no">​</a></h2>
+<ul>
+<li class="">Reading coverage is low (0.2 % to 32 % of each repo). Diagrams show what was read; «not found» means «not found in what I read».</li>
+<li class="">Nothing was run. No benchmarks, no timings, no cost.</li>
+<li class="">Diagram checks are automatic (schema, citations against the pinned commit, browser). None was reviewed by eye.</li>
+</ul>
+<p>Scores, architecture-versus-claim and the rubric are in <a class="" href="https://valdepeace.com/blog/2026/11/22/nine-code-agent-orchestrators">the first post</a> and in <a href="https://github.com/valdepeace/agentscope/tree/main/orchestrators" target="_blank" rel="noopener noreferrer" class="">the full study</a>.</p>]]></content>
         <author>
             <name>Andrés Carmona Gil</name>
             <uri>https://github.com/valdepeace</uri>
