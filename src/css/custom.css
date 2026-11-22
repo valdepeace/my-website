@@ -447,3 +447,67 @@ pre {
     margin-bottom: 2rem;
   }
 }
+
+
+/* ==========================================================================
+   Blog a todo lo ancho.
+   Cabe señalar que Docusaurus reserva por defecto una columna angosta (7/12)
+   entre la barra lateral y el índice; aquí se le concede el resto del
+   espacio y se acota solo la prosa, de suerte que tablas y diagramas
+   respiren sin que las líneas de texto se vuelvan interminables.
+   ========================================================================== */
+.blog-wrapper .container {
+  max-width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.blog-wrapper .row > aside.col {
+  flex: 0 0 16rem;
+  max-width: 16rem;
+}
+
+.blog-wrapper .row > main.col {
+  flex: 1 1 0;
+  max-width: none;
+  min-width: 0;
+}
+
+.blog-wrapper .row > .col.col--2 {
+  flex: 0 0 14rem;
+  max-width: 14rem;
+}
+
+/* Prosa legible; lo demás (tablas, diagramas, código) usa todo el ancho */
+.blog-wrapper .markdown > p,
+.blog-wrapper .markdown > ul,
+.blog-wrapper .markdown > ol,
+.blog-wrapper .markdown > blockquote {
+  max-width: 95ch;
+}
+
+/* Tablas que parten el texto en lugar de desbordar hacia el lado */
+.blog-wrapper .markdown table {
+  display: table;
+  width: 100%;
+  white-space: normal;
+}
+
+@media screen and (max-width: 996px) {
+  .blog-wrapper .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .blog-wrapper .row > aside.col,
+  .blog-wrapper .row > .col.col--2 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .blog-wrapper .markdown table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
