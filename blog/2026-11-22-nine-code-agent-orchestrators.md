@@ -133,6 +133,8 @@ Treat this as a hint. It is seven to nine repositories of very different size an
 
 ## Read the full study
 
+One interactive diagram per orchestrator: [see the flows](/blog/2026/11/22/orchestrators-one-diagram-each) · [open them directly](https://valdepeace.github.io/agentscope/orquestacion.html).
+
 Notes per repository, comparison tables, the scoring rubric and the interactive diagrams: [agentscope/orchestrators](https://github.com/valdepeace/agentscope/tree/main/orchestrators).
 
 ## Limits

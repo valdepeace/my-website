@@ -133,6 +133,8 @@ Tómalo como una pista. Son entre siete y nueve repositorios de tamaños y edade
 
 ## Lee el estudio completo
 
+Un diagrama interactivo por orquestador: [ver los flujos](/es/blog/2026/11/22/orchestrators-one-diagram-each) · [abrirlos directamente](https://valdepeace.github.io/agentscope/orquestacion.html).
+
 Notas por repositorio, tablas comparativas, la rúbrica de puntuación y los diagramas interactivos: [agentscope/orchestrators](https://github.com/valdepeace/agentscope/tree/main/orchestrators).
 
 ## Límites
